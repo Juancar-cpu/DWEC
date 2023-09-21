@@ -6,7 +6,8 @@ do{
 
 //Revisar, aún no funciona
 for(var i=0;i<=numero;i++){
-    if(i%numero===0){
+   
+    if(numero%i==0){
         console.log(i);
     }
 }
