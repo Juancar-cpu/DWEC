@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercio update 2</title>
+    <title>Tarea Continua update ejercicio 4</title>
 </head>
 <body>
-    <!--Declara e inicia las variables donde se almacenará la info (9 en total)
-    Mostrar por consola info sobre el primer y ultimo contacto en el formulario 
-    nombre/telf/correo-->
+    <!-- Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
+
+    • Mostrar el primer contacto (primero)
+    • Mostrar el último contacto (último)
+    • Añadir un nuevo contacto (nuevo)
+Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
+Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.-->
     <script>
         let miArray =[{nombre1:"Maxwell Wright", 
                     telefono1:"(0191)719 6495", 
@@ -20,15 +24,24 @@
                     telefono3:"0800 1111", 
                     correo3:"Helen@convallis.edu"}];
 
-        let nombre4="Maisie Haley";
-        let telefono4="0913 531 3030";
-        let correo4="Maisie@urna.ca";
-        miArray.push({nombre4, telefono4, correo4});
+       let opcion=prompt("¿Qué queremos hacer? 1-Mostrar primer contacto / 2-Mostrar ultimo contacto / 3-Añadir nuevo contacto", "Escribe aqui tu opción");
 
-        let nombre5=prompt("Introduce nombre", "Escribe aquí el nombre");
-        let telefono5=prompt("Introduce telefono", "Escribe aquí el telefono");
-        let correo5=prompt("Introduce correo", "Escribe aquí el correo");
-        miArray.push({nombre5, telefono5, correo5});
+       if(opcion==1){
+        alert(miArray[0]);
+       }
+
+       else if(opcion == 2){
+        alert(miArray[miArray.length-1]);
+       }
+
+       else if(opcion==3){
+        let newNombre=prompt("Introduce nombre", "Escribe aquí el nombre");
+        let newTelefono=prompt("Introduce telefono", "Escribe aquí el telefono");
+        let newCorreo=prompt("Introduce correo", "Escribe aquí el correo");
+        miArray.push({newNombre, newTelefono, newCorreo});
+       }
+
+     
 
         const PRIMER_CONTACTO=miArray[0];
         const ULTIMO_CONTACTO=miArray[miArray.length-1];
