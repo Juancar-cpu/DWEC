@@ -10,25 +10,28 @@
     Mostrar por consola info sobre el primer y ultimo contacto en el formulario 
     nombre/telf/correo-->
     <script>
-        let nombre1="Maxwell Wright";
-        let nombre2="Raja Villareal";
-        let nombre3="Helend Richards";
+        let miArray =[{nombre1:"Maxwell Wright", 
+                    telefono1:"(0191)719 6495", 
+                    correo1:"Maxwell@nonummyac.co.uk"},
+                    {nombre2:"Raja Villareal", 
+                    telefono2:"0866 398 2895", 
+                    correo2:"Raja@sed.com"}, 
+                    {nombre3:"Helend Richards", 
+                    telefono3:"0800 1111", 
+                    correo3:"Helen@convallis.edu"}];
 
-        let telefono1="(0191)719 6495";
-        let telefono2="0866 398 2895";
-        let telefono3=("0800 1111")+7;//el 7 lo añade al final del numero
+        let nombre4="Maisie Haley";
+        let telefono4="0913 531 3030";
+        let correo4="Maisie@urna.ca";
+        miArray.push({nombre4, telefono4, correo4});
 
-        let correo1="Maxwell@nonummyac.co.uk";
-        let correo2="Raja@sed.com";
-        let correo3="Helen@convallis.edu";
+        const PRIMER_CONTACTO=miArray[0];
+        const ULTIMO_CONTACTO=miArray[miArray.length-1];
 
-       /* console.log(nombre1, "/"+telefono1, "/"+correo1);
-        console.log(nombre3, "/"+telefono3, "/"+correo3);
-        console.log(typeof(nombre2), typeof(telefono2), typeof(correo2));*/
+        console.log(PRIMER_CONTACTO);
+        console.log(ULTIMO_CONTACTO);
 
-        let miArray =[{nombre1, telefono1, correo1}, {nombre2, telefono2, correo2}, {nombre3, telefono3, correo3}];
-
-
+        
 
     </script>
 </body>
