@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumar n numeros mediante función (arguments[] y length)</title>
+</head>
+<body>
+    <script>
+        function sumar(){
+            var suma=0;
+            for(i=0;i<arguments.length;i++){//Como no hemos dado ningun argumento a la funcion todos los valores caen al array arguments[]
+                //Con .length en un for siempre usar solo el <
+                suma+=arguments[i];
+            }
+            console.log(suma);
+        }
+        sumar(2,4,10);
+      
+    </script>
+</body>
+</html>

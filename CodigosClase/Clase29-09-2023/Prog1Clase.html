@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Pedir un nombre, mostrarlo por consola dentro de un saludo, repetir usando "template literals"
+        Mosdtrar que tipo de variable es, mostrar longitud, preguntar si eres alumno de nuestra clase "confirm"
+        Contestar con frase en consecuenta, en alert-->
+    <script>
+        let nombre=prompt("Introduce tu nombre");
+        console.log("Buenas, "+nombre);
+        console.log(`Buenas, ${nombre}`);//Este formato es template literals
+        console.log("El tipo de variable de tu nombre es "+typeof(nombre));
+        console.log("Tu nombre tiene una longitud de "+nombre.length);
+       let alumno = confirm("Eres alumno de esta clase?");//Confirm devuelve un boolean
+       if(alumno) alert("Hola "+nombre+", bienvenido a la clase");
+       else alert("Lo siento "+nombre+", no perteneces a esta clase");
+
+
+    </script>
+</body>
+</html>
