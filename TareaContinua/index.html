@@ -35,12 +35,16 @@ Si falta al menos uno de los tres valores (nombre, teléfono o correo electróni
        }
 
        else if(opcion==3){
-        let newNombre=prompt("Introduce nombre", "Escribe aquí el nombre");
-        let newTelefono=prompt("Introduce telefono", "Escribe aquí el telefono");
-        let newCorreo=prompt("Introduce correo", "Escribe aquí el correo");
-        miArray.push({newNombre, newTelefono, newCorreo});
-       }
+        let newNombre=prompt("Introduce nombre");
+        let newTelefono=prompt("Introduce telefono");
+        let newCorreo=prompt("Introduce correo");
 
+        if(newNombre!=""||newTelefono!=""||newCorreo!=""){
+            miArray.push({newNombre, newTelefono, newCorreo});
+        }
+        else alert("No se ingresó alguno de los datos pedidos");
+       }
+      
      
 
         const PRIMER_CONTACTO=miArray[0];
