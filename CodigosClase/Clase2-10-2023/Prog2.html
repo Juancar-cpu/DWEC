@@ -11,6 +11,7 @@
         let res = (base, exponente) => {
             let pot=0;
             
+            
             //let pot=Math.pow(base, exponente);//Atento que Math debe empezar por mayuscula
             //return pot;
             if(base==0){
@@ -28,16 +29,24 @@
                 return 1;
             }
             else if(exponente<0){
-                pot="1/"+base+
+                for(i=-1;i>=exponente;i--){
+                resultado*=base; 
+                return (1/resultado);
             }
+            }
+            
 
             //Otra forma
             //let resultado=base;
-            //resultado=base**exponente
+            
+            else{//resultado=base**exponente
             for(i=1;i<=exponente;i++){
                 resultado*=base; //(resultado=resultado*base)
             }
             return resultado;
+        }
+            
+            //Mirar a sacarlo por ternarios
         }
         var base=prompt("Dame una base");
         var exponente=prompt("Dame un exponente");
