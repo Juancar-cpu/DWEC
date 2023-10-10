@@ -36,7 +36,7 @@ Caso contrario, se realizará lo siguiente:
 *El precio de la entrada es de 8,5 euros
 */
 
-//Resolucion con if anidado y do while
+//Version 2: Vamos a meter funciones descuento y regalo
         //Paso 1. Negando isNaN nos saltará si lo introducido no es un string
         var nombreCliente=prompt("Introduce tu nombre");
         while(!isNaN(nombreCliente)|| nombreCliente==null){
@@ -65,7 +65,7 @@ Caso contrario, se realizará lo siguiente:
         //Paso 3 segunda parte y Paso 4
         
             var pelicula=parseInt(prompt("La cartelera es: "+cartelera+" Elige qué película quieres ver"));
-        while(pelicula<1 || pelicula>pelis.length || pelicula == null || (edadCliente<18 && pelicula==5)){
+        while(pelicula<1 || pelicula>pelis.length || pelicula==null || (edadCliente<18 && pelicula==5)){//Si pongo pelicula == null no se activa el alert porque un null y un numero son los dos objetos y se lo traga. 
             alert("La pelicula escogida no esta disponible")
             var pelicula=parseInt(prompt("La cartelera es: "+cartelera+" Elige qué película quieres ver"));
         }

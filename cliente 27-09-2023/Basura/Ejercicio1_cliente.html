@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* if("3"+2==5){//Es como decir si 32 es igual a 5 haz esto
+            console.log("Pizza");
+        }*/
+
+        if([]){//funciona porque una matriz cuenta como true
+            console.log("Pizza");
+        }
+
+        if(0){//No sale porque 0 se considera false
+            console.log("Pizza");
+        }
+
+        if(5+true==6){//Si sale porque true lo considera un 1
+            console.log("Pizza");
+        }
+
+        if(5+true===6){//Si sale porque ambos siguen siendo number
+            console.log("Pizza");
+        }
+
+        if(!undefined){//Si sale porque el negativo de no definido es definido y se considera true
+            console.log("Pizza");
+        }
+
+        if({}=={}){//No sale porque la referencia de memoria de estos dos objetos no es la misma
+            console.log("Pizza");
+        }
+    
+    </script>
+</body>
+</html>
