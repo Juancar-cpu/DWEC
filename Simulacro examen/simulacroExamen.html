@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="lienzo">
+    
+    <script>
+        /*Dibujar un rombo con asteriscos*/
+        //&nbs=espacio en blanco
+        //<br>=pasar de linea
+        
+        let numLineas=parseInt(prompt("¿Cuantas filas tendrá el rombo?"));
+       
+        //Creciente
+        for(var i=0;i<numLineas;i++){
+            var asterisco="";
+            var espacioHTML="";
+
+            for(var k=0;k<numLineas-i-1;k++){
+                espacioHTML+="&nbsp&nbsp";
+            }
+            for(var j=1;j<=2*i+1;j++){
+                asterisco+="*";
+            }
+            lienzo.innerHTML=lienzo.innerHTML+espacioHTML+asterisco+"<br>";
+        }
+
+        //Decreciente
+        for(var i=numLineas-2; i>=0;i--){
+        var asterisco="";
+        var espacioHTML="";
+        }
+   
+
+
+    </script>
+</body>
+</html>
