@@ -6,13 +6,16 @@
     <title>Tarea Continua update ejercicio 4</title>
 </head>
 <body>
-    <!-- Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
+    <!-- Encierra todo el programa en un bucle para que al usuario se le pregunte repetidamente qué quiere hacer. El usuario puede optar por:
 
     • Mostrar el primer contacto (primero)
     • Mostrar el último contacto (último)
+    • Mostrar todos los contactos (todos)
     • Añadir un nuevo contacto (nuevo)
-Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
-Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.-->
+    • Salir del programa (salir)
+
+Después de ejecutar la acción seleccionada, el programa le dará la oportunidad de elegir nuevamente. El programa debe finalizar 
+las acciones solo después de que el usuario dé un comando específico (salir).-->
     <script>
         let miArray =[{nombre1:"Maxwell Wright", 
                     telefono1:"(0191)719 6495", 
@@ -24,17 +27,24 @@ Si falta al menos uno de los tres valores (nombre, teléfono o correo electróni
                     telefono3:"0800 1111", 
                     correo3:"Helen@convallis.edu"}];
 
-       let opcion=prompt("¿Qué queremos hacer? 1-Mostrar primer contacto / 2-Mostrar ultimo contacto / 3-Añadir nuevo contacto", "Escribe aqui tu opción");
+       let opcion=prompt("¿Qué queremos hacer? 1-Mostrar primer contacto / 2-Mostrar ultimo contacto / 3-Mostrar todos los contactos / 4-Añadir nuevo contacto / 5-Salir");
+        while(opcion!=5){
 
-       if(opcion==1){
-        alert(miArray[0]);
-       }
+            switch(opcion){
 
-       else if(opcion == 2){
+       case 1:
+            alert(miArray[0]);
+            break;
+       
+       case 2:
         alert(miArray[miArray.length-1]);
-       }
+        break;
 
-       else if(opcion==3){
+        case 3:
+            
+       
+
+       case 4:
         let newNombre=prompt("Introduce nombre");
         let newTelefono=prompt("Introduce telefono");
         let newCorreo=prompt("Introduce correo");
@@ -43,15 +53,13 @@ Si falta al menos uno de los tres valores (nombre, teléfono o correo electróni
             miArray.push({newNombre, newTelefono, newCorreo});
         }
         else alert("No se ingresó alguno de los datos pedidos");
-       }
-      
+       break;
+
+    }
+    }
      
 
-        const PRIMER_CONTACTO=miArray[0];
-        const ULTIMO_CONTACTO=miArray[miArray.length-1];
-
-        console.log(PRIMER_CONTACTO);
-        console.log(ULTIMO_CONTACTO);
+       
 
         
 
