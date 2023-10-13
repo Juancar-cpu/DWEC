@@ -3,29 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarea Continua</title>
+    <title>Tarea Continua update ejercicio 4</title>
 </head>
 <body>
-    <!--Declara e inicia las variables donde se almacenará la info (9 en total)
-    Mostrar por consola info sobre el primer y ultimo contacto en el formulario 
-    nombre/telf/correo-->
+    <!--Da al usuario la opción de seleccionar una acción sort de la lista. Cuando se selecciona esta opción, 
+        el usuario debería poder especificar si desea ordenar los contactos por nombre, teléfono o correo electrónico.
+-->
+<div id="aqui"></div>
     <script>
-        let nombre1="Maxwell Wright";
-        let nombre2="Raja Villareal";
-        let nombre3="Helend Richards";
+        let opcion=0;//Definimos las variables opcion y resultado. Iniciamos opcion para entrar en el bucle
+        let resultado="";//Si no iniciamos resultado como string nos da undefined mas adelante
 
-        let telefono1="(0191)719 6495";
-        let telefono2="0866 398 2895";
-        let telefono3=("0800 1111")+7;//el 7 lo añade al final del numero
+        function mostrar(resultado){//Usamos una función para mostrar los resultados por pantalla
+            document.getElementById("aqui").innerHTML=resultado;
+            
+        }
 
-        let correo1="Maxwell@nonummyac.co.uk";
-        let correo2="Raja@sed.com";
-        let correo3="Helen@convallis.edu";
+        function showContact(miArray, pos){
+            let realPos=pos-1;//Hacemos esto porque no es normal que un cliente pida sacar el contacto 0 de una lista
+            if(miArray instanceof Array && (realPos>=0 && realPos<=miArray.length-1)){
+                const PRIMER_CONTACTO=miArray[realPos];
+            resultado+='Nombre: '+PRIMER_CONTACTO.nombre;//Vamos a ir añadiendo todo a la variable resultado, luego la sacamos por funcion
+            resultado+='<br>Telefono: '+PRIMER_CONTACTO.telefono;
+            resultado+='<br>Correo: '+PRIMER_CONTACTO.correo;
+            mostrar(resultado);
+            setTimeout(function(){}, 1000);
+            }
+            else alert("Ese contacto no existe");
+        }
 
-        console.log(nombre1, "/"+telefono1, "/"+correo1);
-        console.log(nombre3, "/"+telefono3, "/"+correo3);
-        console.log(typeof(nombre2), typeof(telefono2), typeof(correo2));
+        function showAllContacts(miArray){
+            if(miArray instanceof Array){
+                for(let i=0;i<=miArray.length-1;i++){//Nos valemos de un bucle for para iterar el array
+            const CONTACTO=miArray[i]
+            resultado+='Nombre: '+CONTACTO.nombre;
+            resultado+='<br>Telefono: '+CONTACTO.telefono;
+            resultado+='<br>Correo: '+CONTACTO.correo+"<br><br>";
+            }
+            mostrar(resultado);
+            setTimeout(function(){}, 1000);
+            }
+            else alert("Error en formato");
+        }
 
+        function addNewContact(miArray, nombre, telefono, correo){
+            if(miArray instanceof Array && nombre!="" &&telefono!="" &&correo!="")
+            miArray.push({nombre, telefono, correo});//Una vez dados los datos los metemos en array con el metodo push y pasan a ser el último contacto
+            else alert("Formato erroneo o datos vacios. El contacto no se creó");
+        }
+
+        function sortContacts(miArray, criterio){
+            miArray.sort((criterio1, criterio2) => {
+    const valor1 = criterio1[criterio].toUpperCase();
+    const valor2 = criterio2[criterio].toUpperCase();
+    
+    return valor1.localeCompare(valor2);
+  });
+
+            showAllContacts(miArray);
+        }
+
+        //Definimos el array con los datos iniciales
+        let miArray =[{nombre:"Maxwell Wright", 
+                    telefono:"(0191)719 6495", 
+                    correo:"Maxwell@nonummyac.co.uk"},
+                    {nombre:"Raja Villareal", 
+                    telefono:"0866 398 2895", 
+                    correo:"Raja@sed.com"}, 
+                    {nombre:"Helend Richards", 
+                    telefono:"0800 1111", 
+                    correo:"Helen@convallis.edu"}];
+
+        while(opcion!==5){//Mientras no demos la opcion 4 seguimos en el bucle
+            //Nos aseguramos de que opcion sea un int para que no haya problemas
+        opcion=parseInt(prompt("¿Qué queremos hacer? 1-Mostrar un contacto / 2-Mostrar todos los contactos / 3-Añadir nuevo contacto / 4-Ordenar lista(nombre, telefono o correo) / 5-Salir"));
+
+       if(opcion==1){
+        let pos=parseInt(prompt("¿Qué contacto de la lista sacamos?"))
+        showContact(miArray, pos);//pasamos el array y el 0 como posicion a sacar
+       }//Mostramos contacto
+
+      else if(opcion==2){//IMPORTANTE USAR ELSE IF, NO 5 IFS
+        showAllContacts(miArray);
+      }//Mostrar todos los contactos
+           
+        else if(opcion==3){
+            let nombre=prompt("Introduce el nombre completo");
+        let telefono=prompt("Introduce numero de teléfono")
+        let correo=prompt("Introduce un correo electronico");
+        addNewContact(miArray, nombre, telefono, correo);
+        opcion=0;
+        }//Añadimos nuevo contacto
+
+        else if(opcion==4){
+            let criterio=prompt("¿Por qué campo deseas ordenar?(nombre, telefono o correo)");
+            if(criterio=="nombre"||criterio=="telefono"||criterio=="correo"){
+                sortContacts(miArray, criterio);
+            }
+            else alert("Campo no válido introducido");
+        }//Parseamos el array
+
+        else if(opcion==5){//Salimos del menu de opciones
+            alert("Saliendo");
+        }
+        else{//Por si acaso se da una opcion inválida
+            alert("Opción no contemplada");
+        }
+    }
 
     </script>
 </body>
