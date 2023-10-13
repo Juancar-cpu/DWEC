@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea Continua update ejercicio 4</title>
+</head>
+<body>
+    <!--Trata de organizar el código de tu programa (¿quitando switch?) usando funciones. 
+        Define y llama a tres funciones en los lugares apropiados:
+
+•   showContact: la función debe tomar dos argumentos; el primero es la lista de contactos y 
+    el segundo es el número de índice del contacto a mostrar; dentro de la función, verifica si se 
+    pasan los argumentos correctos, es decir, si los contactos son un array (utiliza la construcción instanceofArray para esto).
+
+•   showAllContacts: la función debe tomar un argumento, la lista de contactos; 
+    dentro de la función, verifica si el argumento dado es un array.
+
+•   addNewContact: la función debe tomar cuatro argumentos, una lista de contactos y 
+    los datos del nuevo contacto, es decir: nombre, teléfono y número; antes de 
+    agregar un nuevo contacto, verifica si el argumento pasado es un array y si los datos del nuevo contacto tienen algún valor.
+
+-->
+<div id="aqui"></div>
+    <script>
+        let opcion=0;//Definimos las variables opcion y resultado. Iniciamos opcion para entrar en el bucle
+        let resultado="";//Si no iniciamos resultado como string nos da undefined mas adelante
+
+        function mostrar(resultado){//Usamos una función para mostrar los resultados por pantalla
+            document.getElementById("aqui").innerHTML=resultado;
+            
+        }
+
+        function showContact(miArray, pos){
+            let realPos=pos-1;//Hacemos esto porque no es normal que un cliente pida sacar el contacto 0 de una lista
+            if(miArray instanceof Array && (realPos>=0 && realPos<=miArray.length-1)){
+                const PRIMER_CONTACTO=miArray[realPos];
+            resultado+='Nombre: '+PRIMER_CONTACTO.nombre;//Vamos a ir añadiendo todo a la variable resultado, luego la sacamos por funcion
+            resultado+='<br>Telefono: '+PRIMER_CONTACTO.telefono;
+            resultado+='<br>Correo: '+PRIMER_CONTACTO.correo;
+            mostrar(resultado);
+            setTimeout(function(){}, 1000);
+            }
+            else alert("Ese contacto no existe");
+        }
+
+        function showAllContacts(miArray){
+            if(miArray instanceof Array){
+                for(let i=0;i<=miArray.length-1;i++){//Nos valemos de un bucle for para iterar el array
+            const CONTACTO=miArray[i]
+            resultado+='Nombre: '+CONTACTO.nombre;
+            resultado+='<br>Telefono: '+CONTACTO.telefono;
+            resultado+='<br>Correo: '+CONTACTO.correo+"<br><br>";
+            }
+            mostrar(resultado);
+            setTimeout(function(){}, 1000);
+            }
+            else alert("Error en formato");
+        }
+
+        function addNewContact(miArray, nombre, telefono, correo){
+            if(miArray instanceof Array && nombre!="" &&telefono!="" &&correo!="")
+            miArray.push({nombre, telefono, correo});//Una vez dados los datos los metemos en array con el metodo push y pasan a ser el último contacto
+            else alert("Formato erroneo o datos vacios. El contacto no se creó");
+        }
+        //Definimos el array con los datos iniciales
+        let miArray =[{nombre:"Maxwell Wright", 
+                    telefono:"(0191)719 6495", 
+                    correo:"Maxwell@nonummyac.co.uk"},
+                    {nombre:"Raja Villareal", 
+                    telefono:"0866 398 2895", 
+                    correo:"Raja@sed.com"}, 
+                    {nombre:"Helend Richards", 
+                    telefono:"0800 1111", 
+                    correo:"Helen@convallis.edu"}];
+
+        while(opcion!==4){//Mientras no demos la opcion 4 seguimos en el bucle
+            //Nos aseguramos de que opcion sea un int para que no haya problemas
+        opcion=parseInt(prompt("¿Qué queremos hacer? 1-Mostrar un contacto / 2-Mostrar todos los contactos / 3-Añadir nuevo contacto / 4-Salir"));
+
+       if(opcion==1){
+        let pos=parseInt(prompt("¿Qué contacto de la lista sacamos?"))
+        showContact(miArray, pos);//pasamos el array y el 0 como posicion a sacar
+       }//Mostramos contacto
+
+      else if(opcion==2){//IMPORTANTE USAR ELSE IF, NO 5 IFS
+        showAllContacts(miArray);
+      }//Mostrar todos los contactos
+           
+        else if(opcion==3){
+            let nombre=prompt("Introduce el nombre completo");
+        let telefono=prompt("Introduce numero de teléfono")
+        let correo=prompt("Introduce un correo electronico");
+        addNewContact(miArray, nombre, telefono, correo);
+        opcion=0;
+        }//Añadimos nuevo contacto
+
+        else if(opcion==4){//Salimos del menu de opciones
+            alert("Saliendo");
+        }
+            
+        
+        else{//Por si acaso se da una opcion inválida
+            alert("Opción no contemplada");
+        }
+    }
+
+    </script>
+</body>
+</html>
