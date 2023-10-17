@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Programa que pida un número que indica por cada pareja de dígitos (empezando por la derecha) los viajeros que han subido y bajado (respectivamente) 
+        en la estación de partida y en cada una de las estaciones intermedias hasta llegar a su destino.
+Por ejemplo si se recibe el siguiente número  68573528463604, significa que partió con 4 viajeros, 
+en la siguiente estación subieron 6 y bajaron 3, en la segunda intermedia bajaron 4 y subieron 6…
+Se pide:
+•	Control de errores ( NaN, número incorrecto…)
+•	¿Cuántos llegaron al final de trayecto?
+*/
+        //Primero metemos el numero de pasajeros. vamos a hacer una función para esto
+
+        function calcularPasajeros(){
+
+            const PASAJEROS = parseInt(prompt("Introduce el numero"));
+
+        //Segundo, nos aseguramos de que lo introducido sea un numero o de que se introduzca algo
+            if(!PASAJEROS || isNaN(PASAJEROS)){
+                alert("Entrada no válida, por favor ingrsa un numero");
+                return;
+            }
+            const TRAYECTO=PASAJEROS.toString().split('').reverse().join('');//Convertimos el numero a un array para usarlo en el bucle. 
+          //Le damos la vuelta para empezar por la derecha del numero. split para separar los numeros y join para unirlos de nuevo
+            let viajeros=0;//La variable que controlará a los viajeros. La iniciamos a 0
+
+            //Empezamos a calcular. Vamos a basarnos en que cada digito solo puede ser par o impar dentro del array
+            for(let i=0;i<TRAYECTO.length;i++){
+                if(i%2===0){//Los pares representan los viajeros que suben
+                    viajeros+=parseInt(TRAYECTO[i]);//devolvemos la cifra a numero y calculamos
+                }
+                else{//Los impares representan viajeros que bajan
+                    viajeros-=parseInt(TRAYECTO[i]);
+                }
+            }
+            alert("Llegaron al final del recorrido "+viajeros+" viajeros");
+
+        }
+
+        calcularPasajeros();
+    </script>
+</body>
+</html>
