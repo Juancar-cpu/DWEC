@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Realizar un juego para poder adivinar un numero. Para ello pedir un numero N al principio y luego ir pidiendo más 
+        numeros indicando al usuario mayor o menor segun sea mayor o menor con respecto al numero N 
+        Usar Math.random y bucles while*/
+
+        /*Podemos usar let de fuera a dentro de un bucle. No podemos usarlo de dentro a fuera de un bucle*/
+
+        const NUM_MISTERIOSO=Math.ceil(Math.random()*100);//Genera numero aleatorio del 0 al 100
+        var cont=1;//Aunque aciertes a la primera consumiras un intento
+
+        
+
+        while(num!=NUM_MISTERIOSO){
+            var num=parseInt(prompt("Dame un numero"));//Podemos poner tambien Number, con la N en mayuscula, en lugar de parseInt
+            if(num<NUM_MISTERIOSO){
+                alert("Tu numero es Menor");
+            }
+            else if(num>NUM_MISTERIOSO){
+                alert("Tu numero es mayor");
+                
+            }
+            cont++;
+        }
+        alert(`Acertaste en ${cont} intentos que el numero era ${NUM_MISTERIOSO}!`);
+
+    </script>
+</body>
+</html>
