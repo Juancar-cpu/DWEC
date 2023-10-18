@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="aqui"></p>
+    <p id="paso2"></p>
+    <p id="paso3"></p>
+    <p id="paso4"></p>
+    <p id="paso4.5"></p>
+    <script>
+        /*Crear un programa que permita introducir 10 nombres de los socios de un club(usar estructura array)
+        Los elementos deben leerse de pantalla utilizando el metodo prompt(). En el mensaje de salida que permite introducir los nombres
+        debe indicarse el numero de elemento que se solicita. Después de introducir todos los elementos se tiene que mostrar la siguiente info por pantalla:
+        
+        1) Mostrar todos los socios tal y como se han introducido
+        2) Indicar el numero de socios que hay
+        3) Mostrar el nombre de los socios ordenados por orden alfabético
+        4) Mostrar el nombre de los socios en orden inverso al introducido*/
+
+        const socios=[];
+        const orden=["Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Septimo", "Octavo", "Noveno", "Decimo"];
+
+        function pedirSocio(socios, orden){
+            for(i=0;i<=(orden.length)-1;i++){
+                let socio=prompt(`Dame el nombre del socio ${orden[i]}`);
+                socios.push(socio);
+            }
+            document.getElementById("aqui").innerHTML=socios;
+        }
+        //Punto 1
+        pedirSocio(socios, orden);
+
+        //Punto 2
+        document.getElementById("paso2").innerHTML="<br> Hay "+socios.length+" socios en el club";
+
+        //Punto 3
+        document.getElementById("paso3").innerHTML="<br> Los socios ordenados alfabeticamente son: "+socios.sort();
+
+        //Punto 4
+        document.getElementById("paso4").innerHTML="<br> Los socios en orden inverso son: "+socios.reverse();
+        
+        //"Ana,Lucas,Antonio,Zebra,toto,sel,haya,javo,yiyi,ruan"
+
+        
+    </script>
+</body>
+</html>
