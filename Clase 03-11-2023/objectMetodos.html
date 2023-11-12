@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Crea un array de animales y aplica los metodos object*/
+        const animales = ["gato", "perro", "vaca", "gallo", "raton"];
+
+        //keys
+        console.log(Object.keys(animales));
+        //values
+        console.log(Object.values(animales));
+        //entries
+        console.log(Object.entries(animales));
+        //fromEntries:Construye objeto con un array de pares clave:valor
+        const entries = Object.entries(animales)
+        console.log(Object.fromEntries(entries));
+
+        //Dos array de partida
+        const keys = ["name", "life", "power", "talk"];
+        const values = ["Otot", 99, 10, function(){return "Hola"}];
+
+        //se crea un array de pares
+        const entries2 = []
+        for(let i of Object.keys(keys)){
+            const key = keys[i];
+            const value = values[i];
+            entries.push([key, value]);
+        }
+        //Se usa object.fromEntries
+        const user = Object.fromEntries(entries2); //{name:"Otot", life:99, power:10, talk:function}
+    </script>
+</body>
+</html>

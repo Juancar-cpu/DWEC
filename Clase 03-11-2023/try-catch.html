@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        ERRORES
+        Error (no controlado): provoca que la aplicacion deje de funcionar
+        Excepciones (controladas): Situacion en alguna medida esperada que se trata conveientemente
+        Warning(warning): Aviso de situaciones que pueden llevar a un error
+
+        Los herrores se manejan con try(codigo que queremos ejecutar) - catch(codigo que se ejecuta en caso de error)
+        try{
+
+        }
+        catch(error){
+
+        }
+
+        Opcionalmente se puede poner un bloque finally que se ejecuta siempre
+
+        Cuando se produce un error javascript genera un objeto que contiene los detalles del mismo. El objeto se pasa como argumento para catch
+        objetos Error predefinidos.(clase Error)
+        Las propiedades del objeto son su nombre y su mensaje
+
+        RangeError, ReferenceError, SyntaxError, TypeError, URIError, etc.
+
+        Tambien podemos crear nuestros propios errores
+        let miError = new Error("formato de correo incorrecto")
+        throw miError
+
+        */
+
+
+        /*Ejercicio Ejemplo*/
+
+        try{
+            alert("Inicio de sentencias de try");
+
+            hola_caracola; //error, esta variable no esta definida. try-catch se asegura de que el programa funcione a pesar de los errores
+
+            alert("Fin de sentencias de try (Si / )");
+        }
+        catch(err){
+            //alert("Un error ha ocurrido");
+            alert(err.name);//Nos da un error de referencia, porque ese es el nombre del error que esta sucediendo
+            alert(err.message);//Nos da el mensaje del error que está sucediendo
+            alert(err.stack);//Nos dice en que fichero y linea esta el error. stack es el objeto error, asi que nos da el nombre y mensaje de este
+            alert(err);//Nos saca name y message, pero no el resto del objeto
+            
+        }
+    </script>
+</body>
+</html>
