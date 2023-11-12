@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Borrar los elementos repetidos de un array usando metodos set. Estan en apuntes.txt*/
+
+        //Lo convertimos en set, que elimina los repetidos pero lo convierte en cinjunto
+        miArray=[1,1,1,3,7,4,3,5];
+
+        const newSet= new Set(miArray);
+        let miArrayFinal=[...newSet];//Cojemos el conjunto y lo volvemos a convertir en array
+        console.log(miArrayFinal);
+    </script>
+</body>
+</html>

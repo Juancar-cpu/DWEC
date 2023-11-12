@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Repaso de for, for on, for out y for each*/
+       const hoy=[3,4,7,,{nombre:"Juan", apellido:"García"}];
+
+       for(let i=0;i<=hoy.length-1;i++){
+        console.log(hoy[i]);//for normal saca undefined porque no tenemos un espacio definido
+       }
+
+       for (const clave in hoy) {//forin
+        console.log(hoy[clave]);//No saca undefined porque se salta los espacios no definidos del array
+       }
+
+       for (const clave of hoy) {//for off
+        console.log(clave);//Saca lo mismo que el for normal
+       }
+
+       for (const iterator of hoy) {
+       console.log(iterator instanceof Object ? valor.nombre : valor);
+      
+       }
+
+       /*let miArray=[12,13,112,143,97];
+       miArray.forEach(function {//foreach. For especializado en recorrer arrays
+        
+       });*/
+    </script>
+</body>
+</html>

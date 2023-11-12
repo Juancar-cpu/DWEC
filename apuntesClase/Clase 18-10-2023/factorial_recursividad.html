@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function factorial(n){
+            if(n<=1){//Clave de ruptura: Es necesario ponerle una condicion de ruptura a las recursivas para que dejen de autoinvocarse llegado a un punto
+                return 1;
+            }
+            else{
+                return n*factorial(n-1);
+            }
+        }
+        console.log(factorial(5));
+
+
+        const miSet=new Set("pamplinas")
+        console.log(miSet);
+    </script>
+</body>
+</html>

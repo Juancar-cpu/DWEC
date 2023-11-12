@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Escribe una función que reciba dos decimales con la base y altura de un rectángulo y devuelva su perímetro. 
+        La función no debe leer nada de la entrada estándar ni mandar ningún dato por la salida estándar.
+Nota: se devolverá un decimal (float). La función debe definirse con este estilo:
+
+Comprobar que se da un float antes de hacer nada*/
+let base=prompt("Dame una base, con decimales");//pedimos base
+while(base.isInteger()){//si base es un int...
+    alert("No me has dado un float. Dame un float con 2 decimales");//Mensaje de error
+    base=prompt("Dame una base, con 2 decimales");//Volvemos a pedir, insistimos en los 2 decimales
+}
+
+    </script>
+</body>
+</html>

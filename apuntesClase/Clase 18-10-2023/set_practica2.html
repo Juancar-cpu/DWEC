@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Unir tres arrays en uno solo, eliminando los elementos duplicados*/
+        let array1=[1,2,3,4,5,6,7,8];
+        let array2=[1,2,3,8,9,0,43,45,65];
+        let array3=[17,32,87,45];
+
+        //Creamos un array vacio
+        let arrayMerge=[];
+        //Metemos al array vacio los 3 arrays
+        arrayMerge=array1.concat(array2).concat(array3);
+        //Tambien se podria hacer: const arrayJuntos= new Set([...array1, ...array2, ...array3]) y nos ahorramos la creacion de un array vacio
+        // y el siguiente paso
+        
+        //Metemos el array a Set, elimina duplicados
+        const miSet=new Set(arrayMerge);
+
+        //Hacemos que arrayMerge vuelva a ser array con el spread(...)
+        let arrayFinal = [...miSet];
+        console.log(arrayFinal);
+        console.log(arrayFinal instanceof Array);//Para asegurarnos de que efectivamente ha vuelto a array. Debe darnos true si todo va bien
+
+    </script>
+</body>
+</html>

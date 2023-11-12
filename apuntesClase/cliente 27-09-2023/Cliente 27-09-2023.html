@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*let x=1;//x=1
+        let y=++x;//x=2, y=2
+        let z=y++ +x;//x=2, y=3, z=4
+            //x+=y es lo mismo que x=x+y
+
+        console.log(x, y, z);
+
+        let edad=19;
+        let votante=(edad>=18)? "Puede votar":"No puede votar";
+        console.log(votante);*/
+
+        const STR1=42+"1";
+        console.log(STR1);//421
+        console.log(typeof(STR1));//string. Interpreta el + como concatenacion, deberiamos usar el number()
+
+        const STR2=42-"1";
+        console.log(STR2);//41
+        console.log(typeof(STR2));//number
+
+        1=="1"; //true
+        1=="one";//false
+        true==1; //true
+        false=="zero";//false
+        "test"=={x:"test"}//false
+
+        1+1; //2
+        1+"1";//11
+        "hello"+"world";//hello world
+        "It´s"+true; //"It´s true"
+        "pizza"+{cheese:"extra"};//pizza {object: extra}
+
+        3-1;//1
+        "3"-2;//1
+        3-true;//2
+        1-{x:3};//NaN
+        "fun"-2;//NaN
+
+
+    </script>
+    
+</body>
+</html>
