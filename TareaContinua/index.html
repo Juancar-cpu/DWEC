@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarea Continua update ejercicio 3</title>
+    <title>Document</title>
 </head>
 <body>
-    <!--Modifica el programa para agregar, al final de la lista, el contacto que el usuario introducirá durante la ejecución del programa. (prompt). 
-        Al final, muestra el primer y último contacto de la lista.-->
     <script>
-        let miArray =[{nombre1:"Maxwell Wright", 
-                    telefono1:"(0191)719 6495", 
-                    correo1:"Maxwell@nonummyac.co.uk"},
-                    {nombre2:"Raja Villareal", 
-                    telefono2:"0866 398 2895", 
-                    correo2:"Raja@sed.com"}, 
-                    {nombre3:"Helend Richards", 
-                    telefono3:"0800 1111", 
-                    correo3:"Helen@convallis.edu"}];
-
-        let nombre4="Maisie Haley";
-        let telefono4="0913 531 3030";
-        let correo4="Maisie@urna.ca";
-        miArray.push({nombre4, telefono4, correo4});
-
-        const PRIMER_CONTACTO=miArray[0];
-        const ULTIMO_CONTACTO=miArray[miArray.length-1];
-
-        console.log(PRIMER_CONTACTO);
-        console.log(ULTIMO_CONTACTO);
-
+        /*3.- Modifica el programa segundoPaso para agregar, al final de la lista, 
+        el contacto que el usuario introducirá durante la ejecución del programa. (prompt). 
         
+        Al final, muestra el primer y último contacto de la lista.*/
+
+        let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]];
+
+    function sacarInfo (agenda){//Usamos una funcion para no tener que repetir el actualizar el ultimo y el console.log cada vez que se añada a alguien 
+        let ultimo = agenda.length - 1;
+
+        console.log("Nombre: "+agenda[0][0]+" / Numero: "+agenda[0][1]+" / Correo: "+agenda[0][2]+"\n"+
+            "Nombre: "+agenda[ultimo][0]+" / Numero: "+agenda[ultimo][1]+" / Correo: "+agenda[ultimo][2]);
+        
+    }
+sacarInfo(agenda);
+
+//Aqui empieza el tercer paso
+//Vamos a dar los datos nosotros mismos. Prompt convierte lo que escribamos a string
+let nombre = prompt("Dame el nombre del contacto");
+let numero = prompt("Dame el numero del contacto");
+let correo = prompt("Dame el correo del contacto");
+
+//Metemos al array agenda los datos y sacamos la info
+agenda.push([nombre, numero, correo]);
+sacarInfo(agenda);
 
     </script>
 </body>
