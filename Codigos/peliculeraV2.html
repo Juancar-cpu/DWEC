@@ -20,18 +20,18 @@
 1. Pide el nombre del cliente. Si el nombre no es un tipo String o es nulo, debe producir un mensaje de error e insistir.
 */
 
-var nombre = prompt("Dame tu nombre");//SI DECLARAMOS AQUI LAS VARIABLES COMO LET, PERO DENTRO DEL WHILE NO LES PONEMOS NADA (SE TOMAN COMO VAR) SALE UN NaN
+let nombre = prompt("Dame tu nombre");//SI DECLARAMOS AQUI LAS VARIABLES COMO LET, PERO DENTRO DEL WHILE NO LES PONEMOS NADA (SE TOMAN COMO VAR) SALE UN NaN
 while(!isNaN(nombre) || nombre==""){//Mientras que el nombre sea un numero o esté vacío...
     alert("Error, debes introducir un nombre");//alerta de fallo
-    nombre = prompt("Dame tu nombre");//Actualizar la variable
+   let nombre = prompt("Dame tu nombre");//Actualizar la variable
 }
 
 /*2. Pide la edad del cliente. Si la edad no es dato numérico o es nulo, debe producir un mensaje de error e insistir.*/
 
-var edad = parseInt(prompt("Dame tu edad"));
+let edad = parseInt(prompt("Dame tu edad"));
 while(isNaN(edad) || edad===null){//Mientras que edad no sea un numero o sea nulo...
     alert("Error, debes introducir una edad");//alerta de fallo
-    edad = parseInt(prompt("Dame tu edad"));//Actualizar la variable
+   let edad = parseInt(prompt("Dame tu edad"));//Actualizar la variable
 }
 
 /*3. Pide escoger el nombre de la película que está en cartelera de un listado que aparece en pantalla ('Spider Man', 'Superman', 
@@ -40,7 +40,7 @@ Si el cliente escoge una película que no está en la cartelera o es nulo, debe 
 */
 const cartelera = ["Spiderman", "Superman", "Dragon Ball Super", "La edad de hielo", "18videos"];
 
-var peli = prompt("Cartelera: "+cartelera+"\nElige una");
+let peli = prompt("Cartelera: "+cartelera+"\nElige una");
 while(!cartelera.includes(peli) || peli == ""){//mientras peli no sea algo que contenga el array cartelerao sea nulo...
     if(!cartelera.includes(peli) && peli!= ""){//Si no contiene la peli dada. Si no especificamos que no sea null siempre salatar este alert ya que en cartelera tampoc hay nulos
         alert("La peli no esta disponible");
