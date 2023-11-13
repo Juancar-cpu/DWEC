@@ -3,95 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarea Continua update ejercicio 4</title>
+    <title>Document</title>
 </head>
 <body>
-    <!--Encierra todo el programa en un bucle para que al usuario se le pregunte repetidamente qué quiere hacer.
-         El usuario puede optar por:
+    <script>
+        /*5.- Encierra todo el programa en un bucle para que al usuario se le pregunte repetidamente qué quiere hacer. 
+        El usuario puede optar por:
 
-•   Mostrar el primer contacto (primero)
-•   Mostrar el último contacto (último)
-•   Mostrar todos los contactos (todos)
-•   Añadir un nuevo contacto (nuevo)
-•   Salir del programa (salir)
+•	Mostrar el primer contacto (primero)
+•	Mostrar el último contacto (último)
+•	Mostrar todos los contactos (todos)
+•	Añadir un nuevo contacto (nuevo)
+•	Salir del programa (salir)
 
 Después de ejecutar la acción seleccionada, el programa le dará la oportunidad de elegir nuevamente. 
 El programa debe finalizar las acciones solo después de que el usuario dé un comando específico (salir).
--->
-<div id="aqui"></div>
-    <script>
-        function mostrar(resultado){//Usamos una función para mostrar los resultados por pantalla
-            document.getElementById("aqui").innerHTML=resultado;
-            
-        }//Definimos el array con los datos iniciales
-        let miArray =[{nombre:"Maxwell Wright", 
-                    telefono:"(0191)719 6495", 
-                    correo:"Maxwell@nonummyac.co.uk"},
-                    {nombre:"Raja Villareal", 
-                    telefono:"0866 398 2895", 
-                    correo:"Raja@sed.com"}, 
-                    {nombre:"Helend Richards", 
-                    telefono:"0800 1111", 
-                    correo:"Helen@convallis.edu"}];
-        let opcion=0;//Definimos las variables opcion y resultado. Iniciamos opcion para entrar en el bucle
-        let resultado
+*/
+let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]];
 
-        while(opcion!==5){//Mientras no demos la opcion 5 seguimos en el bucle
-            //Nos aseguramos de que opcion sea un int para que no haya problemas
-        opcion=parseInt(prompt("¿Qué queremos hacer? 1-Mostrar primer contacto / 2-Mostrar ultimo contacto / 3-Mostrar todos los contactos / 4_Añadir nuevo contacto / 5_Salir"));
-
-       switch(opcion){
-       case 1://Mostramos primer contacto
-            resultado="";
-            const PRIMER_CONTACTO=miArray[0]
-            resultado+='Nombre: '+PRIMER_CONTACTO.nombre;//Vamos a ir añadiendo todo a la variable resultado, luego la sacamos por funcion
-            resultado+='<br>Telefono: '+PRIMER_CONTACTO.telefono;
-            resultado+='<br>Correo: '+PRIMER_CONTACTO.correo;
-            mostrar(resultado);
-            setTimeout(function(){}, 1000);//Ponemos un temporizador de 1 seg para que le de tiempo a la info a mostrarse por pantalla
-            break;
-       
-
-       case 2:
-            resultado="";//Mostramos ultimo contacto
-            const LAST_CONTACTO=miArray[(miArray.length)-1]//IMPORTANTE EL -1
-            resultado+='Nombre: '+LAST_CONTACTO.nombre;
-            resultado+='<br>Telefono: '+LAST_CONTACTO.telefono;
-            resultado+='<br>Correo: '+LAST_CONTACTO.correo;
-            mostrar(resultado);
-            setTimeout(function(){}, 1000);
-            break;
-       
-
-       case 3:
-            resultado="";//Mostramos todos los contactos
-            for(let i=0;i<=miArray.length-1;i++){//Nos valemos de un bucle for para iterar el array
-            const CONTACTO=miArray[i]
-            resultado+='Nombre: '+CONTACTO.nombre;
-            resultado+='<br>Telefono: '+CONTACTO.telefono;
-            resultado+='<br>Correo: '+CONTACTO.correo+"<br><br>";
-            }
-            mostrar(resultado);
-            setTimeout(function(){}, 1000);
-            break;
-
-        case 4://Añadimos nuevo contacto
-        let nombre=prompt("Introduce el nombre completo");
-        let telefono=prompt("Introduce numero de teléfono")
-        let correo=prompt("Introduce un correo electronico");
-        miArray.push({nombre, telefono, correo});
-        //Una vez dados los datos los metemos en array con el metodo push y pasan a ser el último contacto
-        break;
-
-        case 5://Salimos del menu de opciones
-            alert("Saliendo");
-            break;
-        
-        default://Por si acaso se da una opcion inválida
-            alert("Opción no contemplada")
-            break;
+    //Haremos una función para sacar los datos
+    function sacarInfo (agenda, op){
+        console.log("Nombre: "+agenda[op][0]+" / Numero: "+agenda[op][1]+" / Correo: "+agenda[op][2]);
     }
-}
+    //Aqui empieza el paso 5. Vamos a meter el switch en un bucle
+    let op;//Tenemos que iniciar op fuera del do-while o nos da errores
+    do{
+        //Necesitamos parseInt porque switch no funciona con strings
+        op = parseInt(prompt("¿Que hacemos?\n1_Mostrar primer contacto\n2_Mostrar ultimo contacto\n3_Mostrar todos los contactos\n4_Añadir nuevo contacto\n5_Salir"));
+        switch(op){
+            case 1://Sacar primer contacto
+                sacarInfo(agenda, 0);//Pasamos el array agenda y la posicion 0
+                break;//Poner break o el switch pasa al siguiente. No queremos eso
+
+            case 2://Sacar ultimo contacto
+                sacarInfo(agenda, agenda.length-1);//Pasamos el array agenda y la ultima posicion
+                break;
+
+            case 3://Sacar todos los contactos
+                for(let i=0;i<agenda.length;i++){
+                    console.log("Nombre: "+agenda[i][0]+" / Numero: "+agenda[i][1]+" / Correo: "+agenda[i][2]+"\n")
+                }
+                break;
+            case 4://Agregar contacto
+            let nombre = prompt("Dame el nombre del contacto");
+            let numero = prompt("Dame el numero del contacto");
+            let correo = prompt("Dame el correo del contacto");
+
+            if(nombre != "" && numero != "" && correo != ""){
+            agenda.push([nombre, numero, correo]);
+            }
+            else{
+                alert("Alguno de los campos está vacio");
+            }
+            break;
+
+            case 5://Salir
+                alert("Saliendo...");
+                break;
+
+            default://Opcion defecto
+                alert("Opcion no contemplada");
+        }
+    }while(op != 5);
     </script>
 </body>
 </html>
