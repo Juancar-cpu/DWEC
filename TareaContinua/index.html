@@ -3,58 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarea Continua update ejercicio 4</title>
+    <title>Document</title>
 </head>
 <body>
-    <!-- Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
-
-    • Mostrar el primer contacto (primero)
-    • Mostrar el último contacto (último)
-    • Añadir un nuevo contacto (nuevo)
-Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
-Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.-->
     <script>
-        let miArray =[{nombre1:"Maxwell Wright", 
-                    telefono1:"(0191)719 6495", 
-                    correo1:"Maxwell@nonummyac.co.uk"},
-                    {nombre2:"Raja Villareal", 
-                    telefono2:"0866 398 2895", 
-                    correo2:"Raja@sed.com"}, 
-                    {nombre3:"Helend Richards", 
-                    telefono3:"0800 1111", 
-                    correo3:"Helen@convallis.edu"}];
+        /*Modifica el programa para que el usuario pueda elegir lo que quiere hacer con la lista. Las opciones serán:
 
-       let opcion=prompt("¿Qué queremos hacer? 1-Mostrar primer contacto / 2-Mostrar ultimo contacto / 3-Añadir nuevo contacto", "Escribe aqui tu opción");
+•	Mostrar el primer contacto (primero)
+•	Mostrar el último contacto (último)
+•	Añadir un nuevo contacto (nuevo)
 
-       if(opcion==1){
-        alert(miArray[0]);
-       }
+Al agregar un nuevo contacto, verifica si el usuario ha ingresado todos los datos necesarios. 
+Si falta al menos uno de los tres valores (nombre, teléfono o correo electrónico), no se agrega el contacto.
+*/
+let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]];
 
-       else if(opcion == 2){
-        alert(miArray[miArray.length-1]);
-       }
+    //Haremos una función para sacar los datos
+    function sacarInfo (agenda, op){
+        console.log("Nombre: "+agenda[op][0]+" / Numero: "+agenda[op][1]+" / Correo: "+agenda[op][2]);
+    }
+    //Aqui empieza el paso 4. Vamos a utilizar una estructura switch
+    let op;//Tenemos que iniciar op fuera del do-while o nos da errores
+    do{
+        //Necesitamos parseInt porque switch no funciona con strings
+        op = parseInt(prompt("¿Que hacemos?\n1_Mostrar primer contacto\n2_Mostrar ultimo contacto\n3_Añadir nuevo contacto\n4_Salir"));
+        switch(op){
+            case 1://Sacar primer contacto
+                sacarInfo(agenda, 0);//Pasamos el array agenda y la posicion 0
+                break;//Poner break o el switch pasa al siguiente. No queremos eso
 
-       else if(opcion==3){
-        let newNombre=prompt("Introduce nombre");
-        let newTelefono=prompt("Introduce telefono");
-        let newCorreo=prompt("Introduce correo");
+            case 2://Sacar ultimo contacto
+                sacarInfo(agenda, agenda.length-1);//Pasamos el array agenda y la ultima posicion
+                break;
 
-        if(newNombre!=""||newTelefono!=""||newCorreo!=""){
-            miArray.push({newNombre, newTelefono, newCorreo});
+            case 3://Agregar contacto
+            let nombre = prompt("Dame el nombre del contacto");
+            let numero = prompt("Dame el numero del contacto");
+            let correo = prompt("Dame el correo del contacto");
+
+            if(nombre != "" && numero != "" && correo != ""){
+            agenda.push([nombre, numero, correo]);
+            }
+            else{
+                alert("Alguno de los campos está vacio");
+            }
+            break;
+
+            case 4:
+                alert("Saliendo...");
+                break;
+
+            default:
+                alert("Opcion no contemplada");
+                break;
         }
-        else alert("No se ingresó alguno de los datos pedidos");
-       }
-      
-     
-
-        const PRIMER_CONTACTO=miArray[0];
-        const ULTIMO_CONTACTO=miArray[miArray.length-1];
-
-        console.log(PRIMER_CONTACTO);
-        console.log(ULTIMO_CONTACTO);
-
-        
-
+    }while(op != 4);
     </script>
 </body>
 </html>
