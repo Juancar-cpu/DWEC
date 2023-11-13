@@ -3,114 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarea Continua update ejercicio 4</title>
+    <title>Document</title>
 </head>
 <body>
-    <!--Da al usuario la opción de seleccionar una acción sort de la lista. Cuando se selecciona esta opción, 
-        el usuario debería poder especificar si desea ordenar los contactos por nombre, teléfono o correo electrónico.
--->
-<div id="aqui"></div>
     <script>
-        let opcion=0;//Definimos las variables opcion y resultado. Iniciamos opcion para entrar en el bucle
-        let resultado="";//Si no iniciamos resultado como string nos da undefined mas adelante
+        /*Da al usuario la opción de seleccionar una acción sort de la lista. 
+        Cuando se selecciona esta opción, el usuario debería poder especificar si desea ordenar los contactos por nombre, 
+        teléfono o correo electrónico.*/
 
-        function mostrar(resultado){//Usamos una función para mostrar los resultados por pantalla
-            document.getElementById("aqui").innerHTML=resultado;
-            
-        }
-
-        function showContact(miArray, pos){
-            let realPos=pos-1;//Hacemos esto porque no es normal que un cliente pida sacar el contacto 0 de una lista
-            if(miArray instanceof Array && (realPos>=0 && realPos<=miArray.length-1)){
-                const PRIMER_CONTACTO=miArray[realPos];
-            resultado+='Nombre: '+PRIMER_CONTACTO.nombre;//Vamos a ir añadiendo todo a la variable resultado, luego la sacamos por funcion
-            resultado+='<br>Telefono: '+PRIMER_CONTACTO.telefono;
-            resultado+='<br>Correo: '+PRIMER_CONTACTO.correo;
-            mostrar(resultado);
-            setTimeout(function(){}, 1000);
-            }
-            else alert("Ese contacto no existe");
-        }
-
-        function showAllContacts(miArray){
-            if(miArray instanceof Array){
-                for(let i=0;i<=miArray.length-1;i++){//Nos valemos de un bucle for para iterar el array
-            const CONTACTO=miArray[i]
-            resultado+='Nombre: '+CONTACTO.nombre;
-            resultado+='<br>Telefono: '+CONTACTO.telefono;
-            resultado+='<br>Correo: '+CONTACTO.correo+"<br><br>";
-            }
-            mostrar(resultado);
-            setTimeout(function(){}, 1000);
-            }
-            else alert("Error en formato");
-        }
-
-        function addNewContact(miArray, nombre, telefono, correo){
-            if(miArray instanceof Array && nombre!="" &&telefono!="" &&correo!="")
-            miArray.push({nombre, telefono, correo});//Una vez dados los datos los metemos en array con el metodo push y pasan a ser el último contacto
-            else alert("Formato erroneo o datos vacios. El contacto no se creó");
-        }
-
-        function sortContacts(miArray, criterio){
-            miArray.sort((criterio1, criterio2) => {
-    const valor1 = criterio1[criterio].toUpperCase();
-    const valor2 = criterio2[criterio].toUpperCase();
+        let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                        ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                        ["Helen Richards", "0800 1111", "Helen@correo.com"]];
     
-    return valor1.localeCompare(valor2);
-  });
-
-            showAllContacts(miArray);
+    //Dejamos las funciones y añadimos las que nos piden
+    function showContact (agenda, indice){//Mejoramos la funcion sacarInfo
+        if(agenda instanceof Array && !isNaN(indice)){//instance of nos dara true si agenda es un array
+        console.log("Nombre: "+agenda[indice][0]+" / Numero: "+agenda[indice][1]+" / Correo: "+agenda[indice][2]);
         }
-
-        //Definimos el array con los datos iniciales
-        let miArray =[{nombre:"Maxwell Wright", 
-                    telefono:"(0191)719 6495", 
-                    correo:"Maxwell@nonummyac.co.uk"},
-                    {nombre:"Raja Villareal", 
-                    telefono:"0866 398 2895", 
-                    correo:"Raja@sed.com"}, 
-                    {nombre:"Helend Richards", 
-                    telefono:"0800 1111", 
-                    correo:"Helen@convallis.edu"}];
-
-        while(opcion!==5){//Mientras no demos la opcion 4 seguimos en el bucle
-            //Nos aseguramos de que opcion sea un int para que no haya problemas
-        opcion=parseInt(prompt("¿Qué queremos hacer? 1-Mostrar un contacto / 2-Mostrar todos los contactos / 3-Añadir nuevo contacto / 4-Ordenar lista(nombre, telefono o correo) / 5-Salir"));
-
-       if(opcion==1){
-        let pos=parseInt(prompt("¿Qué contacto de la lista sacamos?"))
-        showContact(miArray, pos);//pasamos el array y el 0 como posicion a sacar
-       }//Mostramos contacto
-
-      else if(opcion==2){//IMPORTANTE USAR ELSE IF, NO 5 IFS
-        showAllContacts(miArray);
-      }//Mostrar todos los contactos
-           
-        else if(opcion==3){
-            let nombre=prompt("Introduce el nombre completo");
-        let telefono=prompt("Introduce numero de teléfono")
-        let correo=prompt("Introduce un correo electronico");
-        addNewContact(miArray, nombre, telefono, correo);
-        opcion=0;
-        }//Añadimos nuevo contacto
-
-        else if(opcion==4){
-            let criterio=prompt("¿Por qué campo deseas ordenar?(nombre, telefono o correo)");
-            if(criterio=="nombre"||criterio=="telefono"||criterio=="correo"){
-                sortContacts(miArray, criterio);
-            }
-            else alert("Campo no válido introducido");
-        }//Parseamos el array
-
-        else if(opcion==5){//Salimos del menu de opciones
-            alert("Saliendo");
-        }
-        else{//Por si acaso se da una opcion inválida
-            alert("Opción no contemplada");
+        else{
+            console.log("Alguno de los parametros no es del tipo correspondiente");
         }
     }
 
+    function showAllContacts(agenda){
+        if(agenda instanceof Array){
+            for(let i=0;i<agenda.length;i++){
+                    console.log("Nombre: "+agenda[i][0]+" / Numero: "+agenda[i][1]+" / Correo: "+agenda[i][2]+"\n")
+                }
+        }
+        else{
+            console.log("Agenda debe ser un array");
+        }
+    }
+
+    function addNewContact(agenda, nombre, numero, correo){
+        if(agenda instanceof Array){
+            if(nombre != "" && numero != "" && correo != ""){
+                agenda.push([nombre, numero, correo]);
+                }
+                else{
+                    alert("Alguno de los campos está vacio");
+                }
+        }
+        else{
+            console.log("Agenda debe ser un array");
+        }
+}
+
+    function shortAgenda(agenda, orden){
+        if(orden === "nombre"){
+            agenda.sort((a,b) => a[0]> b[0] ? 1:-1);//sort siempre va a tener la misma estructura, pero nosotros 
+                                                        //vamos a decidir por que indice ([]) ordena
+            console.log(agenda);
+        }
+        else if(orden === "numero"){
+            agenda.sort((a,b) => a[1]-b[1]? 1:-1);
+            console.log(agenda);
+        }
+        else if(orden === "correo"){
+            agenda.sort((a,b) => a[2]-b[2] ? 1:-1); //El ternario 1:-1 viene bien cuando estamos haciendo sort a strings. sort a numeros no lo necesita
+            console.log(agenda);
+        }
+        
+    }
+
+    let op;//Tenemos que iniciar op fuera del do-while o nos da errores
+    do{
+        //Necesitamos parseInt porque switch no funciona con strings
+        op = parseInt(prompt("¿Que hacemos?\n1_Mostrar primer contacto\n2_Mostrar ultimo contacto\n3_Mostrar todos los contactos\n4_Añadir nuevo contacto\n5_Ordenar la agenda\n6_Salir"));
+        switch(op){
+            case 1://Sacar primer contacto
+                showContact(agenda, 0);//Pasamos el array agenda y la posicion 0
+                break;//Poner break o el switch pasa al siguiente. No queremos eso
+
+            case 2://Sacar ultimo contacto
+                showContact(agenda, agenda.length-1);//Pasamos el array agenda y la ultima posicion
+                break;
+
+            case 3://Sacar todos los contactos
+                showAllContacts(agenda);
+                break;
+
+            case 4://Agregar contacto
+            let nombre = prompt("Dame el nombre del contacto");
+            let numero = prompt("Dame el numero del contacto");
+            let correo = prompt("Dame el correo del contacto");
+
+            addNewContact(agenda, nombre, numero, correo);
+            break;
+
+            case 5:
+                let orden = prompt("¿Por que parametro ordenamos? ¿nombre, numero o correo?");
+                shortAgenda(agenda, orden);
+                break;
+            case 6://Salir
+                alert("Saliendo...");
+                break;
+
+            default://Opcion defecto
+                alert("Opcion no contemplada");
+        }
+    }while(op != 5);
     </script>
 </body>
 </html>
