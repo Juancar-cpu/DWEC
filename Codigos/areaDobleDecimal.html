@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Calcular el area de un rectangulo en base a datos que damos por teclado. Los datos deben tener al menos 2 decimales
+            Si no los tuvieran, lanzamos mensajes de error e insistimos*/
+
+            let base = parseFloat(prompt("Dame una base"));//Necesitamos floats para que el toFixed funcione
+            let altura = parseFloat(prompt("Dame una altura"));
+
+            let floatBase = base.toFixed(2);
+            let floatAltura = altura.toFixed(2);
+
+            /*while(base !== base.toFixed(2)){//toFixed coje un numero float y le pone tantos decimales como le indiquemos. Añade o quita los deimales (redondeando)
+                alert("No has dado un decimal o no has dado 2 decimales");
+                base = parseFloat(prompt("Dame una base"));
+            }
+
+            let altura = parseFloat(prompt("Dame una altura"));//Necesitamos floats para que el toFixed funciones
+
+            while(altura !== altura.toFixed(2)){//toFixed coje un numero float y le pone tantos decimales como le indiquemos. Añade o quita los deimales (redondeando)
+                alert("No has dado un decimal o no has dado 2 decimales");
+                altura = parseFloat(prompt("Dame una altura"));
+            }
+            */
+            const AREA = floatBase*floatAltura;
+            alert("El area es "+(AREA.toFixed(2)));//Ponemos toFixed tambien en el area por si damos dos numeros acabados en .00
+            console.log(floatAltura);
+            console.log(floatBase);
+    </script>
+</body>
+</html>
