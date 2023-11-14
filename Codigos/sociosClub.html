@@ -6,46 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="aqui"></p>
-    <p id="paso2"></p>
-    <p id="paso3"></p>
-    <p id="paso4"></p>
-    <p id="paso4.5"></p>
     <script>
-        /*Crear un programa que permita introducir 10 nombres de los socios de un club(usar estructura array)
-        Los elementos deben leerse de pantalla utilizando el metodo prompt(). En el mensaje de salida que permite introducir los nombres
-        debe indicarse el numero de elemento que se solicita. Después de introducir todos los elementos se tiene que mostrar la siguiente info por pantalla:
-        
-        1) Mostrar todos los socios tal y como se han introducido
-        2) Indicar el numero de socios que hay
-        3) Mostrar el nombre de los socios ordenados por orden alfabético
-        4) Mostrar el nombre de los socios en orden inverso al introducido*/
+        /*Crear un programa que permita introducir 10 nombres de los socios de un club (utilizar la estructura de array). 
+        Los elementos deben leerse de pantalla utilizando el método prompt(). 
+        En el mensaje de salida que permite la introducción de los nombres debe indicarse el número de elemento 
+        que se solicita. Después de introducir todos los elementos se tiene que mostrar la siguiente información por pantalla:
+•	mostrar los nombres de los socios tal y como se han introducido
+•	indicar el número socios que hay
+•	mostrar el nombre de los socios ordenados por orden alfabético
+•	mostrar el nombre de los socios en orden inverso al introducido
+*/
 
-        const socios=[];
-        const orden=["Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Septimo", "Octavo", "Noveno", "Decimo"];
+    let nombre="";//Será el nombre del nuevo socio
+    let socios=[];//socios será un array vacio que llenamos
+    let sociosInvertido = [];//Creamos un array nuevo para la inversion del paso 4
+    const orden =["primer", "segundo", "tercero", "cuarto", "quinto", "sexto", "septimo", "octavo", "noveno", "decimo"]
 
-        function pedirSocio(socios, orden){
-            for(i=0;i<=(orden.length)-1;i++){
-                let socio=prompt(`Dame el nombre del socio ${orden[i]}`);
-                socios.push(socio);
-            }
-            document.getElementById("aqui").innerHTML=socios;
-        }
-        //Punto 1
-        pedirSocio(socios, orden);
+    for(let i=0;i<=orden.length-1;i++){
+        nombre=prompt(`¿Quien es el ${orden[i]} socio?`);//prompt ya nos convierte todo lo que demos a string
+        socios.push(nombre);//Metemos el nombre en el array
+    }
 
-        //Punto 2
-        document.getElementById("paso2").innerHTML="<br> Hay "+socios.length+" socios en el club";
+    for(let i=socios.length-1, f=0;i>=0, f<=socios.length;i--, f++){
+        sociosInvertido[f] = socios[i];
+    }//Vamso a hacer ya la inversion porque si lo hacemos despues de sort nos va a invertir el array tras la ordenacion alfabetica
+    //reverse() no esta sirviendo. Por alguna razon, aunque lo haga antes que sort, reverse sigue pillando un array sort
+    //Vamos a hacer la inversion a lo bruto, sin metodos
 
-        //Punto 3
-        document.getElementById("paso3").innerHTML="<br> Los socios ordenados alfabeticamente son: "+socios.sort();
+    console.log("Lista de socios: "+socios);//Sacamos los socios
+    console.log("Hay en total "+socios.length+" socios");//Sacamos el numero de socios
+    console.log("Lista de socios ordenados alfabeticamente: "+socios.sort());//Usamos sort para sacar el array ordenado
+    console.log("Lista socios en orden inverso:"+sociosInvertido);
 
-        //Punto 4
-        document.getElementById("paso4").innerHTML="<br> Los socios en orden inverso son: "+socios.reverse();
-        
-        //"Ana,Lucas,Antonio,Zebra,toto,sel,haya,javo,yiyi,ruan"
-
-        
     </script>
 </body>
 </html>
