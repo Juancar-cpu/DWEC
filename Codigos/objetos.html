@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Crea un constructor personas que tenga los siguientes atributos: nombre, apellido y edad*/
+
+        function Persona (nombre, apellido, edad){//los constructores de objetos empiezan con function
+            this.nombre=nombre;
+            this.apellido=apellido;
+            this.edad=edad;
+        }
+
+        /*Una vez creado, añadele una función que nos saque el nombre y apellido*/
+        /*nombreConstructor.prototype.nombreDeLoQueSeAñade = ...*/
+        Persona.prototype.nombreCompleto = function() {return this.nombre+" "+this.apellido};
+
+        /*Crea dos personas usando ese constructor*/
+        let Ana = new Persona("Ana", "Rello", 25);//ojito con usar new nombreConstructor, no new Object
+        let Juancar = new Persona("Juan Carlos", "Romero", 28);
+
+        /*Saca por consola sus nombres completos y edad*/
+        console.log("Nombre: "+Ana.nombreCompleto()+" | Edad: "+Ana.edad);
+        console.log("Nombre: "+Juancar.nombreCompleto()+" | Edad: "+Juancar.edad);
+
+        /*Crea un constructor Profesional, que herede sus atributos de Persona y ademas tenga uno llamado profesion*/
+
+        function Profesional(nombre, apellido, edad, profesion){
+            Persona.call(this, nombre, apellido, edad);//no se pueden heredar funciones como nombreCompleto por las buenas. aUNQUE NO LO PONGAMOS, TAMBIEN HEREDA LOS METODOS COMO nombreCompleto 
+            this.profesion = profesion;
+        }
+
+        Profesional.prototype = Object.create(Persona.prototype);//Con esta sintaxis pordemos hacer la herencia de funciones como nombreCompleto
+
+        /*Crea 3 objetos usando el constructor Profesional, metelos en un array y sacalos ordenados por su profesión*/
+
+        let Oscar = new Profesional ("Oscar", "Valleja", 60, "Electricista");
+        let Pilar = new Profesional ("Pilar", "Mistra", 55, "Analista");
+        let Jaime = new Profesional ("Jaime", "Valleja", 25, "Zapatero");
+
+        let array = [Oscar, Pilar, Jaime];
+
+        ordenProfesion(array);
+        function ordenProfesion (array){
+            console.log(array.sort((a,b) => a.profesion.localeCompare(b.profesion)));//Orden alfabetico. invierte a y b para invertir el orden
+        }
+
+        ordenEdad(array);
+        function ordenEdad(array){
+            console.log(array.sort((a,b) => a.edad - b.edad));
+        }
+
+        //const ordenArray = array => console.log(array.sort((a,b) => a.edad - b.edad));//ordenArray pasada a función flecha
+        /*const nombreFuncion = (argumento1, argumento2..., argumentox) => resultado de la funcion*/
+        /*No necesitamos el return. Podemos poner console.log o alert si deseamos que saque cosas por consola o pantalla*/
+        console.log(Oscar.nombreCompleto(), Oscar.profesion);
+            
+    </script>
+</body>
+</html>
