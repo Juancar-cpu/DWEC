@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Enunciado del problema:
+Se tiene una lista de usuarios con la siguiente estructura:
+const usuarios = [
+  { id: 1, nombre: 'Juan', edad: 25 },
+  { id: 2, nombre: 'María', edad: 30 },
+  { id: 3, nombre: 'Pedro', edad: 20 },
+  { id: 4, nombre: 'Ana', edad: 35 },
+];
+
+Se requiere:
+
+Filtrar los usuarios mayores de 25 años.
+Duplicar la edad de esos usuarios filtrados.
+Obtener la suma total de las edades duplicadas.*/
+
+const usuarios = [
+    { id: 1, nombre: 'Juan', edad: 25 },
+    { id: 2, nombre: 'María', edad: 30 },
+    { id: 3, nombre: 'Pedro', edad: 20 },
+    { id: 4, nombre: 'Ana', edad: 35 },
+];
+
+let mayores25 = usuarios.filter(usuarios => usuarios.edad>25);//En la funcion flecha siempre el mismo nombre
+//Sacamos los nombres de los usuarios
+let nombreMayores25 = mayores25.map(usuarios => usuarios.nombre);
+//Sacamos los nombres por consola
+console.log("Los mayores de 25 son: "+nombreMayores25);
+   </script>
+</body>
+</html>
