@@ -34,6 +34,4 @@ let mayores25 = usuarios.filter(usuarios => usuarios.edad>25);//En la funcion fl
 let nombreMayores25 = mayores25.map(usuarios => usuarios.nombre);
 //Sacamos los nombres por consola
 console.log("Los mayores de 25 son: "+nombreMayores25);
-   </script>
-</body>
-</html>
+ 
