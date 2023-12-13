@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,3 +37,17 @@ let mayores25 = usuarios.filter(usuarios => usuarios.edad>25);//En la funcion fl
 let nombreMayores25 = mayores25.map(usuarios => usuarios.nombre);
 //Sacamos los nombres por consola
 console.log("Los mayores de 25 son: "+nombreMayores25);
+
+//Vamos a duplicar la eDad de los usuarios mayores de 25
+let edadDuplicada = mayores25.map(usuarios => usuarios.edad*2);
+//Sacamos la edad por consola
+console.log("Las edades duplicadas, en orden, son: "+edadDuplicada);
+
+//Vamos a obtener la suma total de las edades duplicadas del paso 2
+let sumaEdadDuplicada = edadDuplicada.reduce((total, edad) => total +=edad);
+//Sacamos la suma de edades por pantalla
+console.log("La suma de las edades duplicadas es "+sumaEdadDuplicada);
+    </script>
+</body>
+</html>
+
