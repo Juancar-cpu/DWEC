@@ -43,6 +43,4 @@ console.log("Los usuarios mayores de edad son: "+nombreMayoresEdad);
 let edadesMayores = mayoresEdad.map(usuarios => usuarios.edad);
 let edadTotal = edadesMayores.reduce((total, edad) => total +=edad);//Luego sumamos esas edades
 console.log("La media de edad es: "+edadTotal/usuarios.length);//En el propio console.log sacamos la media
-   </script>
-</body>
-</html>
+
