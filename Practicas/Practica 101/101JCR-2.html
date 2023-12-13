@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 101 ejercicio 2</title>
+</head>
+<body>
+    <!--Declara seis variables utilizando nombres acordes a su contenido:
+        • el precio de una sola rosa (8) y el número de rosas que tienes (70)
+        • el precio de un solo lirio (10) y el número de lirios que tienes (50)
+        • el precio de un solo tulipán (2) y la cantidad de tulipanes que tienes (120)
+        
+    a) Ahora declara tres variables, una para cada una de las rosas, lirios y tulipanes que tienes, en las que colocas su precio total. 
+        Inserta los valores correspondientes en las variables utilizando las variables declaradas en el paso anterior. 
+
+    b) Finalmente, declara una variable en la que almacenes el precio de todas tus flores (nuevamente, usa las variables anteriores para la inicialización). 
+       Muestra toda la información del inventario en la consola de la siguiente forma:
+
+Rosa: precio unitario: 8 , cantidad: 70 , valor: 560
+Lirio: precio unitario: 10 , cantidad: 50 , valor: 500
+Tulipán: precio unitario: 2 , cantidad: 120 , valor: 240
+Total:  1300-->
+
+<script>
+    //Definición de variables de precio y cantidad
+    let precioRosa=8;
+    let precioLirio=10;
+    let precioTulipan=2;
+    let numeroRosas=70;
+    let numeroLirios=50;
+    let numeroTulipanes=120;
+
+    //Definicion de variables de precio total
+    const PRECIO_TOTAL_ROSAS = precioRosa*numeroRosas;
+    const PRECIO_TOTAL_LIRIOS = precioLirio*numeroLirios;
+    const PRECIO_TOTAL_TULIPANES = precioTulipan*numeroTulipanes;
+
+    //Impresion de datos por consola
+    console.log("Rosa: precio unitario: "+precioRosa+" , cantidad: "+numeroRosas+" , valor: "+PRECIO_TOTAL_ROSAS+
+                "\nLirio: precio unitario: "+precioLirio+" , cantidad: "+numeroLirios+" , valor: "+PRECIO_TOTAL_LIRIOS+
+                "\nTulipán: precio unitario: "+precioTulipan+" , cantidad: "+numeroTulipanes+" , valor: "+PRECIO_TOTAL_TULIPANES);
+
+</script>
+</body>
+</html>

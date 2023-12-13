@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 101 ejercicio 3</title>
+</head>
+<body>
+    <!--Uso de  “var” en JavaScript
+1.	Define una variable saludo=”Hola” como variable local dentro de una función saludar() que muestre una ventana emergente con el valor de la variable saludo
+•	Invoca la función
+•	Muestra la variable desde fuera de la función mediante un window.alert
+
+2.	Define una variable global despedida=”Adiós” fuera de una función despedir( ) que muestre una ventana emergente con el valor de la variable despedida.
+•	Invoca la función
+•	Muestra la variable desde fuera de la función
+
+3.	Define dos variables con el mismo nombre y distinto valor: una fuera y otra dentro de una función ámbito() que muestre un window.alert de la misma. 
+Muestra el valor de las dos mediante window.alert e invocando a la función.
+
+4.	Declara y define una variable global. Redefínela dentro de una función que la muestre mediante un window.alert. 
+Muestra el valor de la variable mediante window.alert e invocando a la función.
+-->
+
+<script>
+    //Apartado 1
+    function saludar(){
+        let saludo="Hola";
+        window.alert(saludo);
+    }
+    saludar();
+   window.alert(saludo);//Nos dará un fallo de referencia porque no podemos acceder a la variable let desde fuera de su bloque
+
+    //Apartado 2
+    var despedida="Adios";
+    function despedir(){
+        window.alert(despedida);
+    }
+    despedir();
+    window.alert(despedida);//Va a funcionar el alert de tanto la función como el de fuera porque es una variable var
+
+    //Apartado 3
+    let variable3=3;
+    function ámbito(){
+        let variable3=1;//Dos variables con el mismo nombre se llama "sombreado de variable". Variables de mismo nombre pero distinto valor
+        window.alert(variable3);
+    }
+    ámbito();//La variable sustituye su valor de 3 a 1 porque es la de dentro de la funcion
+    window.alert(variable3);//La variable tiene valor 3 porque es la de fuera de la funcion
+    //No tenemos fallos porque hay lets tanto dentro como fuera de la función
+
+    //Apartado 4
+    var global="Global";
+    function funcion(){
+        var global="No global";
+        window.alert(global);
+    }
+    funcion();//Sale No global por el alert
+    window.alert(global);//Sale Global por el alert
+
+    //Las variable automaticamente globales se definen fuera de funciones y no se utiliza var, let o const
+
+</script>
+</body>
+</html>
