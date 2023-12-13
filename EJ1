@@ -1,0 +1,12 @@
+//Vamos a duplicar la edad de los usuarios mayores de 25
+let edadDuplicada = mayores25.map(usuarios => usuarios.edad*2);
+//Sacamos la edad por consola
+console.log("Las edades duplicadas, en orden, son: "+edadDuplicada);
+
+//Vamos a obtener la suma total de las edades duplicadas del paso 2
+let sumaEdadDuplicada = edadDuplicada.reduce((total, edad) => total +=edad);
+//Sacamos la suma de edades por pantalla
+console.log("La suma de las edades duplicadas es "+sumaEdadDuplicada);
+    </script>
+</body>
+</html>
