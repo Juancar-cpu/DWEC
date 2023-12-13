@@ -1,0 +1,25 @@
+//Vamos a encontrar al usuario más joven
+let menorEdad = edadesMayores.reduce(function(menor){
+    menor = edadesMayores[0];//menor será igual a la primera edad
+
+    for(i=0;i<=edadesMayores.length;i++){
+        if(edadesMayores[i]<menor) menor = edadesMayores[i];//Si la edad actual del bucle es menor que la guardada en la variable menor, cambia su valor
+    }
+    return menor;//devuelve menor
+});
+
+console.log("El usuario más joven tiene "+menorEdad+" años");
+
+//Vamos a sacar los usuarios que empiezan con A
+
+let nombresConA = usuarios.filter(usuario => usuario.nombre.startsWith('A')).map(usuario => usuario.nombre);
+
+
+console.log("Usuarios que empiezan por A: "+nombresConA);
+
+
+
+
+    </script>
+</body>
+</html>
