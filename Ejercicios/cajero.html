@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Tenemos un cajero con un saldo de 5000. Si intentamos sacar menos de esa cantidad, nos la da y actualiza su saldo.
+            Si en algun momento intentamos sacar más del saldo del que disponemos nos debe dar un mensaje de error
+                Utiliza try catch*/
+
+            /*Primero vamos a definir el saldo y la funcion de retirar*/
+        let saldo = 5000;
+        function retirar(saldo, cantidad){//le metemos saldo y cantidad, que ese ultimo lo daremos nosotros
+            if(saldo<cantidad){//Si intentamos retirar mas de lo que hay...
+                throw "Saldo insuficiente";//throw será el mensaje que nos de el catch
+            }
+            
+            return saldo-cantidad;//En caso de que la operacion sea válida, restamos cantidad al saldo para ver lo que queda
+        }
+
+        /*Una vez definido el funcionamiento, empezamos con los try catch*/
+        try{
+            let cantidad = parseInt(prompt("¿Cuanto quieres sacar?"));
+            saldo = retirar(saldo, cantidad);//la función ya nos está haciendo la resta para actualizar el saldo total
+            alert("Operacion exitosa | Saldo restante: "+saldo);
+        }
+
+        catch(err){//En caso de que lleguemos al throw nos activa el catch e interrumpe el try
+            alert(err);//Nos va a sacar lo que hayamos puesto junto a throw
+        }
+    </script>
+</body>
+</html>

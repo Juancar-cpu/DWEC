@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Diferencias entre spread y rest. Ambos se escriben como ...*/
+
+        /*Spread es el comando de propagacion. Se usa para expandir elementos de un array o propiedad de un objeto*/
+        //Ejemplo spread con array
+        const numeros = [1,2,3];
+        const nuevos_numeros = [...numeros, 4, 5];//El cosole.log nos pone [1,2,3,4,5] en lugar de [[1,2,3],4,5]
+
+        //Ejemplo spread con objeto
+        const PERSONA = {nombre:"Juan", edad:25};
+        const NUEVA_PERSONA = {...PERSONA, ciudad:"Madrid"}//NUEVA_PERSONA ahora tiene nombre:Juan, edad:25 y ciudad:Madrid. Parece una especie de herencia
+
+
+        /*Rest nos permite representar un numero indetermidado de argumentos como un array*/
+        
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="lienzo">
+    <script>
+        // Definimos las variables
+        const NUM_FILAS = parseInt(prompt("¿Cuántas filas tendrá el rombo?"));
+        
+
+            //Parte superior
+            for( i=NUM_FILAS;i!=0;i--){//Empezamos con i siendo valor de filas porque aqui, a diferencia del rombo, necesitamos dibujar todas las lineas
+               let espacios="";
+               let simbolo="";
+                
+               //Agregamos los espacios
+               for(k=0;k<NUM_FILAS-i;k++){//En la primera vuelta de este sub-bucle, NUM_Filas-i es 4-3, solo se hará el bucle una vez. A cada vuelta de su bucle for general i disminuye su valor y se pondran más espacios
+                    espacios+="&nbsp;&nbsp;";
+               }
+               // Agregar asteriscos
+            for (var a = 1; a <= 2 * i - 1; a++) {//En la primera vuelta 2*i-1 es 2*3-1, se hará el bucle 5 veces. Dibuja los 5 * que necesitamos y con la reduccion de i los futuros valores serán menores
+                simbolo += "*";
+            }
+            document.getElementById("lienzo").innerHTML += espacios + simbolo + "<br>";
+            }
+
+
+            // Parte inferior
+            for (var i = 0; i < NUM_FILAS; i++) {
+            // Variables para espacios y símbolos
+             //Siempre que acabemos un bucle for general estas variables se reinician
+            let espacios = "";//Es mejor empezar los strings vacios
+            let simbolo = "";
+            
+            // Agregar espacios
+            for (var k = 0; k < NUM_FILAS - i - 1; k++) {//NUM_FILAS-i-1 es el numero de espacios que vamos a poner a cada vuelta del primer for. Va a ir evolucionando gracias a i
+                espacios += "&nbsp;&nbsp;";//importamte poner ; entre los espacios
+            }
+            
+            // Agregar asteriscos
+            for (var a = 0; a <= 2 * i + 1; a++) {//Debemos empezar por el minimo valor y subir para arriba. 2*i+1 empieza en 1 porque i=0 en la primera vuelta del for principal. En cada vuelta debemos poner 2 asteriscos más que en la anterior
+                simbolo += "*";
+            }
+            
+            // Agregar línea al contenido del elemento con id "lienzo"
+            document.getElementById("lienzo").innerHTML += espacios + simbolo + "<br>";
+        }
+    </script>
+</body>
+</html>

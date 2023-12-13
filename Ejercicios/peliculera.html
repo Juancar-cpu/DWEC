@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Hacer un programa de generación de entradas de cine que incluya los datos del cliente y permita aplicar descuentos y 
+        ofertas especiales, según las siguientes especificaciones:
+        
+        *La lista de películas, comidas y bebidas deben estar en Arrays
+        * Imprimir por consola y en el HTML en líneas distintas: el nombre del cliente, nombre de la película, 
+            lista de comidas y bebidas a la que accede, y el total a pagar dependiendo del descuento.
+
+        *El precio de la entrada es de 8,5 euros
+
+ 
+1. Pide el nombre del cliente. Si el nombre no es un tipo String o es nulo, debe producir un mensaje de error e insistir.
+*/
+
+let nombre = prompt("Dame tu nombre");//SI DECLARAMOS AQUI LAS VARIABLES COMO LET, PERO DENTRO DEL WHILE NO LES PONEMOS NADA (SE TOMAN COMO VAR) SALE UN NaN
+while(!isNaN(nombre) || nombre==""){//Mientras que el nombre sea un numero o esté vacío...
+    alert("Error, debes introducir un nombre");//alerta de fallo
+    let nombre = prompt("Dame tu nombre");//Actualizar la variable. Asegurarse de ponerla como un let tambien
+}
+
+/*2. Pide la edad del cliente. Si la edad no es dato numérico o es nulo, debe producir un mensaje de error e insistir.*/
+
+let edad = parseInt(prompt("Dame tu edad"));
+while(isNaN(edad) || edad===null){//Mientras que edad no sea un numero o sea nulo...
+    alert("Error, debes introducir una edad");//alerta de fallo
+   let edad = parseInt(prompt("Dame tu edad"));//Actualizar la variable
+}
+
+/*3. Pide escoger el nombre de la película que está en cartelera de un listado que aparece en pantalla ('Spider Man', 'Superman', 
+'Dragon Ball Super', 'La era del hielo', '18videos').
+Si el cliente escoge una película que no está en la cartelera o es nulo, debe producir un mensaje de error e insistir.
+*/
+const cartelera = ["Spiderman", "Superman", "Dragon Ball Super", "La edad de hielo", "18videos"];
+
+let peli = prompt("Cartelera: "+cartelera+"\nElige una");
+while(!cartelera.includes(peli) || peli == ""){//mientras peli no sea algo que contenga el array cartelerao sea nulo...
+    if(!cartelera.includes(peli) && peli!= ""){//Si no contiene la peli dada. Si no especificamos que no sea null siempre salatar este alert ya que en cartelera tampoc hay nulos
+        alert("La peli no esta disponible");
+        peli = prompt("Cartelera: Spiderman | Superman | Dragon Ball Super | La edad de hielo | 18videos\nElige una");
+    }
+
+    else if(peli == ""){//si es nulo
+        alert("Dame una peli valida");
+        peli = prompt("Cartelera: Spiderman | Superman | Dragon Ball Super | La edad de hielo | 18videos\nElige una");
+    }
+}
+
+/*4. Si la edad del cliente es menor o igual a 17 y la película que escogió es "18videos", deberá mostrarle un 
+mensaje de que no tiene permiso para ver esa película e insistir. Caso contrario, se realizará lo siguiente:*/
+
+while(peli == "18videos" && edad <=17){//mientras que la peli sea de adultos y seas menor de edad...
+    alert("Eres muy pequeño para ver esas cosas...");
+    peli = prompt("Cartelera: Spiderman | Superman | Dragon Ball Super | La edad de hielo\nElige una");
+}
+
+/*5. Si la edad del cliente es menor o igual a 17, tendrá un descuento del 50% y además tendrá de regalo incluido con 
+la entrada: Caramelos y Refresco.*/
+const comida = ["Caramelos", "Palomitas", "Perrito"];
+const bebida = ["Agua", "Refresco"]
+const PRECIO_ENTRADA = 8.50;
+
+if(edad<=17){
+    alert("Nombre: "+nombre+" | Edad: "+edad+" | Pelicula: "+peli+" | Precio : "
+                +(PRECIO_ENTRADA - (PRECIO_ENTRADA*0.5))+" | Regalos: "+comida[0]+", "+bebida[1]);
+}
+
+/*6. Si la edad del cliente es mayor o igual a 18 y menor o igual a 25, no tendrá descuento alguno 
+    pero si tendrá de regalo incluido con la entrada: Palomitas, perrito y refresco.*/
+
+    if(edad>=18 && edad<=25){
+        alert("Nombre: "+nombre+" | Edad: "+edad+" | Pelicula: "+peli+" | Precio : "
+                +PRECIO_ENTRADA+" | Regalos: "+comida[1]+", "+comida[2]+", "+bebida[1]);
+}
+
+/*7. Si la edad del cliente es mayor o igual a 26 y menor o igual a 35, tendrá un descuento del 10% 
+    y además tendrá de regalo incluido con la entrada: Perrito y refresco.*/
+    if(edad>=26 && edad<=35){
+        alert("Nombre: "+nombre+" | Edad: "+edad+" | Pelicula: "+peli+" | Precio : "
+                +(PRECIO_ENTRADA - (PRECIO_ENTRADA*0.1))+" | Regalos: "+comida[2]+", "+bebida[1]);
+}
+
+/*8. Si la edad del cliente es mayor o igual a 36, tendrá un descuento del 20% y así mismo 
+    tendrá de regalo incluido con la entrada: Agua.*/
+    if( edad>=36){
+        alert("Nombre: "+nombre+" | Edad: "+edad+" | Pelicula: "+peli+" | Precio : "
+                +(PRECIO_ENTRADA - (PRECIO_ENTRADA*0.2))+" | Regalos: "+bebida[0]);
+}
+
+    </script>
+</body>
+</html>

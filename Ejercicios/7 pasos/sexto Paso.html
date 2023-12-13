@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*6.- Trata de organizar el código de tu programa (¿quitando switch?) usando funciones. 
+        Define y llama a tres funciones en los lugares apropiados:
+
+•	showContact: la función debe tomar dos argumentos; el primero es la lista de contactos y el segundo es 
+    el número de índice del contacto a mostrar; dentro de la función, verifica si se pasan los argumentos correctos, 
+        es decir, si los contactos son un array (utiliza la construcción instanceof Array para esto).
+
+•	showAllContacts: la función debe tomar un argumento, la lista de contactos; dentro de la función, 
+    verifica si el argumento dado es un array.
+
+•	addNewContact: la función debe tomar cuatro argumentos, una lista de contactos y los 
+    datos del nuevo contacto, es decir: nombre, teléfono y número; antes de agregar un nuevo contacto, 
+    verifica si el argumento pasado es un array y si los datos del nuevo contacto tienen algún valor.
+*/
+let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]];
+    
+    //Dejamos las funciones y añadimos las que nos piden
+    function showContact (agenda, indice){//Mejoramos la funcion sacarInfo
+        if(agenda instanceof Array && !isNaN(indice)){//instance of nos dara true si agenda es un array
+        console.log("Nombre: "+agenda[indice][0]+" / Numero: "+agenda[indice][1]+" / Correo: "+agenda[indice][2]);
+        }
+        else{
+            console.log("Alguno de los parametros no es del tipo correspondiente");
+        }
+    }
+
+    function showAllContacts(agenda){
+        if(agenda instanceof Array){
+            for(let i=0;i<agenda.length;i++){
+                    console.log("Nombre: "+agenda[i][0]+" / Numero: "+agenda[i][1]+" / Correo: "+agenda[i][2]+"\n")
+                }
+        }
+        else{
+            console.log("Agenda debe ser un array");
+        }
+    }
+
+    function addNewContact(agenda, nombre, numero, correo){
+        if(agenda instanceof Array){
+            if(nombre != "" && numero != "" && correo != ""){
+                agenda.push([nombre, numero, correo]);
+                }
+                else{
+                    alert("Alguno de los campos está vacio");
+                }
+        }
+        else{
+            console.log("Agenda debe ser un array");
+        }
+}
+
+    
+    
+
+    let op;//Tenemos que iniciar op fuera del do-while o nos da errores
+    do{
+        //Necesitamos parseInt porque switch no funciona con strings
+        op = parseInt(prompt("¿Que hacemos?\n1_Mostrar primer contacto\n2_Mostrar ultimo contacto\n3_Mostrar todos los contactos\n4_Añadir nuevo contacto\n5_Salir"));
+        switch(op){
+            case 1://Sacar primer contacto
+                showContact(agenda, 0);//Pasamos el array agenda y la posicion 0
+                break;//Poner break o el switch pasa al siguiente. No queremos eso
+
+            case 2://Sacar ultimo contacto
+                showContact(agenda, agenda.length-1);//Pasamos el array agenda y la ultima posicion
+                break;
+
+            case 3://Sacar todos los contactos
+                showAllContacts(agenda);
+                break;
+                
+            case 4://Agregar contacto
+            let nombre = prompt("Dame el nombre del contacto");
+            let numero = prompt("Dame el numero del contacto");
+            let correo = prompt("Dame el correo del contacto");
+
+            addNewContact(agenda, nombre, numero, correo);
+            break;
+
+            case 5://Salir
+                alert("Saliendo...");
+                break;
+
+            default://Opcion defecto
+                alert("Opcion no contemplada");
+        }
+    }while(op != 5);
+    </script>
+</body>
+</html>

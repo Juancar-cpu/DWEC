@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*El programa nos da un numero aleatorio entre 0 a 100, debemos adivinarlo a base de dar nosotros numeros
+            Si fallamos el programa nos hace insistri hasta que acertemos, dandonos mensajes de si nuestro opcion esta por
+            encima o por debajo del numero a adivinar. Al final nos debe dar el numero de intentos consumidos*/
+
+            let intentos = 1;//Aunque adivinasemos el numero a la primera, sería un intento
+            const NUMERO_OCULTO = Math.ceil(Math.random()*100);//Generamos aletoriamente un numero entre 0 y 100
+
+           
+            while(num != NUMERO_OCULTO){//Mientras mi numero sea distinto al numero oculto se repite el bucle
+               var num = parseInt(prompt("Dame tu numero"));//Nos aseguramos que num sea un Number. Esta variable se actualiza a cada repeticion de bucle
+                
+                if(num>NUMERO_OCULTO){//Si damos un numero mayor al oculto...
+                    alert("Intenta un numero más pequeño");//Mensaje orientativo
+                    intentos++;//Sumamos intento
+                }
+
+                else if(num<NUMERO_OCULTO){//Si damos un numero menor al oculto...
+                    alert("Intenta un numero más grande");//Mensaje orientativo
+                    intentos++;//Sumamos intento
+                }
+
+                /*else if(isNaN(num)){//Si lo que damos no es un numero
+                    throw "No se ha dado un numero, fin de programa";//Se da un mensaje de error y se interrumpe el try
+                }*/
+            }
+            
+            alert("Acertaste en "+intentos+" intentos. El numero oculto era "+NUMERO_OCULTO);//Una vez adivinado el numero, se lanza el mensaje correspondiente
+            
+
+            
+    </script>
+</body>
+</html>

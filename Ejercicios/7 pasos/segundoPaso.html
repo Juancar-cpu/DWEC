@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*2.- Crea la lista de contactos en un array, de tal manera que cada uno de sus elementos será un objeto 
+        que describa a un solo usuario (tres propiedades). 
+
+Al final de la lista declarada de esta manera, 
+agrega un nuevo contacto usando un método de array, apropiado. 
+El nuevo contacto es: Maisie Haley / 0913 531 3030 / risus.Quisque@urna.ca.
+
+Muestra el primer y último contacto, de nuevo en el formato: nombre / teléfono / correo electrónico. (length)
+*/
+
+//Vamos a meter las personas en un array bidi
+
+let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]]
+
+    function sacarInfo (agenda){//Usamos una funcion para no tener que repetir el actualizar el ultimo y el console.log cada vez que se añada a alguien 
+        let ultimo = agenda.length - 1;
+
+        console.log("Nombre: "+agenda[0][0]+" / Numero: "+agenda[0][1]+" / Correo: "+agenda[0][2]+"\n"+
+            "Nombre: "+agenda[ultimo][0]+" / Numero: "+agenda[ultimo][1]+" / Correo: "+agenda[ultimo][2]);
+        
+    }
+sacarInfo(agenda);
+
+//Añadimos la cuarta persona al array con el metodo push, que mete el elemento al final del array
+agenda.push(["Maisie Haley", "0913 531 3030", "risus.Quisque@urna.ca."]);
+
+sacarInfo(agenda);
+
+//Nota: Console.log no funciona con objetos, nos dice undefined
+//Nota: No podemos poner agenda[agenda.length]. Solo podemos poner numeros, claves o variables inicializadas entre corchetes
+//Nota: \n para meter saltos de linea en consola
+    </script>
+</body>
+</html>

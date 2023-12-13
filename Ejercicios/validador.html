@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function promptConValidacion(msg, tipo = String) {
+        error = false
+        let resultado = ''
+        do {
+          resultado = prompt(
+            error ? `Debes introducir el tipo de dato correcto.\n${msg}` : msg
+          )
+          if (resultado === '') break
+          switch (tipo) {
+            case String:
+              error = !isNaN(parseInt(resultado))
+              break
+            case Number:
+              error = isNaN(parseInt(resultado))
+              break
+          }
+        } while (error)
+
+        return resultado
+      }
+
+      const x = promptConValidacion('Dame un string', String)
+      const y = promptConValidacion('Dame un number', Number)
+    </script>
+  </body>
+</html>
