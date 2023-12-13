@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*	Realiza una aplicación web que solicite una cadena de texto. El programa debe decir cuántas veces ocurre cada 
+        uno de estos patrones sin distinguir mayúsculas y minúsculas: “00” “101”, “ABC”, “H0”.
+        Un carácter puede formar parte de más de un patrón encontrado. Por ejemplo:
+En la cadena “000” el patrón “00” aparece dos veces (una empieza en la posición 0 y otra empieza en la posición 1).
+Internamente el programa realizará la cuenta de patrones con una función definida como function numeroPatrones(texto)
+que devolverá un número entero con el número de patrones encontrados. 
+Ejemplo:
+1110101000ABCHO	*/
+
+
+let texto=prompt("Dame una frase");//prompt a secas ya nos da una cadena, independientemente de lo que introduzcamos
+
+function numeroPatrones(texto){
+    let newTexto=texto.toUpperCase();//Pasamos el texto a mayúsculas para que de igual si damos mayusculas o minusculas
+    let patrones=["00", "101", "ABC", "HO"];//Patrones a buscar
+    let cont=0;//Contador de patrones
+
+    //Recorremos el texto
+    for(let i=0;i<=texto.length;i++){
+        if(newTexto[i]=="0"){//Si se detecta que esta pasando por un 0...
+            if(newTexto.charAt(i)=="0" && newTexto.charAt(i+1)=="0"){//Y ademas el siguiente carater es otro 0...
+                cont++;//contador +1
+            }
+        }
+
+        if(newTexto[i]=="1"){//Si se detecta que esta pasando por un 1...
+            if(newTexto.charAt(i)=="1" && newTexto.charAt(i+1)=="0" && newTexto.charAt(i+2)=="1"){//Y los dos siguientes caracteres son 0 y 1...
+                cont++;//contador +1
+            }
+        }
+
+        if(newTexto[i]=="A"){//Si se detecta que esta pasando por una A...
+            if(newTexto.charAt(i)=="A" && newTexto.charAt(i+1)=="B" && newTexto.charAt(i+2)=="C"){//Y los dos siguientes caracteres son B y C...
+                cont++;//contador +1
+            }
+        }
+
+        if(newTexto[i]=="H"){//Si se detecta que esta pasando por una H...
+            if(newTexto.charAt(i)=="H" && newTexto.charAt(i+1)=="O" ){//Y el siguiente caracter es una O...
+                cont++;//contador +1
+            }
+        }
+    }
+
+return console.log("Se encontraron los patrones "+cont+" veces");
+}
+numeroPatrones(texto);
+
+    </script>
+</body>
+</html>

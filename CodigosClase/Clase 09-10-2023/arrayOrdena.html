@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Hacer una funcion que ordene las notas de un array pasado como parametro. Si se pasa[4,8,3,10,5]
+        debe devolver [3,4,5,8,10]. Probar con consola*/
+        const notas=[4,8,3,10,5];
+
+        function notasOrdenadas(notas){
+            let notasFinal=notas.sort((nota1, nota2)=>nota1-nota2);/*sort se utiliza para determinar el orden de los elementos. Se espera que devuelva negativo si el
+            primer argumento es menor que el segundo, 0 si son iguales y positivo si el primer valor es mayor que el segundo. Si se omite los valores se ordenan en 
+            orden ascendente*/
+            console.log(notasFinal);
+        }
+
+        notasOrdenadas(notas);
+        console.log(notas.sort());
+        console.log(notas.sort((a,b) => b - a))
+
+    </script>
+</body>
+</html>

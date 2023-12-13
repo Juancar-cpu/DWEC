@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Borrar los elementos repetidos de un array usando metodos set. Estan en apuntes.txt*/
+
+        //Lo convertimos en set, que elimina los repetidos pero lo convierte en conjunto
+        miArray=[1,1,1,3,7,4,3,5];//Este es el array
+
+        const newSet= new Set(miArray);//Con set convertirmos el array en un conjuntod e datos sin repetirdos
+        //const nombre = new Set(array que vamos a convertir en conjunto)
+        let miArrayFinal=[...newSet];//Cojemos el conjunto y lo volvemos a convertir en array gracias a spread
+        console.log(miArrayFinal);//sacamos el array ya sin repetidos
+    </script>
+</body>
+</html>

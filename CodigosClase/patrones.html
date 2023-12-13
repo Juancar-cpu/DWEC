@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*	Realiza una aplicación web que solicite una cadena de texto. El programa debe decir cuántas veces ocurre cada 
+        uno de estos patrones sin distinguir mayúsculas y minúsculas: “00” “101”, “ABC”, “H0”.
+        Un carácter puede formar parte de más de un patrón encontrado. Por ejemplo:
+En la cadena “000” el patrón “00” aparece dos veces (una empieza en la posición 0 y otra empieza en la posición 1).
+Internamente el programa realizará la cuenta de patrones con una función definida como function numeroPatrones(texto)
+que devolverá un número entero con el número de patrones encontrados. 
+Ejemplo:
+1110101000ABCHO	*/
+
+let texto=prompt("Dame una frase");//prompt a secas ya nos da una cadena, independientemente de lo que introduzcamos
+
+function numeroPatrones(texto){
+    let newTexto=texto.toUpperCase();//Pasamos el texto a mayúsculas para que de igual si damos mayusculas o minusculas
+    let patrones=["00", "101", "ABC", "HO"];//Patrones a buscar
+    let cont=0;//Contador de patrones
+
+    //Recorremos los patrones y los buscamos en el string
+    for(let i=0;i<=patrones.length;i++){
+        if(newTexto.includes(patrones[i])){//Si el texto incluye el patron que estamos buscando en este momento
+            cont++;
+        }
+    }
+return console.log("Se encontraron los patrones "+cont+" veces");
+}
+numeroPatrones(texto);
+
+//puedes usar charat(i)=="algo" para ver si un caracter en una posicion es igual
+//Posible examen: Que busque cuando hay dos patrones consecutivos
+    </script>
+</body>
+</html>

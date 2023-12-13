@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Unir tres arrays en uno solo, eliminando los elementos duplicados*/
+        let array1=[1,2,3,4,5,6,7,8];
+        let array2=[1,2,3,8,9,0,43,45,65];
+        let array3=[17,32,87,45];
+
+        //Creamos un array vacio
+        let arrayMerge=[];
+        //Metemos al array vacio los 3 arrays
+        arrayMerge=array1.concat(array2).concat(array3);
+        //Tambien se podria hacer: const arrayJuntos= new Set([...array1, ...array2, ...array3]) y nos ahorramos la creacion de un array vacio
+        // y el siguiente paso
+        
+        //Metemos el array a Set, elimina duplicados
+        const miSet=new Set(arrayMerge);
+
+        //Hacemos que arrayMerge vuelva a ser array con el spread(...)
+        let arrayFinal = [...miSet];
+        console.log(arrayFinal);
+        console.log(arrayFinal instanceof Array);//Para asegurarnos de que efectivamente ha vuelto a array. Debe darnos true si todo va bien
+
+        /*metodo add: añade valores a los set*/
+
+        const miSet2 = new Set();
+        miSet2.add(1);
+        miSet2.add(2);
+        miSet2.add(3);//Si repitieramos un valor no se pondria dentro del set
+        miSet2.add(4);
+
+        /*metodo delete: elimina un valor del set*/
+        miSet2.delete(3);//elimina el 3 de miSet2. Ahora miSet2 tiene dentro {1,2,4}
+
+        /*metodo has: devuelve un true si el set tiene dentro el valor que preguntamos, false si no lo tiene*/
+        miSet2.has(1);//dara true
+        miSet2.has(3);//dara false
+
+        /*metodo clear: elimina todos los elementos del set*/
+        miSet2.clear();//ahora miSet2 esta vacio
+
+        miSet2.add(1);
+        miSet2.add(2);
+        miSet2.add(3);
+
+        /*Metodo size: Nos da el numero de elementos dentro del conjunto*/
+        miSet2.size();//Nos daria 3 {1,2,3}
+
+        /*Iterarlo con for of*/
+        for(const clave of miSet2){
+            console.log(clave);
+        }
+
+        /*Iterarlo con foreach*/
+        miSet2.forEach(function(clave){
+            console.log(clave);
+        })
+
+        
+
+    </script>
+</body>
+</html>

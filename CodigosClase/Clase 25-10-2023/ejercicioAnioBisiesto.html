@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Un año es bisiesto si cumple los siguientes criterios: 
+• Es divisible entre 4.
+• Si termina en 00, se comprueba si es divisible entre 400 (2000 y 2400 sí son bisiestos. 2100, 2200 y 
+2300 no lo son).
+Mas información sobre años bisiestos en:
+https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto 
+Escribe una función que reciba un año y devuelva 1 si es bisiesto, 0 en caso contrario.
+ La función no debe leer nada de la entrada estándar ni mandar ningún dato por la salida estándar. */
+
+let anio = parseInt(prompt("Introduce un año"));//Le llega el año y lo pasa a INT
+
+function esBisiesto(anio){
+
+    let digi = anio.toString();//Pasamos el año a cadena
+    let digi2 = digi.substr(-2);//Empezamos por la penultima cifra y avanzamos hasta el final porque no damos un segundo parametro
+
+    if(digi2=="00"){//Si los 2 ultimos digitos son 00...
+        if(anio%400==0){//Y año es divisible entre 400...
+            return 1;//Devuelve 1
+        }
+        else if(anio%4==0){//Si año no es divisible entre 400, pero si por 4 y ademas no es divisible por 100...
+            return 1;//Devuelve 1
+        }
+    }
+
+    else if(anio%4==0){//Si año no termina en 00, pero es divisible entre 4 y ademas no es divisible por 100...
+            return 1;//Devuelve 1
+        }
+    else return 0;//Si no es nada devuelve 0
+    //Hay que meter un anio % 100 !=0 en alguna parte para que funcione bien bien
+
+    /*Otra forma de hacerlo
+        function esBisiesto(anio){
+            return (anio % 100===0 ? anio % 400===0 : anio % 4 === 0) ? 1 : 0
+    o tambien
+            return anio % 4 ===0 && (anio %100!==0 || anio %400===0) ? 1:0
+
+            anio % 100 ===0 nos da las 2 ultimas cifras
+            Al usar ? le decimos que: Si se cumple lo que hay delante de ?, dame lo que hay delante de :, si no, me das lo que hay detras de :
+        }*/
+}
+
+console.log(esBisiesto(anio));
+    </script>
+</body>
+</html>

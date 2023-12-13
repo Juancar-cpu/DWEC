@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Persona(nombre, apellido, edad){//creamos objeto con 3 atributos. Ojito con que el nombre del objeto sea igual en todos lados
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+
+            this.nombreCompleto = function(){
+                return this.nombre + " " + this.apellido;
+            }
+        }
+
+        var ana = new Persona("Ana", "Hoyo", 23);//Usamos el objeto para crear personas
+        var paco = new Persona("Paco", "Martinez", 27);
+
+        //Vamos a añadir propiedades a ana. No podemos añadir propiedades directamente al constructor Persona de esta manera
+        ana.nacionalidad = "Inglesa";
+        console.log(ana.nacionalidad);//Nos da info
+        console.log(paco.nacionalidad);//No nos da info porque nacionalidad solo esta añadido a ana
+
+        Persona.prototype.fecha = "1980";//Añadimos fecha al prototipo de los objetos
+        console.log(ana.fecha);
+        console.log(ana.fecha);//Ambos dan la fecha porque prototype ha añadido fecha al constructo general de personas
+        
+    </script>
+</body>
+</html>

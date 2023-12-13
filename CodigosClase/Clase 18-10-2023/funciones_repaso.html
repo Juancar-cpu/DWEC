@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Las funciones se pueden usar antes de ser definidas (hoisting)*/
+        let resultado=multiplicar(2,3);//Funcion declarativa con parametros
+        function multiplicar(a, b){//Las buenas funciones solo deben devolver una cosa
+            return a*b;
+        }
+
+        function hola(){//Funcion declarativa sin parametros. No metemos la funcion dentro d eun parametro
+            console.log("Hola");
+        }
+
+        let producto=function(a,b){//Funcion anonima, es la que no tiene nombre. La anonima si es necesario definirlas antes de usarlas. Esta tambien se mete en una variable
+            return a+b;
+        }
+
+        //Función callback: Funcion que se usa como parámetro en otra funcion
+        function saludar(nombre) {
+            alert("Hola " + nombre);
+            }
+
+        function procesarEntradaUsuario(callback) {
+            var nombre = prompt("Por favor ingresa tu nombre.");
+            callback(nombre);
+            }
+
+        procesarEntradaUsuario(saludar);//En una funcion como parametro no hace falta ponerle llaves
+
+
+
+        //Funcion autoejecutable: Funcion anonima que se autoinvoca
+        (function(user){
+            console.log("Hola "+user);
+        })("Pepe");
+
+        //Funcion flecha: Sustituimos la palabra function por =>
+        //Funciones recursivas: Una función que se autoinvoca a si misma
+        
+        //Invocacion de funciones
+        let resultado2=producto(4, 12);
+        console.log(resultado);
+        hola();
+        console.log(resultado2);
+    </script>
+</body>
+</html>
