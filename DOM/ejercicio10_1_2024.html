@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Document Object Model</title>
+    
+</head>
+<!--Suponiendo que no se saben el tipo de etiquetas (para utilizar  ByTagname) Al pulsar h2 obtener el bloque en el que se imparte y los módulos que se estudian 
+    (extraer el identificador del div superior y el identificador de cada li)
+
+Al pulsar en DAM o DAW, me tiene que decir, en el div texto, el bloque donde se da ese curso y las asignaturas de cada curso-->
+
+    <script>
+        window.addEventListener("load", inicio);//Nos aseguramos de que la pagina carga del todo antes de ejecutar el script
+
+
+        function inicio(){
+            for(i=0;i<document.getElementsByTagName("h2").length;i++){//este length es el numero de h2 que tenemos
+                document.getElementsByTagName("h2")[i].addEventListener("click", mostrarDatos);//addEventListener a todos los elementos que tengan etiqueta h2
+            }
+        }
+
+        function mostrarDatos(e){//esta funcion depende de e, evento
+            var h2=e.target;//Estamos metiendo en la variable a quien he pulsado
+            var texto="";
+
+            texto += "Se ha elegido el ciclo "+h2.textContent;//el contenido de h2
+
+            var padre = h2.parentElement;//sacamos el elemento padre de h2
+
+            texto += ", la clase está ubicada en el "+padre.id;//damos la id del padre
+
+            var ul=h2.nextElementSibling;//cogemos el siguiente elemento hermano de h2
+            texto += ", los modulos del ciclo son "+ul.children.length+": ";//sacamos el numero de hijos de h2
+
+            var hijo=ul.firstChild;
+            while(hijo!=null){//mientras aun me queden hijos por recorren
+                texto+=" "+hijo.textContent;
+                hijo = hijo.nextElementSibling;
+            }
+
+            document.getElementById("texto").innerHTML=texto;//Pasamos el texto al div texto
+        }
+    </script>
+<body>
+
+    <div id="bloque3">
+        <h2>DAM</h2>
+        <ul id="lista">
+            <li>Sistemas Gestión Empresarial</li>
+            <li>Programación Multimedia y Disp. Móviles</li>
+            <li>Desarrollo de Interfaces</li>
+            
+        </ul>
+    </div>
+    
+     <div id="bloque10">
+        <h2>DAW</h2>
+        <ul id="lista">
+            <li>DWES</li>
+            <li>DWEC</li>
+	        <li>Despliegue Web</li>
+	        <li>Diseño Interfaces Web </li>
+        </ul>
+    </div>
+    
+    <div id="texto"></div>
+
+</body>
+
+</html>

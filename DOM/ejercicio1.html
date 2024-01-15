@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM: Creacion y modificacion de elementos</title>
+    <style>
+        .miClase{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <p id="parrafo1">Este es el primer parrafo</p>
+        <p id="parrafo2">Este es el segundo parrafo</p>
+        <p id="parrafo3" class="miClase">Este es el tercer parrafo</p>
+    </div>
+
+    <br/>
+
+    <button id="cambiarTextos">Cambiar texto de parrafos</button>
+    <button id="cambiarClases">Cambiar clases de parrafos</button>
+    <button id="quitarClases">Quitar clases de todos parrafos</button>
+    <script>
+        /*Ejemplos de DOM*/
+        /*A la hora de manipular el DOM es importante que todo este cargado. Esto lo conseguimos con el onload y otra es con un addeventlistener asignarle el evento load y una funcion inicio*/
+        window.addEventListener("load", inicio, false);
+
+        function inicio(){//Así nos aseguramos que el script no funciona hasta que se termine de cargar la pagina
+
+        
+        document.getElementById("cambiarTextos").addEventListener("click", ()=>{//cuando hagamos click en el primer boton vamos a cambiar el contenido de los textos
+            document.getElementById("parrafo1").innerHTML="Texto de parrafo 1 cambiado";
+            document.getElementsByTagName("p")[1].innerHTML="Texto de parrafo 2 cambiado";//cogemos, de los elementos p, el 1 en el array
+            document.getElementsByClassName("miClase")[0].innerHTML="Texto de parrafo 3 cambiado";//cogemos el primer elemento del array de clases. Solo tenemos una clase
+        });
+        //Otra forma
+        /*var principal = document.getElementById("principal");
+        var parrafo1 = principal.getElementById("parrafo1");*/
+
+       //Seleccionar el primer elemento de un selector CSS
+        /*document.querySelector("p.miClase");
+        document.querySelector("p.miClase")[0];*/
+
+        document.getElementById("cambiarClases").addEventListener("click", ()=>{//cuando ahgamos click vamos a cambiar las clases de los parrafos
+            document.getElementById("parrafo1").setAttribute("class", "miClase");//con setAtribute de tipo class le aplicamos la clase deseada
+            document.getElementById("parrafo2").className = "miClase";//Tambien se puede hacer con esta sintaxis
+            document.getElementById("parrafo3").setAttribute("class", "");//Con un nombre vacio le quitamos la clase. Si le quitamos la clase el boton 1 deja de funcionar para el porque ya no pertenece al array de clases miClase
+        });
+
+        document.getElementById("quitarClases").addEventListener("click", ()=>{//cuando hagamos click vamos a quitar las clases de los parrafos
+            document.getElementById("parrafo1").setAttribute("class", "");
+            document.getElementById("parrafo2").className = "";
+            document.getElementById("parrafo3").setAttribute("class", "");
+        });
+
+        //Para quitarle la clase a todos de una
+    function quitarClases(){
+        for(var i=0; i<document.getElementsByTagName("p").length;i++){
+            document.getElementsByTagName("p")[i].className="";
+        }
+    }
+    }
+    </script>
+</body>
+</html>
