@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Borrar elementos repetidos en un array*/
+
+        let array = [1,2,2,3,4,4,4,5];
+
+        let nuevoArray = array.filter((item,index) => {
+            return array.indexOf(item) === index;
+        });
+
+       /* const miArrayNuevo = [... new Set(array)]; //Otra forma*/
+
+        console.log(nuevoArray);
+    </script>
+</body>
+</html>

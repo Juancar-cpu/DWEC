@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Hacer que a los 2 seg de abrir la pagina se abra un popup
+        Con un mensaje de bienvenida
+        Con un boton Cerrar que permita al usuario cerrarla. El boton existe desde el principio
+        Con el tamaño justo para visualizar el mensaje sin barras de scroll, ni de herramientas, ni de dirección... Unicamente mensaje y boton*/
+
+        //Abrimos la pagina
+        function abrirVentana(){//Creamos nuestra ventana y el boton de cerrar
+            miVentana = window.open("", "", "width=500", "heigth=200");//creamos la ventana
+            miVentana.document.write('<button onclick=setTimeout(cerrarVentana(), 1000)>Cerrar</button>');//Boton para cerrar
+        }
+        abrirVentana();//Llamamos a la funcion
+        
+
+        //Que a los 2 segundos de abrir la pagina se abra un popup con mensaje de bienvenida y aparezca e boton cerrar
+        setTimeout(() => miVentana.alert("¡Bienvenido!"), 2000);//A los 2 seg salta el mensaje de bienvenida.El alert con el saludo puede ir con normalidad. Si ponemos el nombre de nuestra ventana los poup salen en ella
+        
+
+        //Función para cerrar la ventana
+        function cerrarVentana(){
+            miVentana.close();//metodo de cerrar ventana
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="reloj"></p>
+    <script>
+        /*Realizar un reloj que evolucione de forma real. Incluir botones para parar, reanudar y dar la hora*/
+
+        function segs(){
+            let tiempo = new Date();//Sacamos una variable de tiempo
+            let texto="";//texto vacio
+
+            texto = tiempo.getSeconds();//texto toma el valor del segundo que cojamos. tiempo.getSeconds().toString().padStart(2,'0') para que si tenemos una cigra ponga un 0 delante
+            document.getElementById("reloj").innerHTML = texto;//texto va al parrafo reloj
+        }
+
+    </script>
+    <button onclick="interval = setInterval(segs, 1000)">Iniciar</button><!--iniciamos el reloj-->
+    <button onclick="clearInterval(interval)">Pausar</button><!--Pausamos el reloj-->
+</body>
+</html>

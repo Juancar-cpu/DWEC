@@ -1,0 +1,9 @@
+Location almacena informacion de la url que se esta ejecutando en el momento. No hay estandar
+href
+hostname
+pathname
+protocol
+hash
+host
+origin
+search

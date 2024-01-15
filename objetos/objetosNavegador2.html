@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="ventana"></p>
+    <script>
+        /*Vamos a añadir un evento de button*/
+
+        function crearVentana(){//Al darle al button abrimos el pais en una nueva pagina. Va a ser una vacía porque algunas paginas bloquean su manipulacion
+            miVentana = window.open("", "", "width=500", "heigth=200");//Es mejor meterlo en una variable
+        }
+
+        function cerrarVentana(){//Al darle al segundo button
+            miVentana.close();//Al haberla metido en una variable antes, nos es más facil trabajar con la ventana
+        }
+
+        function redimensionaVentana(){
+            enfocar();//primero enfocamos con la funcion
+            miVentana.resizeBy(10, 10);//Numero de pixeles respecto a su parámetro. Lo va agrandando de 10 en 10
+        }
+
+        function enfocar(){
+            miVentana.focus();//hacemos focus en la ventana creada para manejarla mejor
+        }
+
+        function moverVentana(){
+            enfocar();
+            miVentana.moveBy(10, 10);//con 10 10 lo movemos en diagonal
+        }
+    </script>
+    <!--Aquí empieza la creacion de evento-->
+    <button onclick="crearVentana ()">Abrir Periodico</button>
+    <button onclick="cerrarVentana ()">Cerrar Periodico</button>
+    <button onclick="redimensionaVentana ()">Redimensionar Periodico</button>
+    <button onclick="enfocar ()">Enfocar Periodico</button>
+    <button onclick="moverVentana ()">Mover Periodico</button>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Abrir una nueva ventana de dimensiones 500x200px en la posicion (100,200)
+            Escribir en ella (con document.write) un titulo h1 que diha 'Hola'
+            Desplazarla 300 px hacia abajo y 100 a la izquierda
+            Cerrarla*/
+
+            //Abrir una nueva ventana de dimensiones 500x200px en la posicion (100,200)
+           const MI_VENTANA = window.open("", "Mi Ventana", "width=500", "heigth=200");
+           MI_VENTANA.moveTo(100, 200);//Al instante de crearla la movemos a posicion inicial
+           MI_VENTANA.focus()
+
+           //Escribir en ella (con document.write) un titulo h1 que diga 'Hola'
+           MI_VENTANA.document.write("<h1>Hola</h1>");
+
+           //Desplazarla 300 px hacia abajo(eje y) y 100(eje x) a la izquierda. Vamos a dar tiempo para ver el cambio
+           setTimeout(()=>MI_VENTANA.moveTo(100, -300), 2000);//Vamos a esperar 2 seg para hacer el cambio
+           //MI_VENTANA.moveTo(100, -300);//Ya reconoce que son pixeles
+
+           //Cerramos la ventana, vamos a dejar que pasen 2 seg para verlo
+            setTimeout(()=>MI_VENTANA.close(), 4000);//Ponemos 4000 porque todos los setTimeout empiezan a contar a la vez
+
+    </script>
+</body>
+</html>

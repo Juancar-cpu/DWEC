@@ -1,0 +1,4 @@
+En este paradigma de programacion el codigo se centra más en qué debe hacer una funcion y como debe hacerlo.
+Consiste pasar funciones como parametro a otras funciones. Intenta evitar el uso de bucles o arrays
+
+Aparece a partir de javascript 6

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*Obten la nota media de un array de notas. Usa programacion funcional*/
+     let arrayNotas=[5.2, 3.9, 6, 9.75,7.5,3];
+        let mediaNotas = arrayNotas.reduce((total, nota) => total += nota);//Así obtengo la suma total de notas
+        console.log("La media de las notas es "+mediaNotas/arrayNotas.length);//Dividimos entre length para sacar la media
+</script>
+    
+</body>
+</html>

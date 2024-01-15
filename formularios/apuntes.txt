@@ -1,0 +1,65 @@
+Los formualrios es la razon por la que nacio javascript para validar formularios directamente en el lado cliente
+
+La aparicion posterior de AJAX es cuando realmente javascript se empeiza a usar para la manipulacion dinamica
+A pesar de ajax, js sigue siendo ffiable a la hora de trabajar formularios
+
+
+Un formularioe s todo aquello que vaya entre las marcas form
+Los navegadores, al cargar una pg web:
+    Tienen un array forms con referencias a todos los formularios de la misma, al que se accede con document.forms
+    Un array elements por cada formulario con todos los elementos que contienen dicho formulario(botones, liostas, etc), document.form[0].elements[2];(este metodo no se suele usar)
+
+
+Si hay cambios de orden posteriores, añadidos o suprimidos, se va a descuadrar toda mi programacion del formulario. Utiliza los atributos name o id. Tambien se puede accedera los elementos con el document
+form name="miPrimerForm"
+form id="miPrimerForm"
+
+var formPrincipal=document.getElementByYd("miForm")
+var elementPrincipal=document.getElementByYd("miElement")
+
+
+Los identificadores de los formularios no deben repetirse en ningun otro lado del codigo
+
+<form name="miForm">
+.......
+</form>
+
+let objetoForm = document.forms.miFormulario
+let objetoForm = document.forms[miForm]
+
+
+
+Un formulario es un elemento que permite recopilar informacion para enviarla a un servidor que va a tratarla y validarla
+
+El que validemos en el cliente no significa que no vayamos a validar en el servidor. Validar en el lado cliente es un pequeño cribado antes de la validación de server, pues el lado cliente no se asegura de que la info no sea erronea o que este desactivada
+La estructura de los form será HTML
+Sus atributos imprescidibles son el action(a donde hay que enviar el formulario una vez ya relleno) y el method(get o post)
+
+
+acept: tipo de ficheros que va a admitir el formulario
+enctype
+estos dos metodos no son necesarios
+
+
+input es la etiqueta más usada en forms. Los input pueden ser de control de formulario(botones, cuatros de texto, etc) y campos de formulario (contiene los datos que se envian a traves del formulario)
+
+
+atributos
+type
+    textarea
+    button
+    radiobutton
+    checkbox
+    select(desplegables)
+name
+value
+
+Eventos
+onlcik
+onchange
+onfocus
+onblur
+
+repasar los tipos de input
+
+

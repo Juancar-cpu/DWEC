@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="boton">Suma/Resta</button>
+    <p id="cont"></p>
+    <script>
+        /*Tenemos un solo boton. Si le ahcemos click izquierdo suma 1 al contador. Si damos click derecho resta 1
+            Sacamos el contador por pantalla*/
+
+            let cont = 0;
+            document.getElementById("boton").addEventListener("click", manejador, false);
+            document.getElementById("boton").addEventListener("contextmenu", manejador, false);
+
+            function manejador(evento){
+                switch(evento.type){
+                    case "click":
+                        cont++;
+                        break;
+
+                    case "contextmenu":
+                    document.oncontextmenu = ()=>false;//funcion flecha para deshabilitar el menú contextual
+                        cont--;
+                        break;
+                }
+                document.getElementById("cont").innerHTML = cont;
+            }
+    </script>
+</body>
+</html>

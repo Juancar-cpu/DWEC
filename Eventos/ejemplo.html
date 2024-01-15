@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!--Ejemplo de modelo de eventos en linea-->
+    <h1 id="parrafo" onmouseover="this.style.backgroundColor='red'" onmouseleave="this.style.backgroundColor=''"></h1><!--backgroudColor vacio quita el estilo-->
+    <button onclick="escribir()">Poner texto</button><!--Evento de onclick. Podriamos emetr en funcionamiento de la funcion aqui a lo bruto-->
+    <script>
+        /*Cabecera que al pulsar escriba "mi texto". Al pasar encima su color de fondo pasa a rojo. Al salir el fondo se hace blanco. No usar css*/
+        function escribir(){//Así se hace con una funcion externa
+            document.getElementById("parrafo").innerHTML="Mi texto";
+        }
+    </script>
+    <h3>Metodo en linea</h3>
+</body>
+</html>
