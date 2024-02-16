@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Buscaminas</title>
+  <!--Añadimos estilos a parte del css. Estos se guian por clases, algo parecido a bootstrap-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
 </head>
@@ -12,8 +13,8 @@
   <!-- CSS (Estilos) -->
   <style>
     * {
-      transition: all 1s;
-      box-sizing: border-box;
+      transition: all 1s;/*Todas las animaciones tardan 1 seg en completarse para seguirlas mejor*/
+      box-sizing: border-box;/*El tamaño de las celdas incluye su borde para que no se descuadren las celdas*/
     }
 
     body {
@@ -71,7 +72,7 @@
   <!-- HTML (Estructura) -->
   <br>
 
-  <span id="juego-nuevo" onclick="nuevoJuego()">
+  <span id="juego-nuevo" onclick="nuevoJuego()"><!--Evento de juego nuevo al hacer click-->
     Juego Nuevo
   </span>
 
@@ -79,40 +80,48 @@
     000
   </span>
 
-  <span id="Ajustes" onclick="ajustes()">
+  <span id="Ajustes" onclick="ajustes()"><!--Evento de ajustes al hacer click-->
     <i class="fas fa-cog"></i>
   </span>
 
-  <table cellspacing="0" cellpadding="0" id="tablero">
+  <span id="reloj">00:00</span><!--Reloj que medirá el tiempo de la partida-->
+
+  <table cellspacing="0" cellpadding="0" id="tablero"><!--El tablero de juego será una tabla que se genera dependiendo de los ajustes de juego. Cad elda temdrá su id en base a su fila y columna-->
   </table>
 
   <!-- JS (Lógica) -->
   <script>
   
-    let filas = 20
-    let columnas = 20
-    let lado = 30
+    //Valores por defecto
+    let filas = 20;
+    let columnas = 20;
+    let lado = 30;
 
-    let marcas = 0
+    let marcas = 0;
 
-    let minas = filas * columnas * 0.1
+    let minas = filas * columnas * 0.1;//Numnero de minas. Por defecto serán el 10% de las casillas en partida
 
-    let tablero = []
+    let tablero = [];//Las casillas irán dentro de un array para facilitar su trabajo
 
-    let enJuego = true
-    let juegoIniciado = false
+    let tiempoEmpieza;//Dos variables para el comportamiento del reloj
+    let intervaloTiempo
+
+    //booleanos para saber si hemos iniciado partida o no
+    let enJuego = true;
+    let juegoIniciado = false;
 
     nuevoJuego()
 
-    function nuevoJuego() {
+    function nuevoJuego() {//nuevoJuego es la función padre de todas. Llama a las más importantes, que a su vez reunen al resto
       reiniciarVariables()
       generarTableroHTML() //Gernera la estructura visual de la matriz
       generarTableroJuego() //Se encarla de generar las minas y los números para que sean descubiertos
-      añadirEventos() //se añaden los eventos de mouse para las celdas
-      refrescarTablero() //Se encarga del comportamiento lógico para mostrar los elementos
+      añadirEventos() //se añaden los eventos de ratón para las celdas
+      iniciaTiempo()//Iniciamos reloj
+      refrescarTablero() //Se encarga de reiniciar el tablero siempre que sea necesario
     }
 
-    async function ajustes() {
+    async function ajustes() {//Las opciones de partida se van a manejar con promesas
       const {
         value: ajustes
       } = await swal.fire({
@@ -137,7 +146,7 @@
         confirmButtonText: "Establecer",
         cancelButtonText: "Cancelar",
         showCancelButton: true,
-        preConfirm: () => {
+        preConfirm: () => {//Una vez hechas las opciones, transmitimos los datos al tablero
           return {
             columnas: document.getElementById("columnas").value,
             filas: document.getElementById("filas").value,
@@ -145,16 +154,16 @@
           }
         }
       })
-      if (!ajustes) {
+      if (!ajustes) {//si no hemos seleccionado ajustes
         return
       }
       filas = Math.floor(ajustes.filas)
       columnas = Math.floor(ajustes.columnas)
       minas = Math.floor(columnas * filas * ajustes.dificultad / 100)
-      nuevoJuego()
+      nuevoJuego()//cargamos los valores por defecto e iniciamos partida
     }
 
-    function reiniciarVariables() {
+    function reiniciarVariables() {//Cada vez que se inicia un nuevo juego reiniciamos el marcador y las variables de estado
       marcas = 0
       enJuego = true
       juegoIniciado = false
@@ -174,12 +183,12 @@
               id="celda-${c}-${f}"
               es la instrucción más importante, asigna una coordenada a cada elemento
           */
-          html += `<td id="celda-${c}-${f}" style="width:${lado}px;height:${lado}px">`
+          html += `<td id="celda-${c}-${f}" style="width:${lado}px;height:${lado}px">`//todas las casillas del mismo tamaña e id diferente
           html += `</td>`
         }
         html += `</tr>`
       }
-      let tableroHTML = document.getElementById("tablero")
+      let tableroHTML = document.getElementById("tablero")//capturamos el tablero y le cargamos 
       tableroHTML.innerHTML = html
       tableroHTML.style.width = columnas * lado + "px"
       tableroHTML.style.height = filas * lado + "px"
@@ -195,10 +204,10 @@
         for (let c = 0; c < columnas; c++) {
           let celda = document.getElementById(`celda-${c}-${f}`)
           celda.addEventListener("dblclick", function(me) {
-            dobleClic(celda, c, f, me)
+            dobleClic(celda, c, f, me)//vamos a ñadir a cada celda la funcion de dobleclick sobre ella. click dobre llama a la funcion de abrir
           })
           celda.addEventListener("mouseup", function(me) {
-            clicSimple(celda, c, f, me)
+            clicSimple(celda, c, f, me)//un click sobre las celdas desata los eventos de click simple
           })
         }
       }
@@ -302,7 +311,7 @@
             celda.style.boxShadow = "none"
             switch (tablero[c][f].valor) {
               case -1:
-                celda.innerHTML = `<i class="fas fa-bomb"></i>`
+                celda.innerHTML = `<i class="fas fa-bomb"></i>`//fas fa-boom es una clase como si fuera bootstrap para que las celdas que los -1 sean sustituidos con el dibujo de una bomba
                 celda.style.color = "black"
                 celda.style.background = "white"
                 break;
@@ -355,6 +364,9 @@
       let tableroHTML = document.getElementById("tablero")
       tableroHTML.style.background = "green"
       enJuego = false
+      if(!enJuego){
+      pararTiempo();//Paramos el reloj
+      }
     }
 
     function verificarPerdedor() {
@@ -383,6 +395,10 @@
           }
         }
       }
+      if(!enJuego){
+      pararTiempo();//Paramos el reloj
+      }
+      
     }
 
     /*
@@ -446,5 +462,32 @@
         }
       }
     }
+
+    function iniciaTiempo(){
+      tiempoEmpieza = new Date().getTime();//Iniciamos un objeto Date y pillamos su tiempo
+
+      //Actualizamos el reloj a cada segundo
+      intervaloTiempo = setInterval(actualizaTiempo, 1000);//setInterval para que se llame a la funcion cada segundo
+    }
+
+    function actualizaTiempo(){
+      const TIEMPO_ACTUAL = new Date().getTime();
+      const LAPSO_DE_TIEMPO = TIEMPO_ACTUAL - tiempoEmpieza;
+
+      //Calcular los minutos y segundos
+      const MINUTOS = Math.floor(LAPSO_DE_TIEMPO/(1000*60));
+      const SEGUNDOS = Math.floor((LAPSO_DE_TIEMPO%(1000*60))/1000);
+
+      //Damos formato
+      const TIEMPO_FORMATO = (MINUTOS < 10 ? "0":"")+MINUTOS+":"+(SEGUNDOS < 10 ? "0":"")+SEGUNDOS;
+
+      //Actualizamos la vista de tiempo
+      document.getElementById("reloj").innerText=TIEMPO_FORMATO;
+    }
+
+    function pararTiempo(){
+      //el tiempo debe detenerse al terminar partida o perder
+      clearInterval(intervaloTiempo);//detenemos la llamada a actualizaTiempo que se lleva a cabo cada segundo
+    }
   </script>
-</body>
+</body>>
