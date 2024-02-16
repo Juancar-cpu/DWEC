@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #cajaImagen{
+            margin: auto;
+            min-width: 400px;
+            max-width: 800px;
+        }
+        #cajaImagen #imagen{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!--Coloque en la aplicación una imagen:
+    - Mientras se mantenga click pulsado cambiar por otra imagen
+    - Cuando se suelta el click debe volver a la primera imagen-->
+
+    <div id="cajaImagen">
+        <img id="imagen" src="./imagenes/alianza.jpg">
+    </div>
+
+    <script>
+        window.addEventListener("load", preparar);
+
+        function preparar(){
+            imagen.addEventListener("mousedown", mostrarOculta);
+            imagen.addEventListener("mouseup", mostrarOriginal);
+
+            function mostrarOculta(){
+                imagen.src="./imagenes/horda.jpg"
+            }
+            function mostrarOriginal(){
+                imagen.src="./imagenes/alianza.jpg"
+            }
+        }
+    </script>
+
+</body>
+</html>

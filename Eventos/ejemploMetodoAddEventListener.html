@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Al modelo addEventListener tambien se le llama w3c-->
+    <h1 id="w3c">Modelo del W3C</h1>
+    <script>
+        document.getElementById("w3c").addEventListener("click", color, false);//de momento siempre a false
+        document.getElementById("w3c").addEventListener("click", fondo, false);//Le podemos asignar varias funciones a click de este modo
+
+        function color(){
+            document.getElementById("w3c").style.color='red';
+        }
+        function fondo(){
+            document.getElementById("w3c").style.backgroundColor='black';
+        }
+    </script>
+</body>
+</html>

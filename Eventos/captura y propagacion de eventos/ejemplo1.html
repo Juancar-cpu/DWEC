@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body * {
+            margin:10px;
+            border: 1px solid blue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form onclick="alert('formulario')">FORM
+        <div onclick="alert('div')">DIV
+            <p onclick="alert('p')">P</p>
+        </div>
+    
+    </form>
+    
+    <!--Si pinchamos el parrafo, nos saltaran los elementos de div y form tambien porque, texnicamente, tambien estamos pulsando en ellos. Esto se le conoce como propagacion
+    
+    Propagacion es que, al saltar un evento, este no se detiene ahí, sino que busca todos los eventos posibles hacia arriba que pueda hacer. Esto sucede siempre pero la propia 
+    construccion de codigo suele impedirlo-->
+
+    <!--El metodo addEventListenr tiene 3 atributos. El tercero, el que va a true o false, marca lo que debe pasar en la fase de propagación. False bloquea todo menos el bubbling
+    propagacion hacia arriba tambien se le conoce como bubbling y va de dentro hacia afuera
+
+La fase de captuamos ariiba del todo y vamos bajando hasta encontrar el ring, la fase objetivo y la fase de bubbling
+capturing: Empezamos ariiba del todo y vamos bajando hasta encontrar el parametro que desencadena el evento
+objetivo: se ejecuta el evento
+bubbling: vuelve hacia arriba tras ejecutar el evento. Si no se controla va a desatar todos los eventos en su camino hacia arriba
+
+
+Podemos poner el evento junto a un event.stopPropagation(). No es recomendable usarlo pero esto frena la propagacion en seco
+
+
+Y si un evento tiene múltiples manejadores? Que tiene varios escuchadores al mismo nivel. stopPropagation no funciona porque bloquea el camino hacia arriva, pero el resto al mismo nivel se haran
+Para evitarlo se usa event.stopImmediatePropagation(). Esto también bloque alos eventos al mismo nivel
+
+Ninguno de estos dos se suelen utilizar porque tenemos programas de control y estudio para ver qué hacen los usuarios con nuestra página. Sin la propagacion la pagina va a
+tener zonas oscuras donde no podremos registrar lo que hace el usuario con la página-->
+</body>
+</html>

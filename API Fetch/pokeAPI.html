@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--Usando la api de pokemon, sacar datos de cyndaquil-->
+
+    <div id="contenidoAPI"></div>
+    <div id="contenidoAPI2"></div>
+
+    <script>
+        //fetch para un solo pokemon
+        fetch("https://pokeapi.co/api/v2/pokemon/cyndaquil").then(response=>response.json())
+        .then(datos=>{
+            console.log(datos);
+
+            const muestra = document.getElementById("contenidoAPI").innerHTML=
+            `<img src=${datos.sprites.front_default}>
+            <p>Nombre: ${datos.name}</p>
+            <p>Numero Pokedex: ${datos.game_indices[3].game_index}</p>
+            <p>Tipo: ${datos.types[0].type.name}</p>
+            <p>Primera aparicion: Pokemon ${datos.game_indices[0].version.name}</p>`
+
+        });
+
+
+        //fetch para los 151 pokemon originales
+
+        let order=Math.floor(Math.random()*5)+1;
+        console.log(Math.floor(Math.random()*5))
+        
+        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`).
+        then(response => response.json()).then(datos=>{
+            console.log(datos);
+            const pokedex = document.getElementById("contenidoAPI2");
+
+            datos.results.forEach(results=>{
+                const poke = document.createElement("div"); 
+                let url = `${results.url}`; 
+                fetch(url).then(response=>response.json()).then(datos =>{
+                    poke.innerHTML=`<img src=${datos.sprites.front_default}>
+            <p>Nombre: ${datos.name}</p>
+            <p>Numero Pokedex: ${datos.game_indices[3].game_index}</p>
+            <p>Tipo: ${datos.types[0].type.name}</p>
+            <p>Primera aparicion: Pokemon ${datos.game_indices[0].version.name}</p>`
+                })
+
+            pokedex.appendChild(poke);
+
+            })
+        
+                
+            
+        })
+
+    
+    </script>
+</body>
+</html>

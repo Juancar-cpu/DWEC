@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="resultado"></div>
+    <script>
+        fetch("persona.json").then(response=>{
+            if(response.ok){
+                return response.json();
+            }
+            throw new Error('Network response was not ok');
+        })
+
+        .then(data=>{
+            //Acceder a los datos de la persona
+            const persona = data.persona;
+
+            //Construir cadena con la informacion
+            const infoPersona = ` 
+                    <p>Nombre: ${persona.nombre} ${persona.apellido}</p>
+                    <p>Edad: ${persona.edad}</p>
+                    <p>Email: ${persona.email}</p>
+                    <p>Teléfono: ${persona.telefono}</p>
+                    <p>Dirección: ${persona.direccion.calle} ${persona.direccion.numero}, ${persona.direccion.ciudad}, ${persona.direccion.codigo_postal}, ${persona.direccion.pais}</p>
+                    `;
+            //Mostrar la información en la pagina
+            document.getElementById('resultado').innerHTML= infoPersona;
+        })
+        .catch(error=>{
+            console.error("Hubo un problema con la operacion Fetch:", error);
+        });
+
+        //Hya que abrir el proyecto teniendo la extension de live server. luego clikc derecho al html y mostrar vista previa
+    </script>
+</body>
+</html>

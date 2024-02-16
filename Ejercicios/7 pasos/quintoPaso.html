@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*5.- Encierra todo el programa en un bucle para que al usuario se le pregunte repetidamente qué quiere hacer. 
+        El usuario puede optar por:
+
+•	Mostrar el primer contacto (primero)
+•	Mostrar el último contacto (último)
+•	Mostrar todos los contactos (todos)
+•	Añadir un nuevo contacto (nuevo)
+•	Salir del programa (salir)
+
+Después de ejecutar la acción seleccionada, el programa le dará la oportunidad de elegir nuevamente. 
+El programa debe finalizar las acciones solo después de que el usuario dé un comando específico (salir).
+*/
+let agenda = [ ["Maxwell Wrigth", "(0191) 719 6493", "Maxwell@correo.com"], 
+                ["Raja Villareal", "0866 398 2895", "Raja@correo.com"],
+                ["Helen Richards", "0800 1111", "Helen@correo.com"]];
+
+    //Haremos una función para sacar los datos
+    function sacarInfo (agenda, op){
+        console.log("Nombre: "+agenda[op][0]+" / Numero: "+agenda[op][1]+" / Correo: "+agenda[op][2]);
+    }
+    //Aqui empieza el paso 5. Vamos a meter el switch en un bucle
+    let op;//Tenemos que iniciar op fuera del do-while o nos da errores
+    do{
+        //Necesitamos parseInt porque switch no funciona con strings
+        op = parseInt(prompt("¿Que hacemos?\n1_Mostrar primer contacto\n2_Mostrar ultimo contacto\n3_Mostrar todos los contactos\n4_Añadir nuevo contacto\n5_Salir"));
+        switch(op){
+            case 1://Sacar primer contacto
+                sacarInfo(agenda, 0);//Pasamos el array agenda y la posicion 0
+                break;//Poner break o el switch pasa al siguiente. No queremos eso
+
+            case 2://Sacar ultimo contacto
+                sacarInfo(agenda, agenda.length-1);//Pasamos el array agenda y la ultima posicion
+                break;
+
+            case 3://Sacar todos los contactos
+                for(let i=0;i<agenda.length;i++){
+                    console.log("Nombre: "+agenda[i][0]+" / Numero: "+agenda[i][1]+" / Correo: "+agenda[i][2]+"\n")
+                }
+                break;
+            case 4://Agregar contacto
+            let nombre = prompt("Dame el nombre del contacto");
+            let numero = prompt("Dame el numero del contacto");
+            let correo = prompt("Dame el correo del contacto");
+
+            if(nombre != "" && numero != "" && correo != ""){
+            agenda.push([nombre, numero, correo]);
+            }
+            else{
+                alert("Alguno de los campos está vacio");
+            }
+            break;
+
+            case 5://Salir
+                alert("Saliendo...");
+                break;
+
+            default://Opcion defecto
+                alert("Opcion no contemplada");
+        }
+    }while(op != 5);
+    </script>
+</body>
+</html>

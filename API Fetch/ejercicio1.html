@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Usando fetch y appendchild, crea una lista de 10 usuarios con su imagen y nombre-->
+
+    <div id="contenidoAPI"></div>
+    <script>
+
+
+            fetch("https://randomuser.me/api/?results=10") //así puedo sacar 10 resultados sin bucle for. mirar la documentacion de randomuser
+            .then(response=>response.json())//convertimos la respuesta en json para que javascript pueda manejarlo
+            .then(datos =>{ //despues de convertirse en json, los datos pasan a otra variable por el segundo then
+                console.log(datos)//sacamos los datos por consola
+                const userListContainer = document.getElementById("contenidoAPI"); //capturamos el elemento contenidoAPI y lo metemos en una constante para referirnos a el mas adelante
+
+                //Iterar cada resultado y mandar los resultados al div
+                datos.results.forEach(user => {//usamos un bucle foreach para iterar por cada resultado contenido en datos
+                    const userContainer = document.createElement("div");//creamos un elemento div para guardar los resultados
+                    userContainer.innerHTML = `
+                        <img src="${user.picture.medium}">
+                        <p>Nombre: ${user.name.first}</p>`;//De todos los datos, cogemos la imagen media y el primer nombre
+                    userListContainer.appendChild(userContainer);//Una vez lleno el div con las imagenes y nombres, usamos appendChild para meterlo dentro del div contenidoAPI
+                });
+            })
+            .catch(error => console.error("Error fetching data:", error));//catch para manejar errores
+    </script>
+</body>
+</html>

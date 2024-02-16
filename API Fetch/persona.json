@@ -1,0 +1,17 @@
+{
+    "persona": {
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "edad": 35,
+      "email": "juan@example.com",
+      "telefono": "123-456-7890",
+      "direccion": {
+        "calle": "Calle Principal",
+        "numero": "123",
+        "ciudad": "Ciudad Ejemplo",
+        "codigo_postal": "12345",
+        "pais": "Ejemplo"
+      }
+    }
+  }
+  

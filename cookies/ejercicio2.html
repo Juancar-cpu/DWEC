@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Pon dos contadores. Uno debe volver a 0 cada vez que cerremos el navegador. El otro debe mantener su estado aun cuando cerremos el navegador
+        Ambos suman 1 al pulsar un boton. Al principio debemos dar el nombre mediante un alert y debe reconocernos aunque cerremos la pagina
+        Usa webStorage-->
+        <p id="cont1"></p>
+        <p id="cont2"></p>
+        <p id="nombre"></p>
+        <button id="suma"></button>
+
+        <script>
+            if(typeof(Storage)!=="undefined"){//Vamos a condicionar todo el programa a que el navegador disponga de wevStorage
+                alert("Tu navegador soporta Web Storage");
+                
+            }
+            else  alert("Tu navegador NO soporta Web Storage");
+        </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="incrementar">Incrementar</button>
+    <button type="button" id="decrementar">Decrementar</button>
+    <button type="button" id="logOut">Desconectar</button>
+
+    <p id="saludo"></p>
+    <p id="contador"></p>
+
+    <script>
+        if(typeof(Storage)!=="undefined"){
+            alert("El navegador soporta Web Storage");
+
+            if(localStorage.usuario != null){//si ya tenemos un usuario en local storage
+                document.getElementById("saludo").innerHTML="Hola de nuevo "+localStorage.usuario;
+            }
+            else{//si no tenemos un usuario en local storage
+                localStorage.usuario=prompt("Dame tu nombre");//le damos el usuario por teclado
+                document.getElementById("saludo").innerHTML="Hola, nuevo usuario  "+localStorage.usuario;//Y hacemos el primer saludo
+            }
+        
+
+        if(!sessionStorage.getItem("contador")){//si no hay un item contador
+            sessionStorage.setItem("contador", 0);//creamos ese item contador y le damos un valor inicial de 0
+        }
+
+        document.getElementById("contador").innerHTML="Contador: "+sessionStorage.getItem("contador");//Damos al parrafo contador el valor actual del item contador 
+        document.getElementById("incrementar").addEventListener("click", incrementar, false);
+        document.getElementById("decrementar").addEventListener("click", decrementar, false);
+        document.getElementById("logOut").addEventListener("click", logOut, false);
+
+        function incrementar(){
+            sessionStorage.setItem("contador", Number(sessionStorage.getItem("contador"))+1);//cogemos el item contador y le sumamos 1 más de lo que tenia
+            document.getElementById("contador").innerHTML="Contador: "+sessionStorage.getItem("contador");//sacamos contador por la pantalla
+        }
+
+        function decrementar(){
+            sessionStorage.setItem("contador",Number(sessionStorage.getItem("contador"))-1);//cogemos el item contador y le sumamos 1 más de lo que tenia
+            document.getElementById("contador").innerHTML="Contador: "+sessionStorage.getItem("contador");//sacamos contador por la pantalla
+        }
+
+        function logOut(){
+            alert("Se ha cerrado la sesion de "+localStorage.getItem("usuario"));
+            localStorage.removeItem("usuario");
+            document.getElementById("saludo").innerHTML="";
+            sessionStorage.setItem("contador", 0);
+            //window.location.replace("ejercicio3.html"); Otra forma. Llamamos al propio archivo y vuelve en su estado inicial
+        }
+    }
+
+    else alert("El navegador NO soporta Web Storage");
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+AJAX es una tecnica de desarrollo de aplicaciones web asíncronas. Curva de aprendizaje elevada.
+
+AJAX no es una sola tecnologia ni es un lenguaje de programacion. AJAX es un conjunto de tecnicas que comprende:
+
+1_ el objeto XMLHttpRequest para la comunicacion asíncronas
+2_ HTML/XHTML como lenguaje principal
+3: CSS para la presentacion
+
+
+api fetch es una api para js con la que reralizar peitciones http asincronas compatible con promesas
+para realizar una peticion se invoca fetch pasandole por parametro la url donde hacer la peticion, o la ruta del fichero
+
+la funcion fetch() devuelve una promesa que se cumple cuando ha obtenido repsuesta a una peticion realizada
+sintaxis: fetch(fichero)
+fetch(url, [options])
+
+fetch retoma promesas, por lo que se utiliza .then
+se obtiene un elemento de clase response
+
+lo normal del fetch es que vaya dentro de promesas o async/await

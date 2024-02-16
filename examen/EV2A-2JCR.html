@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Definición de la clase Animal
+class Animal {//definimos la clase padre Animal, con nombre, edad y estado dentro
+    constructor(nombre, edad, estado) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.estado = estado;
+    }
+
+    introduce() {//funcion con el mensaje que se debe dar. Usamos `` para tratar más cómodamente las variables
+        return `Hola, mi nombre es ${this.nombre}, tengo ${this.edad} años y me siento ${this.estado}`;
+    }
+}
+
+// Clase Tiburon hereda de Animal
+class Tiburon extends Animal {
+    constructor(nombre, edad, estado) {
+        super(nombre, edad, estado);
+        this.especie = 'Escualos';//Le añadimos su especie, el resto lo hereda
+        this.patas = 0; // Los tiburones no tienen patas, esto tambien se le añade
+    }
+}
+
+// Clase Gato hereda de Animal
+class Gato extends Animal {
+    constructor(nombre, edad, estado) {
+        super(nombre, edad, estado);
+        this.especie = 'Felinos';//Le añadimos su especie, el resto lo hereda
+        this.patas = 4; // Los gatos tienen 4 patas
+    }
+
+    introduce() {
+        return `${super.introduce()}  ¡Miau, miau!`;//En caso de gato, debemos añadir el Miau Miau despues de su presentación, con exactamente 2 espacios en blanco antes
+    }
+}
+
+// Clase Perro hereda de Animal
+class Perro extends Animal {
+    constructor(nombre, edad, estado, dueño) {
+        super(nombre, edad, estado);
+        this.especie = 'Canidos';//Le añadimos su especie, el resto lo hereda
+        this.patas = 4; // Los perros tienen 4 patas
+        this.dueño = dueño;//Perro gana el dueño
+    }
+
+    saludaDueño() {
+        return `Hola ${this.dueño}`;//Dueño es un mensaje simple
+    }
+}
+
+// Definimos a cada animal dándole sus atributos
+const chum = new Tiburon('Chum', 5, 'hambriento');
+const silvestre = new Gato('Silvestre', 3, 'juguetón');
+const cane = new Perro('Cane', 2, 'feliz', 'Pepe');
+
+// Mostrar por consola los resultados de cada uno
+console.log(chum.introduce());
+console.log(silvestre.introduce());
+console.log(cane.introduce());
+console.log(cane.saludaDueño());
+
+    </script>
+</body>
+</html>
+
+
+
+

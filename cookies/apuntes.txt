@@ -1,0 +1,53 @@
+Las cookies son datos almacenados en pequeños ficheros de texto en los navegadores del cliente
+
+El sitio es capaz de mantener los datos proporcionados mediante el navegador al conectarse a una web para futuras visitas
+
+Son pares de clave-valor
+
+Cuando un navegador se conecta a un site, el navegador junto a la peticion que haga envía las cookies que son necesarias para que el servidor conozca quine soy y mis preferencias
+
+la sintaxis de una cookies es: document.cookie="clave1=valor1 ; clave2=valor2;"
+
+ahora se usan poco porque se utiliza webStorage ya que funciona mejor y tiene mejor tratanmiento de la informacion
+
+
+En una cookies se luele meter el nombre de ususario, la fecha de expiración, la edad máxima en segundos (tiempo que la cookie va a vivir), la ruta, el dominio y algun tipo de preferencia (color, fuente, etc)
+
+document.cookie="usuario=juan; expires=Thu, 29 Dic 2022 12:00:00 UTC; path=/;"
+
+Las cookies pueden crearse, borrarse o manipularse
+
+Para modificar: Hya que copiar toda la cookie, pero cambiando los valores que vayamos a cambiar. Los valores que no cambiemos tambien deben estar presentes, pero sin manipular
+
+
+Modo de trabajo avanzado con cookies:
+setCookie, getCookie, deleteCookie (mirar w3schools)
+
+Web Storage tambien funciona con pares clave valor. Existen 2 mecanismos suyos: sessionStorage (desaparece cuando se cierra el navegador) y localStorage(permanece aun cuando se cierra el navegador)
+
+Mirar web Storage en w3schools
+
+Metodos web Storage
+setItem: crea un elemento de almacenamiento web
+getItem: permite consultar un elemento
+removeItem: permite eliminar info de un elemento
+clear:permite eliminar el elemento completo
+
+
+Para comprobar que un navegador soporta web Storage
+if(typeof(Storage)!=="undefined")
+si da true es que soporta webStorage
+
+crear
+localStorage.setItem("nombre", "Juan Jose");//el mejor
+esto es analogo con el resto de Metodos
+
+localStorage.getItem
+localStorage.removeItem
+localStorage.clear
+
+
+
+En el buscaminas. Al arrancar el programa debe dar un mensaje de bienvenida si es la primera vez o saludarnos si ya nos hemos conectado
+
+

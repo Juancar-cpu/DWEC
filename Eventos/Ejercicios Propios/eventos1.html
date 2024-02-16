@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--En una página web vas a colocar un elemento tipo div con un argumento onclick() 
+        para que al pulsar sobre el bloque se abra una ventana alert con el mensaje "Pulsaste sobre el botón". 
+        El bloque div deberá tener como texto "Pulsa aquí".-->
+
+        <div id="cont">Pulsa aquí</div>
+        <script>
+            document.getElementById("cont").addEventListener("click", alerta, false);
+
+            function alerta(){
+                window.alert("Pulsaste el botón");
+            }
+        </script>
+    
+</body>
+</html>

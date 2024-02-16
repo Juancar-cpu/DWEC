@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Supongamos que tienes un archivo JSON llamado data.json en tu proyecto y quieres hacer 
+        una solicitud Fetch para obtener los datos de ese archivo:-->
+
+        <script>
+            // Definir la URL del archivo JSON local
+const url = 'data.json';
+
+// Realizar la solicitud Fetch
+fetch(url)
+  .then(response => {
+    // Verificar si la solicitud fue exitosa (código de estado 200)
+    if (response.ok) {
+      // Convertir la respuesta a JSON
+      return response.json();
+    }
+    // Si la solicitud falla, lanzar un error
+    throw new Error('Network response was not ok.');
+  })
+  .then(data => {
+    // Hacer algo con los datos obtenidos, por ejemplo, imprimirlos en la consola
+    console.log(data);
+  })
+  .catch(error => {
+    // Capturar cualquier error que ocurra durante la solicitud Fetch
+    console.error('There was a problem with your fetch operation:', error);
+  });
+
+        </script>
+</body>
+</html>

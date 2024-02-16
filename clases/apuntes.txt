@@ -1,0 +1,25 @@
+Esta relacionado con objetos, creaicon mediante function y prototipos
+
+La clase no es un objeto sino una plantilla para ahcer objetos en js
+Las clases son una mejora sobre los prototitpos que se empezaron a usar a partie de la version 6 de js
+
+ejemplo
+class Coche{
+    constructor(mar, mod){
+        this.marca=mar
+        this.modelo=mod;
+    }
+}
+poner _ delante de los this
+
+let miChoche = new Coche('mercedes', "yaris")
+console.log( `${moCoche._marca}, ${miCoche._modelo}`)
+
+
+Buscar HERENCIA
+con super accedo a las propiedades de la clase padre. La relacion entre padre/hijo se indica mediante extends
+
+getters y setters
+
+
+extraer (get) y modificar(set). No se puede poner el mismo nombre al metodo y a la propiedad

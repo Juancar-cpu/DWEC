@@ -1,0 +1,12 @@
+Obtencion de informacion
+Sabemos como asociar escuchadores o listeners a eventos
+Pero la mayor parte de las veces se necesita saber informacion del evento que se ha producido
+La funcion que se ejecuta cuando se produce el evento tiene un parametro que se genera automaticamente y contiene esa informacion del evento
+ç
+
+
+4_05
+Utilizamos modelo de eventos w3c utilizamos addevent listener
+con e.type
+
+document.querySelector()

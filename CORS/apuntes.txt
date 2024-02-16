@@ -1,0 +1,8 @@
+CORS es la circunstancia que se produce cuando uso parte de codigo de distintos dominios. Se puede dar un error si uno de los 
+dominios de que saco info se cierra y no me deja acceder a ella
+
+En principio, por seguridad, las paginas webs me impiden abrir cosas de otros dominios (SOP, Politica de Seguridad de igual Origen).
+Segun el SOP los datos refenrentes al origen que deben coincidir son tres: host, puerto y protocolo
+
+get y ahead no suelen hacer saltar el cors, pero patch, put o delete si 
+Para no tener cors activo se pued einstanalr la extension allow cors

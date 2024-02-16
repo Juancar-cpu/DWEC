@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Botones ver todas las cookies, crear cookie1, crear cookie2, borrar cookie1 y borrar cookie2-->
+    <button type="button" id="verTodas">Ver todas las cookies</button>
+    <button type="button" id="crear1">Crear cookie 1</button>
+    <button type="button" id="crear2">Crear cookie 2</button>
+    <button type="button" id="borra1">Borra cookie 1</button>
+    <button type="button" id="borra2">Borra cookie 2</button>
+</body>
+<script>
+    document.getElementById("verTodas").addEventListener("click", verTodas, false);
+    document.getElementById("crear1").addEventListener("click", crearCookie, false);
+    document.getElementById("crear2").addEventListener("click", crearCookie, false);
+    document.getElementById("borra1").addEventListener("click", borraCookie, false);
+    document.getElementById("borra2").addEventListener("click", borraCookie, false);
+
+    function verTodas(){
+        alert(document.cookie);//mostramos por alert las cookies
+    }
+
+    function crearCookie(e){
+        if(e.target.id=="crear1"){//Si le estamos haciendo evento target al elemento con id crear1...
+            document.cookie="nombre=Juan;";
+        }
+        else if(e.target.id=="crear2"){//Poner dos iguales == para que sea correcto
+            document.cookie="apellido=Bautista;";
+        }
+    }
+
+    function borraCookie(e){
+        if(e.target.id=="borra1"){//Si le estamos haciendo evento target al elemento con id crear1...
+            document.cookie="nombre=Juan; expires=Thu, 01 Jan 1970 00:00:01 UTC;";
+        }
+        else if(e.target.id=="borra2"){//Si le estamos haciendo evento target al elemento con id crear1...
+            document.cookie="apellido=Bautista; expires=Thu, 01 Jan 1970 00:00:01 UTC;";
+        }
+    }
+</script>
+</html>

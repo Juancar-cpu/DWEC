@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pantalla"></div>
+    <script>
+// Definición de la función salidaEtapa
+async function salidaEtapa(dorsal) {//funcion asincrona para manejar las diferentes salidas
+    // Función para la cuenta atrás
+    function countdown(seconds) {//esta funcion nos va a tratar el tiempo de salida de cada dorsal
+        return new Promise(resolve => {//queremos que nos devuelva el valor de la nueva Promesa
+            const interval = setInterval(() => {//usamos un interval para que la funcion se repita a intervalos
+                //console.log(`Dorsal ${dorsal} ${seconds} ---`);//sacamos por consola en dorsal y su cuenta atrás para salir
+                document.getElementById("pantalla").innerHTML+=`Dorsal ${dorsal} ${seconds} ---`+"<br>";
+                seconds--;
+                if (seconds < 0) {//si los segundos son menos que 0 ese dorsal ha terminado
+                    clearInterval(interval);//limpiamos el interval
+                    resolve();//y resolvemos
+                }
+            }, 1000);//los mensajes apareceran cada segundo
+        });
+    }
+
+    // Mostrar cuenta atrás y mensaje de salida
+    console.log(`Secuencia: Dorsal ${dorsal}`);
+    document.getElementById("pantalla").innerHTML+=`Secuencia: Dorsal ${dorsal}`+"<br>";
+    await countdown(3); // Esperar 3 segundos antes de comenzar la cuenta atrás
+    console.log(`Dorsal ${dorsal} ¡Salida!`);
+    document.getElementById("pantalla").innerHTML+=`Dorsal ${dorsal} ¡Salida!`+"<br>";
+    return Promise.resolve(); // La función devuelve nuestra promesa ya resuelta
+}
+
+// Función para manejar la secuencia de salidas
+async function iniciarCarrera(dorsales) {//otra funcion asincrona
+    for (let i = dorsales.length - 1; i >= 0; i--) {//recorremos nuestra lista de dorsales
+        await salidaEtapa(dorsales[i]);
+        if (i > 0) {
+            console.log(`Dorsal ${dorsales[i - 1]} ¡Salida!`);
+
+        }
+    }
+    console.log("Carrera iniciada");
+}
+
+// Uso de la función iniciarCarrera con una lista de dorsales
+const dorsales = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]; // Ejemplo de dorsales que participan en la carrera, en orden inverso a su salida. Si queremos mas es cuestion de añadirlos aqui
+iniciarCarrera(dorsales)//iniciamos..
+    .catch(err => console.error("Error:", err)); // Manejo de errores si los hubiera
+    </script>
+</body>
+</html>

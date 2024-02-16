@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Para crear herencia de clases hay que usar la palabra extends.
+        Una clase creada con herencia hereda todos los metodos de la otra clase-->
+
+        <div id="mensaje"></div>
+        <script>
+            window.addEventListener("load", function(){
+
+                class Coche{
+                    constructor(marca){
+                        this.marca=marca;
+                    }
+                    anuncio(){
+                    return "Ha llegado el nuevo coche de "+this.marca;
+                }
+                }
+                 
+
+                class Modelo extends Coche{//modelo hereda de coche
+                    constructor(marca, modelo){
+                        super(marca);
+                        this.modelo=modelo;
+                    }
+                    anuncioCompleto(){
+                    return this.anuncio()+": el modelo "+this.modelo;
+                }
+                }
+
+                let miChoche = new Modelo("Toyota", "Yaris");
+                mensaje.innerhtml=anuncioCompleto();
+
+            })
+            
+        </script>
+</body>
+</html>

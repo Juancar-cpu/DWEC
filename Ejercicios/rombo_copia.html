@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="lienzo">
+    
+    <script>
+        //Definimos las variables
+        const NUM_FILAS = parseInt(prompt("¿Cuantas filas tendrá el rombo?"));
+
+        //Empezamos con los bucles
+        for(var i=0;i<NUM_FILAS;i++){//bucle for general que controlará todo el proceso
+            //Siempre que el bucle general hace una nueva pasada, ponemos simbolo y espacios vacios
+            let simbolo = "";
+            let espacios = "";
+
+            //Lo primero es agregar los espacios que iran en cada fila
+            for(var k =0;k<NUM_FILAS-i-1;k++){//Evoluciona con i porque a más filas recorramos menos espacios vamos a poner
+                espacios +="&nbsp;&nbsp;";//Cuanto más cerca del limite de filas menos se concatenan
+            }
+
+            //Una vez agregados todos los espacios de la linea actual, agregamos los asteriscos necesarios
+            for(var a = 1; a <= 2 * i + 1 ; a++){//Siempre van a ser 2 * más que la fila en la que nos encontremos. El +1 es porque empezamos a contar desde 0. a empieza siendo 1 porque si
+                simbolo +="*";
+            }
+            document.getElementById("lienzo").innerHTML +=espacios+simbolo+"<br/>";
+        }
+
+        //La otra mitad de la piramide
+        //Lo unico que cambia aqui es el bucle general. Los bucles de espacios y asteriscos son fijos, excepto el bloque espacios que ya no necesita el -1 extra
+        for(var i=NUM_FILAS-1;i!=0;i--){//empezamos en num_filas-1 porque la fila del medio no hace falta dibujarla
+            simbolo="";
+            espacios="";
+            for(var e = 0;e < NUM_FILAS-i;e++){
+                espacios +="&nbsp;&nbsp;"
+            }
+
+            for(var a=1;a<=2*i-1;a++){
+                simbolo += "*";
+            }
+            document.getElementById("lienzo").innerHTML +=espacios+simbolo+"<br/>";
+
+        }
+        
+
+    </script>
+</body>
+</html>

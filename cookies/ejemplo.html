@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Abrir con firefox que no protege contra cookies
+        //creacion de una cookie. Hya que poner cada parametro por separado
+        document.cookie="usuario = Juan Garcia;";
+        document.cookie="sexo = hombre;"
+
+        //Leer una cookie
+        var miCookie=document.cookie;
+        alert(miCookie);
+
+        //Modificar una cookie
+        document.cookie="usuario = Marcos;";
+        document.cookie="sexo = hombre;";
+        //alert (miCookie); asi no porque me saldran los de la cookie inicial
+        alert(document.cookie);
+
+        //Borrar una cookie. Poner parametros vacios y darle fecha de expiracion
+        document.cookie = "usuario= ; expires=Thu, 01 Jan 1970 00:00:01 GMY;";
+        document.cookie = "sexo= ; expires=Thu, 01 Jan 1970 00:00:01 GMY;";
+        //alert (miCookie); asi no porque me saldran los de la cookie inicial
+        alert(document.cookie);
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Implementar funcionalidad similar a lista de la compra. Al pulsar un boton añadir se inserta el contenido en un cuatro de texto a la lista superior.
+        Al clickar sobre un elemento se debe eliminar de la lista
+    Los productos deben ordenarse alfabeticamente-->
+
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio(){
+            document.getElementById("añadir").addEventListener("click", añadirLista);
+            document.getElementById("lista").addEventListener("click", quitarLista);
+
+            function añadirLista(){
+                var inputText = document.getElementById("text").value;
+                if (inputText.trim() === "") return; // Evitar agregar elementos vacíos
+
+                var lista = document.getElementById("lista");
+                var punto = document.createElement("li");
+                var texto = document.createTextNode(inputText);
+
+                punto.appendChild(texto);
+                lista.appendChild(punto);
+
+                ordenarLista();
+            }
+
+            function ordenarLista(){
+                var lista = document.getElementById("lista");//localizamos la lista
+                var elementos = Array.from(lista.getElementsByTagName("li"));//generar un array usando los elementos li de la lista antes localizada
+
+                elementos.sort(function(a, b){
+                    return a.textContent.localeCompare(b.textContent);
+                });
+
+                // Limpiar la lista actual
+                lista.innerHTML = "";
+
+                // Agregar los elementos ordenados de nuevo
+                elementos.forEach(function(elemento){
+                    lista.appendChild(elemento);
+                });
+            }
+
+            
+
+            function quitarLista(e){
+                var prod = e.target;
+                prod.remove();
+            }
+        }
+    </script>
+
+    <h3>Lista de la compra</h3>
+    <ul id="lista"></ul>
+
+    <input type="text" id="text">
+    <br>
+    <button id="añadir">Añadir</button>
+
+</body>
+</html>

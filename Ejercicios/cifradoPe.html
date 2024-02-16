@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*El cifrado pe es un cifrado infantil de un pais. Cuando alguien quiere escribir algo a alguien cifra la comunicación con este metodo que, 
+        basicamente, cosiste en alternar las sílabas de la palabra con pe
+        Por ejemplo:
+        peBuepenopesdiapes simplemente significa buenos dias
+        
+        Escribe una funcion que acepte una única palabra(no hay espacios en blanco ni tildes) y la devuelva codificada siguiendo las siguientes 
+        reglas:
+        La palabra codificada debe comenzar por pe
+        La pe va detrás de una vocal
+        Cuando hay varias vocales juntas, la pe va solo después de la última vocal
+        Cuando la palabra termina por vocal, no se agrega pe despues
+        La cadena de palabras se compone únicamente de carateres en minusculas y mayusculas
+
+        Obtener el cifrado de la palabra Autentificacion y colocarlo en una linea de comentario, al final del codigo
+        */
+
+        //Va a venirnos una unica palabra
+        const PALABRA = "";
+        let codificacion = PALABRA;
+
+        //Vamos a poner pe detrás de cada vocal
+        function peTrasVocal(codificacion){
+            let newCod = codificacion.toUpperCase();
+            let arr = "pe";//Un string vacio va a recibir el resultado de la codificación. Va a empezar siempre por pe
+            
+
+            let vocales = ["A", "E", "I", "O", "U"];
+
+            for(let i=0;i<newCod.length;i++){//Ten en cuenta que cada iteracion del bucle va a tratar solamente una letra. No varias
+
+                if(vocales.includes(newCod[i]) && codificacion.endsWith(newCod[i])){//Si la letra actual es vocal y es la ultima...
+                    arr += codificacion[i];//La añades al string final sin mas
+                }
+                
+                else if(vocales.includes(newCod[i])&& vocales.includes(newCod[i+1])){//Si la letra actual es una vocal y la siguiente tambien lo es
+                    arr += codificacion[i];//la añades al string final sin mas
+                }
+
+                else if(vocales.includes(newCod[i]) && !vocales.includes(newCod[i+1])){//Si la letra actual es una vocal y la siguiente no...
+                    arr += codificacion[i]+"pe";//Añadela al string Final con un pe
+                }
+
+                else if(!vocales.includes(newCod[i])){//Si la letra actual no es una vocal...
+                    arr += codificacion[i];//La añades al string final sin más
+                }
+            }
+            console.log(arr);
+            /*if(vocales.includes(arr[i]))*/
+        }
+        peTrasVocal(codificacion)
+
+
+        //Siempre que vayas a trabajar en busqueda de algo en un elemento que al final vaya a manipular ese elemento, es aconsejable
+        // crearse un elemento vacio e ir llenandolo
+
+    </script>
+</body>
+</html>
