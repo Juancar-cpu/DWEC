@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Obtener la longitud de un objeto*/
+        const objeto = {//definimos el objeto
+            nombre : "Kelsier",
+            edad : 43,
+            ocupacion:"minero",
+            
+        };
+        //Pasamos el objeto a array
+        let arrayObjeto = Object.values(objeto);
+
+        console.log(arrayObjeto.length);//usamos el length del array para sacar la longitud del objeto
+        //Object.keys(objeto).length//Otra forma de hacerlo
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Empezamos con un array de objetos. Cada objeto va separa do por un {}
+        const datos = [
+            {id:1, title:"Iron Man", year:2008},
+            {id:2, title:"Spiderman: Homecoming", year:2017},
+            {id:3, title:"Avengers Endgame", year:2019}
+        ];
+
+        //Hacemos una funcion para devolver los datos
+        const getDatos = ()=>{//funcion flecha sin nombre
+            return datos;//nos devuelve el array de objetos
+        }
+
+        console.log(getDatos());
+        //Tenemos un array de datos y una funcion que los devuelve, esto es síncrono
+        //Cualquier llamada que se haga desde la red tiene un pequeño delay, eso produce la asincronia
+
+        const getDatosAsincrono = ()=>{
+            setTimeout(()=>{//con setTimeout vamos a simular el delay. Este setTimeout recibe una funcion flecha sin nombre
+                return datos;
+            }, 3000)
+        }
+        console.log(getDatosAsincrono());//Nos devuelve undefined porque, estamos pidiendo la funcion, pero esta no va a existir hasta dentro de 3 segs. Se soluciona con promesas
+        //Una promesa es un trozo de codigo que queda pendiente de ejecución. Cuando este listo devolverá su solucion o un error donde se necesite, pero siempre devolvera algo
+
+        const getDatosPromesa=()=>{
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve(datos)//Las promesas no tienen return, tienen resolve
+                }, 5000)
+            })
+        }
+        getDatosPromesa().then((datos)=>console.log(datos))//no se puede hacer console.log a las bravas de una promesa. Primero llamamos a su getDatos, luego el then indica "cuando haya terminado", despues (resolve)=>console.log(resolve). Datos es lo que se nos entrega por el resolve
+        //Gracias a la promesa podemos ver que, pasados los 3 segs de delay, el reultado va al console log y se evita el undefined
+
+
+
+
+        //Despues entra el async y el await, que son la manera actual de hacerlo
+
+        async function fetching(){//una funcion async debe envolver a await para que no de errores. Las funciones async suelen llevar un try catch para mas elegancia
+            try{
+                const datos2 = await getDatosPromesa();//el resultado de este await se puede guardar en cualquier variable. De esta manera es más secuencial. "Espera" a que getDatosPromesa termine y mete lo que devuelve en la variable datos2. Sin embargo, await debe ir envuelto en una funcion async o da error
+                console.log(datos2);//de esta forma si podemos hacer un consol.log bruto
+            }catch(err){
+                console.log(err);
+            }
+       
+    }
+        fetching();
+   </script>
+</body>
+</html>

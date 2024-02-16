@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Pagina web con un div para mensajes y un boton que genere una promesa que invoque a una funcion llamada probarPromise
+    
+        La funcion probar Promise debe:
+        Contar las veces que se pulsa el boton y sacar en el div los siguientes mensajes:
+    1) antes de construir la promesa:  "cont() empieza el codigo sincrono"
+    2) Dentro de la promesa antes de resolverla: "cont() Dentro de la promesa, antes del timeout. Empieza el codigo asincrono"
+    3) Dentro de then: "cont()Dentro del then. Codigo asincrono terminado"
+    4) Fuera de la promesa: "cont()Codigo despues del then. Codigo sincrono terminado
+    
+    Para la promesa usar: 
+        setTimeout(() => {
+    resolve(this.contador());
+}, Math.random() * 4000 + 1000);-->
+
+<button id="boton">Generar Promesa</button>
+<div id="mensaje"></div>
+
+<script>
+    document.getElementById("boton").addEventListener("click", promesa, false);
+
+    function promesa(){
+        document.getElementById("mensaje").innerHTML="1) Empieza el codigo sincrono";
+
+        let promise = new Promise((resolve, reject)=>{
+            document.getElementById("mensaje").innerHTML+="<br>2) Dentro de la promesa, antes del timeout. Empieza el codigo asíncrono";
+
+            setTimeout(()=>{
+                mensaje = "<br>3) Dentro del then. Código asíncrono terminado"
+                resolve(mensaje);
+            }, Math.random() * 4000 + 1000);
+        });
+
+        promise.then((mensaje)=>{//mensaje es el resolve
+            document.getElementById("mensaje").innerHTML += mensaje;
+            document.getElementById("mensaje").innerHTML += "<br>4) Código despues del then. Código síncrono terminado";
+        });
+    }
+</script>
+</body>
+</html>

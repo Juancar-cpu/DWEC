@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!--validacion debe ir dentro de formularios-->
+    <script>
+        var formulario=document.getElementById("formulario");
+        var formulario2=document.form["formulario"];
+
+        var formulario3=document.getElementsByTagName("forms")[1];//accedemos al segundo elemento del formulario
+        var formulario4=document.forms[0]//primer elemento del formulario
+
+        window.onload=iniciar;
+
+        function iniciar(){
+            document.getElementById("enviar").addEventListener("click", validar);
+
+        }
+
+        function validarNombre(){
+            var elemento=document.getElementById("Nombre");
+            if(elemento.value=="") {
+                alert("El campo nombre esta vacío");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

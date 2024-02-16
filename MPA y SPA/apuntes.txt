@@ -1,0 +1,12 @@
+MPA está obsoleto.
+Se utiliza si se necesita SEO(posicionamiento de buscadores)
+Toda la lógica está en el backend lo que hace más segura
+Son más lentas
+Suelen usar AJAX y JQUERY
+Usan técnicas de catching para disminuir el tiempo de renderizado
+
+
+SPA
+Es la que se utiliza ahora. Se genera una única pagina web y a base de js se va cambiando lo que muestra en base a lo que hace el cliente
+React. Angular o Vue utilizan SPA. Son frameworks Client Side Rendering
+Son ejemplos de SPA yotube o facebook(todas las redes sociales) o google drive

@@ -1,0 +1,69 @@
+La programacion sincrona realiza tareas de forma secuencial de la realcion de instrucciones que ponemos en el programa.
+Si usamos js, podemos poner instrucciones y funciones en stand by mientras el codigo sigue funcionando, sin tener que esperarlas. Estas funciones se tratan con promesas. Por esto se dice que js es un lenguaje no bloqueante
+
+ejemplos: la descarga de un archivo grande, una tarea programada con set TimeOUT(), uso de fetch para obtener un .json de una url, un new Audio() de una url con un .mp3, etc.
+
+Javascript es "single-theaded". La asíncrona NO es multihilo
+
+diferencia entre programacion síncrona y asíncrona. 
+
+
+mEDIANTE CALLBACKS(retrollamadas) MUY USADAS CON JQUERY, funciones pueden ser parametros de otras funciones, pero esto a la larga genera tal cantidad de callbacks que se acaba perdiendo el control
+Como respuesta surgieron las promesas y el async/await
+
+
+Una promesa es algo que se espera que ocurra, pero no se tiene la seguriodad de que eso vaya a funcionar.
+Una promesa en js es un Objeto tipo Object y tiene 3 posibles estados:
+pendiente(pending)
+cumplida(fullfilled)
+rechazada(rejected)
+Las APIS asíncronas de los navegadores suelen devolver promesas como resultado. Cuando una función llama a una promesa esta pasa a pendiente y la funcion sigue ejecutando su codigo
+
+
+Hasta que no se llame al método resolve() o reject()estará en pendiente. Una vez pase a un estado fullfilled o rejected ya no podrá adoptar el otro estado
+
+class Promise
+function resolve()
+function reject()
+then()
+catch()
+finally()
+all()
+race()
+
+then y catch resuleven los caminos de fullfilled y rejected 
+finally hace que, dando igual el estado tomado por la promesa, esa instruccion se ejecuta siempre
+all me permite saber si todas las promesas que se le dan se han cumplido
+
+Todos los navegadores a día de hoy funcionan por promesas
+
+
+Las promesas se r¡crean mediante un constructor llamado Promise. Se le pasan 2 parametros, resolve y reject que permiten indicar que la promesa se resolvio o se rechazó. Para crear se invoca a los metodos resolve() o reject(). Las promesas no terminan con returns
+
+-Si la promesa termina con resolve(), se llama a la primera funcion pasada al metodo then()
+si la promesa termina con un reject(), se llama a la segunda funcion pasada al metodo then()
+-El metodo catch() es otra alternativa para indicar la segunda funcion de then()
+-El metodo pasado finally() se ejecutaría tanto si la promesa acaba con resolve() como si acaba por reject()
+Resumiendo, then y catch funcionan como un if else
+
+ejemplo1.html
+ejercicio1.html
+ejercicio2.html
+
+
+ASYNC - await
+async delante de una funcion hace que la funcion devuelva una promesa. 
+async function (){
+
+}
+
+tambien puede usarse function().then
+
+await funciona solamente dentro de funciones definidas con async. Con await se espera hasta que la promesa responda y devuelve su resultado
+
+
+
+
+
+
+

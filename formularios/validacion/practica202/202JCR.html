@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+       .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+       }
+        .error{
+            border:solid 4px red;
+        }
+        .mensajeError{
+            color: red;
+        }
+       .opcion{
+        text-align: center;
+       }
+        
+
+    </style>
+</head>
+<body>
+    <!--Crea un formulario lo más parecido posible a la imagen del documento Practica 202
+        Añadir un input con el NIF
+Se debe añadir un checkbox para seleccionar/deseleccionar todos los días con disponibilidad.
+Realizar una validación (débil, en el lado del cliente) utilizando indistintamente los métodos vistos en clase (los tres deben estar representados) con las siguientes restricciones:
+    • Ningún elemento vacío -> Todos required
+    • Nombre:  debe ser obligatorio
+    • NIF correcto ( comprobar letra)
+    • Mensaje: de entre 2 y 500 caracteres
+    • Color por defecto: oscuro ->oscuro checked
+    • Días: seleccionar al menos dos
+    • Preferente: por defecto marcado: lunes ->lunes checked
+    • Botón de “Hacer click”: ir a Google.com
+Añadir un contador de caracteres que indique al usuario los caracteres que le quedan antes de llegar al máximo.
+
+
+Se deben entregar únicamente los ficheros .html y .js. El enunciado ( sin gráficos) debe estar incluido como comentarios en el HTML.
+Nombre de los ficheros: 201XXX.html y 201XXX.js-->
+
+<div class="container">
+<form action="" method="post">
+    <h3>Datos Personales</h3>
+
+    <fieldset>
+    <div class="container">
+        <div class="datosPersonales"></div>
+        <strong>Introduce tu nombre &nbsp;</strong><!--La etiqueta strong para poner en negrita es una buena práctica-->
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre..." pattern="[A-Za-z]{2,15}" required>
+        <div id="mensajeNombre" class="mensajeError"></div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <strong>Introduce tu NIF &nbsp;</strong>
+        <input type="text" name="dni" id="dni" placeholder="NIF..." maxlength="9">
+        <div id="mensajeDNI" class="mensajeError"></div>
+    </div>
+
+    <br>
+    <br>
+    <div class="container"><strong>Mensaje</strong></div>
+    <br>
+    <textarea name="mensaje" id="mensaje" cols="100" rows="20" minlength="2" maxlength="500" placeholder="Mensaje..."></textarea>
+    <div id="contador">0 /500</div>
+    <div id="mensajeArea" class="mensajeError"></div>
+</fieldset>
+
+    <div class="opcion">
+        <br>Elige un color;<br><br>
+        Rojo <input type="radio" name="color" id="rojo" required><br><!--Al tener todos el mismo nombre, el required del primero se aplica a todos-->
+        Verde <input type="radio" name="color" id="verde"><br>
+        Azul <input type="radio" name="color" id="azul" checked><br>
+        Oscuro <input type="radio" name="color" id="oscuro">
+    </div>
+
+    <br>
+    <br>
+    <div class="opcion">
+        Fecha de matriculacion: &nbsp;
+        <input type="date" name="fechaMatricula" id="fechaMatricula" required>
+        <div id="mensajeFecha" class="mensajeError"></div>
+    </div>
+    <br>
+    <br>
+    <div class="opcion">
+    Selecciona una asignatura <select name="listaAsig" id="listaAsig">
+        <option value="DWEC">DWEC</option>
+        <option value="DWES">DWES</option>
+        <option value="empresa">Empresa</option>
+        <option value="diseño">Diseño</option>
+        <option value="despliegue">Despliegue</option>
+    </select>
+    </div>
+    <br>
+    <br>
+    <div class="opcion">
+        Cursos academicos <select name="listaCursos" id="listaCursos">
+            <option value="2021">20-21</option>
+            <option value="2122">21-22</option>
+            <option value="2223">22-23</option>
+            <option value="2324">23-24</option>
+        </select>
+        <br>
+        <button type="button" id="añadir">Añadir curso</button><!--Si no pongo type button lo toma por defecto como un boton submit que me recarga la pagina-->
+        <input type="text" name="newCurso" id="newCurso" placeholder="Nuevo curso...">
+    </div>
+    <br>
+    <br>
+    <div class="opcion">
+        Selecciona los dias con disponibilidad<br>
+        Lunes <input type="checkbox" name="dia" id="lunes" checked><br>
+        Martes <input type="checkbox" name="dia" id="martes"><br>
+        Miercoles <input type="checkbox" name="dia" id="miercoles"><br>
+        Jueves <input type="checkbox" name="dia" id="jueves"><br>
+        Viernes <input type="checkbox" name="dia" id="viernes"><br>
+        <div id="mensajeDias" class="mensajeError"></div>
+    </div>
+    <br>
+    <div class="opcion">
+        Selecciona un dia preferente <select name="listaDia" id="listaDia">
+            <option value="lunes">Lunes</option>
+            <option value="lunes">Martes</option>
+            <option value="lunes">Miercoles</option>
+            <option value="lunes">Jueves</option>
+            <option value="lunes">Viernes</option>
+        </select>
+    </div>
+    <br>
+    <br>
+    <div class="opcion">
+        <button type="submit" value="enviar" id="enviar">Haz click para enviar la información</button>
+        
+        <button type="reset" value="reset" id="reset">Comenzar a rellenar de nuevo</button>
+        
+        <button type="button" value="google" id="google">Haz click sobre mi</button>
+
+    </div>
+</form>
+</div>
+<script src="202JCR.js"></script>
+</body>
+</html>

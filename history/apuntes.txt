@@ -1,0 +1,9 @@
+Cada ventana tiene un historico diferente. Nos permite saber a qué pagina nos hemos conectado con anterioridad, es el Historial
+No tiene un estándar, cada navegador lo usa de una forma distinta
+Su unica propiedad es la longitud, length, que nos dice el numero de paginas visitadas (history.length)
+
+Metodos de history
+back: carga la url anterior del historial, hacer atras en el navegador (history.back)
+forward: lo contrario al anterior
+go: ir a una pagina en concreto del historial que se pasa por un parametro (history.go(3) ir a la pagina 3 del historial)
+

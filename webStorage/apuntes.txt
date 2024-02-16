@@ -1,0 +1,27 @@
+// Guardar un valor en localStorage
+localStorage.setItem('clave', 'valor');
+
+// Obtener un valor de localStorage
+const valor = localStorage.getItem('clave');
+console.log(valor); // Imprime: valor
+
+// Eliminar un valor de localStorage
+localStorage.removeItem('clave');
+
+// Limpiar todos los valores de localStorage
+localStorage.clear();
+
+
+
+// Guardar un valor en sessionStorage
+sessionStorage.setItem('clave', 'valor');
+
+// Obtener un valor de sessionStorage
+const valor = sessionStorage.getItem('clave');
+console.log(valor); // Imprime: valor
+
+// Eliminar un valor de sessionStorage
+sessionStorage.removeItem('clave');
+
+// Limpiar todos los valores de sessionStorage
+sessionStorage.clear();

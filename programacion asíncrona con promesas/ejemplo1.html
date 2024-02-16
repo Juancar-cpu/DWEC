@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const datos=[{
+            id:1,
+            nombre:"Juan",
+            edad:18,
+
+        },
+    
+    {
+        id:2,
+        nombre:"Ana",
+        edad:40
+    },
+{
+    id:3, nombre:"Pedro",
+    edad:24
+}];
+
+function getDatos(){//esta funcion tiene un comportamiento sincrono
+    return (datos);
+
+}
+console.log(getDatos())
+
+
+function getDatosSinc(){//funcion con comportamiento asíncrono
+    setTimeout(getDatos(), 3000);//temporizaron de 3 segs para llamar a la funcion
+}
+console.log(getDatosSinc());//si lo ponemos asi sin mas, nos da undefined porque, como el temporizador esta a 3 segs, getDatosSinc no existe cuando se llama a este console.log
+    
+    
+    
+function getDatosProm() {
+    // Vamos a usar promesas
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(datos); // Suponiendo que `datos` es una variable definida en algún lugar
+        }, 4000);
+    });
+}
+
+   // getDatosProm().then((datos)=>console.log(Datos))
+    async function asyawt(){
+        try{
+        const misDatos = await getDatosProm()
+        console.log(misDatos)
+        }
+        catch(err){
+            consolle.log(err);
+        }
+    }
+
+    console.log(getDatosProm())
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Es una buena practica disponer de modulos de codigoindependientes y reutilizables. Modulos con codigo recurrente que pueda llevar a otros programas
+Los modulos funcionan siempre en el servidor, por lo que si no esta cargado en este dará un fallo de CORS
+Los modulos se ejecutan una sola vez, aunque lo invoque varias veces a lo largo de mi código
+Solo podemos usar el modulo donde lo importemos
+
+como se le invoca (sigue todos los pasos): 
+en el html: <script src=archivo.js type='module'></script>
+en el js que se va a importar: import{elemento1, elemento2,...}from "ruta". La ruta siempre debe empezar con ./
+en el modulo que hemos preparado, antes de definir cualquier cosa: export definicion_de_funcion_variable_constante_o_clase. Tambien vale poner export {elementos_separados_por_comas};
+

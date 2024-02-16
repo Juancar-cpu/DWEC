@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Validar si el numero de telefono introducido en un formulario es un numero y el nombre contiene algo-->
+    <form action="" id="form">
+        Nombre:<br>
+        <input type="text" name="Nombre" id="Nombre">
+        <br>
+        Telefono:<br>
+        <input type="text" name="tlfn" id="tlfn">
+        <br>
+        <input type="submit" value="Enviar" id="enviar">
+    </form>
+
+    <script>
+        window.onload=iniciar;
+        function iniciar(){
+            document.getElementById("enviar").addEventListener("click", validar);
+        }
+
+        function validarNumero(){
+            var numero=document.getElementById("tlfn");
+            if(isNaN(numero.value)) {
+                alert("El campo telefono solo admite numeros");
+                return false;
+            }
+            else if(numero.value==""){
+                alert("El campo teléfono está vacío");
+                return false;
+            }
+            else return true;
+        }
+
+        function validarNombre(){
+            var elemento=document.getElementById("Nombre");
+            if(elemento.value=="") {
+                alert("El campo nombre esta vacío");
+                return false;
+            }
+            else if(!isNaN(elemento.value)){
+                alert("El nombre solo puede contener letras");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+        function validar(e){
+            if(validarNombre() && validarNumero() && confirm("¿Seguro que quieres enviar el formulario?")){
+                return true;
+            }
+            else{
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

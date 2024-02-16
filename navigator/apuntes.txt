@@ -1,0 +1,4 @@
+La interfaz navigator representa el estado y la identidad del user agente. Es completamente consultable y es posible registrar scripts
+para que ejecuten diversas actividades
+
+Un objeto navigator puede ser obtenido usando la propiedad de lectura window.navigator

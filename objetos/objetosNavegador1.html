@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="ventana"></p>
+    <script>
+        /*Se puede declarar una ventana en una variable.. De este modo se podrán usar sus metodos (los de window) sin problemas*/
+        window.name = "Mi ventana";//Creamos una ventana en el navegador y le damos nombre.
+        let texto = "";//Variable texto vacía
+
+        texto +="<br>Nombre: "+window.name;
+        texto +="<br>Ancho externo ventana: "+window.outerWidth;
+        texto +="<br>Alto externo ventana: "+window.outerHeight;
+        texto +="<br>Ancho interno ventana: "+window.innerWidth;
+        texto +="<br>Alto interno ventana: "+window.innerHeight;
+        texto +="<br>Posicion scroll horizotal: "+window.pageXOffset;//Da 0 porque no hay scroll. La ventana ocupa toda la pantalla
+        texto +="<br>Posicion scroll vertical: "+window.pageYOffset;//Da 0 por lo mismo
+        texto +="<br>Distancia entre la ventana y la izquierda: "+window.screenX;//Da 0 porque no hay separación entre la izq de la pantalla y la ventana
+        texto +="<br>Distancia entre la ventana y arriba: "+window.screenY;//Da 0 por lo mismo
+
+
+
+        document.getElementById("ventana").innerHTML = texto;
+    </script>
+
+</body>
+</html>

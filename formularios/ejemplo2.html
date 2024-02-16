@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Formulario con un parrafo y un boton. El parrafo pone maquina apagada y un boton que ponga encender maquina. Al pulsar debe poner maquina encendida en el parrafgo y el boton 
+    cambiar a maquina apagada. Si volvemos a pulsar el boton ambos elementos recuperan sus valores originales-->
+
+
+    <p>Maquina apagada</p>
+       <form action="">
+        <input type="button" value="Arrancar maquina">
+       </form>
+        <script>
+           const button=document.querySelector("input");
+           const parrafo=document.querySelector("p");
+
+           button.addEventListener("click", updateButton);
+
+           function updateButton(){
+            if(button.value==="Arrancar maquina"){
+                button.value="Detener maquina"
+                parrafo.textContent="Maquina encendida"
+            }
+            else{
+                button.value="Arrancar maquina"
+                parrafo.textContent="Maquina apagada"
+            }
+           }
+        </script>
+</body>
+</html>

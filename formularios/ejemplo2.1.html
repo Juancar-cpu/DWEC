@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Otra forma de hacer el ejemplo2.html-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #estado {
+            font-weight: bold;
+            color: red; /* Color original del estado "apagada" */
+        }
+
+        #boton {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleEstado() {
+            var parrafo = document.getElementById('estado');
+            var boton = document.getElementById('boton');
+
+            if (parrafo.innerHTML === 'Máquina apagada') {
+                parrafo.innerHTML = 'Máquina encendida';
+                parrafo.style.color = 'green'; // Cambia el color del estado a "encendida"
+                boton.innerHTML = 'Apagar máquina';
+            } else {
+                parrafo.innerHTML = 'Máquina apagada';
+                parrafo.style.color = 'red'; // Restaura el color original del estado "apagada"
+                boton.innerHTML = 'Encender máquina';
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="estado">Máquina apagada</p>
+    <button id="boton" onclick="toggleEstado()">Encender máquina</button>
+</body>
+</html>

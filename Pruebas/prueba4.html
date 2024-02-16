@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Generar un número aleatorio entre dos valores dados*/
+        let min = parseInt(prompt("Dame el minimo"));
+        let max = parseInt(prompt("Dame el maximo"));
+
+            function numeroAleatorio(min, max) {
+  return Math.round(Math.random() * (max - min) + min);//max-min nos da cuantos numeros habrá para elegir, entre 0 y 17. Si a ese 17 le sumamos el numero menor ya nos da el limite maximo
+}
+    
+console.log(numeroAleatorio(min, max));
+    </script>
+</body>
+</html>

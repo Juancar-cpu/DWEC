@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            border:solid 4px red;
+        }
+    </style>
+</head>
+<body>
+    <!--el formulario debe tener nombre, telefono, fecha nacimiento, sexo con un radio button y mayor de edad con un checkbox
+        El formulario debe ir en una tabla
+    
+    W3SCHOOLS INPUT TYPES-->
+    <h1>Formulario</h1>
+    <form action="" method="post" id="miFormulario">
+        <table>
+            <tr>
+                <td>Nombre: </td>
+                <td><input type="text" name="nombre" id="nombre" maxlength="15"></td>
+            </tr>
+            
+                <td>Telefono: </td>
+                <td><input type="text" name="telefono" id="telefono"></td>
+            </tr>
+            <tr>
+                <td>Fecha de nacimiento: </td>
+                <td>
+                    <input type="text" name="dia" id="dia" size="2" placeholder="Dia...">
+                    <input type="text" name="mes" id="mes" size="2" placeholder="Mes...">
+                    <input type="text" name="ano" id="ano" size="4" placeholder="Año...">
+                </td>
+            </tr>
+            <tr>
+                <td>Sexo: </td>
+                <td><input type="radio" name="sexo" id="hombre" checked>Hombre</td>
+                <td><input type="radio" name="sexo" id="mujer">Mujer</td>
+            </tr>
+            <tr>
+                <td>¿Mayor de edad?</td>
+                <td><input type="checkbox" name="mayorEdad" id="mayorEdad"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Enviar" id="enviar"></td>
+                <td><input type="reset" value="Cancelar"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        window.onload=iniciar;
+
+        function iniciar(){
+            document.getElementById("enviar").addEventListener("click", validar);
+        }
+
+            function validarNombre(){
+                let nombre=document.getElementById("nombre");
+                //limiarError(nombre);
+
+                if(nombre.value==""){//Si el nombre esta vacio...
+                    alert("El campo del nombre está vacío");
+                    error(nombre);
+                    return false;
+                }
+                else if(!isNaN(nombre.value)){
+                    alert("El campo nombre no admite numeros");
+                    error(nombre);
+                }
+                else {
+                    limpiarError(nombre);
+                    return true;
+                }
+            }
+
+            function validarTelefono(){
+                let tlfn=document.getElementById("telefono");
+
+                if(isNaN(tlfn.value)){//si el telefono no es un numero o esta vacío...
+                    alert("El campo telefono solo admite numeros");
+                    error(tlfn);
+                    return false;
+                }
+                else if(tlfn.value==""){
+                    alert("El campo telefono esta vacio");
+                    error(tlfn);
+                    return false;
+                }
+                else {
+                    limpiarError(tlfn);
+                    return true;
+                }
+            }
+
+            function fechaNacimiento(){
+
+                var dia=parseInt(document.getElementById("dia").value);
+                var mes=parseInt(document.getElementById("mes").value);
+                var ano=parseInt(document.getElementById("ano").value);
+                //var fecha=new Date(dia, mes, ano);
+
+                if(isNaN(dia) || dia<1 || dia>31){
+                    alert("El campo dia es erroneo o esta vacio");
+                    error(dia);
+                    return false;
+                }
+                else if(isNaN(mes)|| mes<1 || mes>12){
+                    alert("El campo mes es erroneo o esta vacio");
+                    error(mes);
+                    return false;
+                }
+                else if(isNaN(ano)|| ano<1900 || ano>2030){
+                    alert("El campo año es erroneo o esta vacio");
+                    error(ano);
+                    return false;
+                }
+                else {
+                    limpiarError(dia);
+                    limpiarError(mes);
+                    limpiarError(ano);
+                    return true;
+                }
+            }
+
+            function validaCheck(){
+                var campoCheck=document.getElementById("mayorEdad");
+                    if(!campoCheck.checked){
+                        alert("Debes ser mayor de edad");
+                        //error(campoCheck); checkbox no tiene border que poner en rojo
+                        return false;
+                    }
+                    else return true;
+                
+                }
+            
+
+            function error(elemento){
+                elemento.className="error";
+                elemento.focus();
+            }
+
+            function limpiarError(elemento){
+                elemento.className="";
+            }
+        
+            function validar(evento){
+                if(validarNombre() && validarTelefono() && fechaNacimiento() && validaCheck() && confirm("¿Deseas enviar el formulario?")){
+                    return true;
+                }
+                else{
+                    evento.preventDefault();
+                    return false;
+                }
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function confirmarEnvio() {//Ponemos la funcion en la cabecera para asegurarnos de que esté cargada cuando la necesitamos
+            return confirm("¿Estás seguro de que deseas enviar el formulario?");//Un confirm nos da como respuesta un booleano
+        }
+    </script>
+</head>
+<!--Recupera el formulario del ejemplo1.html. Al darle al boton enviar debe preguntarnos si de verdad queremos enviar el formulario
+Si le damos que si lo envia en forma de correo(mailto:). 
+ El boton cancelar debe borrar el formulario y poner el foco sobre el input de nombre.-->
+<body>
+    <form action="mailto:aaaaaa@gmail.com" method="post" onsubmit="return confirmarEnvio()" onreset="document.getElementById('nombre').focus()"><!--onsubmit manda hacer sus instrucciones cuando pulsamos el submit. onreset tambien manda instrucciones cuando damos a reset. poner mailto: direccion de correo valida en el action del formulario hace que podamos mandar los datos del forulario por correo. Vemos que nos abre el cliente de correo-->
+        Nombre: <input type="text" name="nombre" id="nombre" size="30">
+        <br>
+        Apellidos: <input type="text" name="apellido" id="apellido" size="40">
+        <br>
+        DNI: <input type="text" name="dni" id="dni" maxlength="9" size="10">
+        <br>
+
+        Sexo:
+        <br>
+        <input type="radio" name="gen" id="hombre" checked>Hombre
+        <br>
+        <input type="radio" name="gen" id="mujer">Mujer
+        <br>
+        Incluir mi foto: <input type="file" name="foto" id="foto">
+        <br>
+        <input type="checkbox" name="publi" id="publi" checked>Enviar publicidad
+        <br>
+        <input type="submit" name="enviar" value="Enviar"/><!--onsubmit funciona porque este boton es un submit-->
+        <input type="reset" value="Cancelar" name="Cancelar"/><!--reset deja los campos del formulario a estado por defecto. onreset funciona porque este boton es un reset-->
+    </form>
+</body>
+</html>

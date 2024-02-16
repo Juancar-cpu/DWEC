@@ -1,0 +1,9 @@
+su clase se contruye de la siguiente manera:
+
+function persona (nom, ape, an){
+    this.nombre=nom
+    .
+    .
+    .
+    
+}

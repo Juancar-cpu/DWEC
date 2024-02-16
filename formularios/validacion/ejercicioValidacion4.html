@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            border:solid 4px red;
+        }
+    </style>
+</head>
+<body>
+    <!--Validar los campos de un formulario usando una API
+    w3schools validation API-->
+
+    <form action="" method="post" id="miFormulario">
+        <tr>
+            <td>Nombre: </td>
+            <td><input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce un nombre entre 2 y 15 caracteres" required></td><br>
+        </tr>
+        <tr>
+            <td>Edad: </td>
+            <td><input type="number" name="edad" id="edad" min="18" max="120" required></td><br>
+        </tr>
+        <tr>
+            <td>Telefono: </td>
+            <td><input type="text" name="telefono" id="telefono" pattern="[0-9]{9}" required title="Introduce 9 digitos"></td><br>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Enviar" id="enviar"></td><br>
+            <td><input type="reset" value="Cancelar" id="cancelar"></td>
+        </tr>
+    </form>
+
+    <p id="mensajeError"></p>
+    <script>
+        window.onload=iniciar;
+
+        function iniciar(){
+
+            document.getElementById("enviar").addEventListener("click", validar, false);
+            document.getElementById("cancelar").addEventListener("click", cancelar, false);
+
+        }
+
+        function validarNombre(){
+            //console.log("hola")
+            var nombre = document.getElementById("nombre");
+            if(!nombre.checkValidity()){//checkValidity da true o false. CheckValidity comrueba la validacion que hemos dado en html. Si nombre no pasa el checkValidity...
+                //error(element);
+                if(nombre.validity.valueMissing){//Si el error es que no hay nombre...
+                    error2(nombre, "No se puede dejar este campo vacío");
+                }
+                if(nombre.validity.patternMismatch){//Si el error es que nos hemos equivocado en el parametro
+                    error2(nombre, "El nombre no puede contener numeros o caracteres especiales");
+                }
+                return false;
+            }
+            return true;
+        }
+
+        function validarEdad(){
+            var edad = document.getElementById("edad");
+            if(!edad.checkValidity()){//checkValidity da true o false. CheckValidity comrueba la validacion que hemos dado en html. Si nombre no pasa el checkValidity...
+                //error(element);
+                if(edad.validity.valueMissing){//Si el error es que no hay edad...
+                    error2(edad, "No se puede dejar este campo vacío");
+                }
+                if(edad.validity.rangeOverflow){//Si el error es que nos hemos pasado con la edad... Los range solo funcionan con input number del formulario
+                    error2(edad, "La edad debe ser menor o igual que 120 años");
+                }
+                if(edad.validity.rangeUnderflow){//Si el error es que nos hemos quedado cortos con la edad...
+                    error2(edad, "La edad debe ser mayor o igual a 18");
+                }
+                return false;
+            }
+            return true;
+        }
+
+        function validarTelefono(){
+            var tlfn = document.getElementById("telefono");
+            if(!tlfn.checkValidity()){//checkValidity da true o false. CheckValidity comrueba la validacion que hemos dado en html. Si nombre no pasa el checkValidity...
+                //error(element);
+                if(tlfn.validity.valueMissing){//Si el error es que no hay telefono...
+                    error2(tlfn, "No se puede dejar este campo vacío");
+                }
+                if(tlfn.validity.patternMismatch){//Si el error es que nos hemos pasado dando numeros...
+                    error2(tlfn, "El numero de telefono debe tener 9 cifras");
+                }
+                if(!isNaN(tlfn)){//Si el error es que no hemos proporcionado numeros...
+                    error2(tlfn, "Solo se admiten numeros en el campo 'Teléfono'");
+                }
+                return false;
+            }
+            return true;
+        }
+
+        function validar(e){
+            //console.log("hola")
+            borrarError();//importante llamar a borrar error antes de hacer la validacion final porque se han introducido datos o nuevos datos
+            if(validarNombre() && validarEdad() && validarTelefono() && confirm("¿Desea enviar el formulario?")){
+                return true;
+            }
+            else{
+                e.preventDefault();
+                return false;
+            }
+        }
+
+        function cancelar(){
+            borrarError();
+        }
+
+
+
+        /*function error(elemento){
+            document.getElementById("mensajeError").innerHTML = elemento.validationMessage;//El mensaje por defecto que nos da
+            elemento.className="error";//le damos al elemento clase error y le focus
+            elemento.focus();
+        }*/
+        function borrarError(){
+            var formulario = document.forms[0];//metemos el primer y unico elemento de los forms
+            for(var i=0;i<formulario.elements.length;i++){//recorremos todos los elementos dentro de formulario
+                formulario.elements[i].className="";//Quitamos la clase error de los elementos
+            }
+        }
+
+        function error2(elemento, mensaje){
+            document.getElementById("mensajeError").innerHTML=mensaje;
+            elemento.className="error";
+            elemento.focus();
+        }
+    </script>
+</body>
+</html>

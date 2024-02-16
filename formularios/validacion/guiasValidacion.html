@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //validacion de formulario
+        function validarFormulario() {
+    var campoNombre = document.getElementById('nombre').value;
+    if (campoNombre == "") {
+        alert("Por favor, ingresa tu nombre.");
+        return false;
+    }
+    // Otros campos obligatorios...
+    return true;
+}
+
+
+function validarCorreo() {
+    var correo = document.getElementById('correo').value;
+    var expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!expresion.test(correo)) {
+        alert("Por favor, ingresa un correo electrónico válido.");
+        return false;
+    }
+    return true;
+}
+
+
+function validarLongitud() {
+    var campoTexto = document.getElementById('texto').value;
+    if (campoTexto.length < 6 || campoTexto.length > 20) {
+        alert("El texto debe tener entre 6 y 20 caracteres.");
+        return false;
+    }
+    return true;
+}
+
+
+function validarFecha() {
+    var fecha = document.getElementById('fecha').value;
+    var expresion = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!expresion.test(fecha)) {
+        alert("Por favor, ingresa una fecha válida en formato DD/MM/AAAA.");
+        return false;
+    }
+    return true;
+}
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Se pide:
+
+    1. Filtrar los usuarios mayores de edad (mayores o igual a 18 años).
+    2. Calcular el promedio de edades de los usuarios filtrados.
+    3. Encontrar al usuario más joven de entre los filtrados.
+    4. Obtener una lista de nombres de usuarios que empiezan con la letra 'A'.
+// Lista de usuarios
+const usuarios = [
+  { id: 1, nombre: 'Juan', edad: 25 },
+  { id: 2, nombre: 'María', edad: 30 },
+  { id: 3, nombre: 'Pedro', edad: 20 },
+  { id: 4, nombre: 'Ana', edad: 35 },
+  { id: 5, nombre: 'Luisa', edad: 22 },
+  { id: 6, nombre: 'Alberto', edad: 19 },
+];
+*/
+const usuarios = [
+  { id: 1, nombre: 'Juan', edad: 25 },
+  { id: 2, nombre: 'María', edad: 30 },
+  { id: 3, nombre: 'Pedro', edad: 20 },
+  { id: 4, nombre: 'Ana', edad: 35 },
+  { id: 5, nombre: 'Luisa', edad: 22 },
+  { id: 6, nombre: 'Alberto', edad: 19 },
+];
+
+//Sacamos los usuarios que sean mayores de edad
+let mayoresEdad = usuarios.filter(usuarios => usuarios.edad>=18);
+//Sacamos los nombres de los usuarios mayores de edad
+let nombreMayoresEdad = mayoresEdad.map(usuarios => usuarios.nombre);
+//Sacamos por consola los nombres
+console.log("Los usuarios mayores de edad son: "+nombreMayoresEdad);
+
+//Calculamos el promedio de las edades de los usuarios filtrados. Primero sacamos las edades
+let edadesMayores = mayoresEdad.map(usuarios => usuarios.edad);
+let edadTotal = edadesMayores.reduce((total, edad) => total +=edad);//Luego sumamos esas edades
+console.log("La media de edad es: "+edadTotal/usuarios.length);//En el propio console.log sacamos la media
+
+//Vamos a encontrar al usuario más joven
+let menorEdad = edadesMayores.reduce(function(menor){
+    menor = edadesMayores[0];//menor será igual a la primera edad
+
+    for(i=0;i<=edadesMayores.length;i++){
+        if(edadesMayores[i]<menor) menor = edadesMayores[i];//Si la edad actual del bucle es menor que la guardada en la variable menor, cambia su valor
+    }
+    return menor;//devuelve menor
+});
+
+console.log("El usuario más joven tiene "+menorEdad+" años");
+
+//Vamos a sacar los usuarios que empiezan con A
+
+let nombresConA = usuarios.filter(usuario => usuario.nombre.startsWith('A')).map(usuario => usuario.nombre);
+
+
+console.log("Usuarios que empiezan por A: "+nombresConA);
+
+
+
+
+    </script>
+</body>
+</html>

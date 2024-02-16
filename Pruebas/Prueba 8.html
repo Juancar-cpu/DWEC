@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Comprobar si una propiedad existe IN un objeto*/
+
+        let objeto = new Object();//Creamos objeto
+        objeto.prop = "exist";//Le vamos a meter una propiedad prop con valor "exist"
+
+        console.log(objeto.hasOwnProperty("prop"));//hasOwnProperty nos indica si una propiedad existe en el objeto. Nos devolvera true
+        console.log(objeto.hasOwnProperty("toString"));//da false porque el objeto no tiene una propiedad toString
+
+    </script>
+</body>
+</html>

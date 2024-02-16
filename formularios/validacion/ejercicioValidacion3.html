@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--Crea un formulario con validacion en el html-->
+<body>
+    <table>
+        <tr>
+            <td>Nombre: </td>
+            <td><input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce un nombre entre 2 y 15 caracteres" required></td>
+        </tr>
+        <tr>
+            <td>Edad: </td>
+            <td><input type="text" name="edad" id="edad" min="18" max="120" required></td>
+        </tr>
+        <tr>
+            <td>Telefono: </td>
+            <td><input type="number" name="telefono" id="telefono" pattern="[0-9]{9}" required title="Introduce 9 digitos"></td><!--debe ser input tipo number o el pattern dara fallo-->
+        </tr>
+        <tr>
+            <td><input type="submit" value="Enviar" id="enviar"></td>
+            <td><input type="reset" value="Cancelar"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
